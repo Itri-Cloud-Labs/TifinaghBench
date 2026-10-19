@@ -99,10 +99,10 @@ async function runBenchmarkInner(input: BenchConfig, options: RunOptions): Promi
 	let active = 0;
 	const previousSessions = storage.batches.length;
 	let sequence = Math.max(0, ...storage.batches.map(batch => batch.sequence));
-	let summary = summarize([...storage.items.values()], config);
+	let summary = summarize([...storage.items.values()], config, questions);
 	const refresh = () => {
 		const items = [...storage.items.values()];
-		summary = summarize(items, config);
+		summary = summarize(items, config, questions);
 		run.duration_s = (Date.now() - started) / 1000;
 		const done = items.filter(item => item.score !== null && !item.error).length;
 		run.items = {total: questions.length, done, scored: summary.overall.scored, errors: summary.overall.errors,

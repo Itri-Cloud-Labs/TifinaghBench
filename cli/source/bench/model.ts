@@ -68,6 +68,11 @@ export type Aggregate = {
 	mean_cer?: number;
 };
 export type Summary = {
+	/** Official score in [0, 1]: equal-weight mean of the dialect × meaning-task cells, unanswered = 0. Null unless all dialects and both meaning tasks ran. */
+	tifinaghbench: number | null;
+	/** Same, for transliteration only. */
+	script_score: number | null;
+	/** Pooled accuracy over scored questions (errors excluded). */
 	overall: Aggregate;
 	by_task: Partial<Record<Task, Aggregate>>;
 	by_dialect: Partial<Record<Dialect, Aggregate>>;

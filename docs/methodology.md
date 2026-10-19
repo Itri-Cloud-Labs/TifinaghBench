@@ -78,9 +78,31 @@ For exact-match tasks, `cer` is the smallest code-point edit distance to any acc
 
 Errors (questions that failed after all retries) are excluded from scores and CER, and counted separately.
 
+## TifinaghBench score
+
+The headline score is the equal-weight mean of the 6 cells formed by the 3 dialects and the 2 meaning tasks:
+
+$$
+\text{TifinaghBench} = \frac{100}{6} \sum_{d \in D} \sum_{t \in T} \frac{1}{N_{d,t}} \sum_{i=1}^{N_{d,t}} x_i
+$$
+
+- $D$ = {IRCAM, Tarifit, Kabyle}
+- $T$ = {Tifinagh → English, English → Tifinagh}
+- $N_{d,t}$ = number of questions asked in that dialect and task
+- $x_i$ = one question's score: correct 1, partial 0.5, wrong **or unanswered** 0
+
+Why this formula:
+- **Cells, not questions.** Each dialect counts the same however large its dictionary is.
+- **Meaning tasks only.** Transliteration is close to a letter-for-letter mapping, so it measures knowledge of the script rather than the language. It is reported separately as the **script score**: the same formula with $T$ = {transliteration}.
+- **Unanswered counts as 0.** Questions that failed after all retries don't drop out of the score, so a model can't gain by timing out on hard questions.
+
+Both scores are `null` unless the run covers all three dialects and the relevant tasks, and while any question is still unasked or awaiting the judge, so unfinished or cancelled runs show no score. `summary.json` also keeps the pooled accuracy (`overall`, all scored questions, errors excluded) and every per-cell score.
+
+Compare TifinaghBench scores only between runs with the same judge model, batch size, seed and sample size.
+
 ## Choosing a sample size
 
-The uncertainty of a score shrinks with the square root of the number of questions. Approximate 95% margins for one dialect × task score:
+The uncertainty of a score shrinks with the square root of the number of questions. Approximate 95% margins for one dialect × task score (the TifinaghBench average of 6 cells is tighter, roughly ±3–4 points at 250 words):
 
 | Words per dialect | Margin of error |
 | ---: | ---: |

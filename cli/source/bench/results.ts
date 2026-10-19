@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type {BenchConfig} from '../options.js';
+import type {BenchConfig, Dialect, Task} from '../options.js';
 import {dialects, tasks} from '../options.js';
 import type {Aggregate, BatchRecord, Item, RunInfo, Summary} from './model.js';
 import type {Usage} from './types.js';
@@ -35,8 +35,28 @@ export function aggregate(items: Item[]): Aggregate {
 		...(cer.length ? {mean_cer: cer.reduce((sum, value) => sum + value, 0) / cer.length} : {})};
 }
 
-export function summarize(items: Item[], config: BenchConfig): Summary {
-	return {overall: aggregate(items),
+// Score of one dialect × task cell over every planned question. Questions that failed after all retries count as 0;
+// the cell is null while any question is still unasked or awaiting the judge, so unfinished runs show no score.
+function strictCell(items: Item[], planned: Array<Pick<Item, 'dialect' | 'task'>>, dialect: Dialect, task: Task): number | null {
+	const total = planned.filter(question => question.dialect === dialect && question.task === task).length;
+	const cell = items.filter(item => item.dialect === dialect && item.task === task);
+	if (total === 0 || cell.length < total || cell.some(item => item.error?.type === 'pending-judge')) return null;
+	return cell.reduce((sum, item) => sum + (item.error === null && item.score !== null ? item.score : 0), 0) / total;
+}
+
+function meanOfCells(items: Item[], planned: Array<Pick<Item, 'dialect' | 'task'>>, config: BenchConfig, cellTasks: Task[]): number | null {
+	const allDialects = dialects.map(choice => choice.value);
+	if (!allDialects.every(dialect => config.dialects.includes(dialect)) || !cellTasks.every(task => config.tasks.includes(task))) return null;
+	const cells = allDialects.flatMap(dialect => cellTasks.map(task => strictCell(items, planned, dialect, task)));
+	return cells.some(value => value === null) ? null : cells.reduce<number>((sum, value) => sum + value!, 0) / cells.length;
+}
+
+/** `planned` lists every sampled question; it defaults to the recorded items. */
+export function summarize(items: Item[], config: BenchConfig, planned: Array<Pick<Item, 'dialect' | 'task'>> = items): Summary {
+	return {
+		tifinaghbench: meanOfCells(items, planned, config, ['tif-to-en', 'en-to-tif']),
+		script_score: meanOfCells(items, planned, config, ['transliterate']),
+		overall: aggregate(items),
 		by_task: Object.fromEntries(config.tasks.map(task => [task, aggregate(items.filter(item => item.task === task))])),
 		by_dialect: Object.fromEntries(config.dialects.map(dialect => [dialect, aggregate(items.filter(item => item.dialect === dialect))])),
 		by_dialect_and_task: Object.fromEntries(config.dialects.map(dialect => [dialect,
@@ -44,6 +64,7 @@ export function summarize(items: Item[], config: BenchConfig): Summary {
 }
 
 export const percent = (score: number | null | undefined): string => score == null ? '—' : `${(score * 100).toFixed(1)}%`;
+export const benchScore = (score: number | null | undefined): string => score == null ? '—' : (score * 100).toFixed(1);
 const cell = (value: unknown) => String(value ?? '').replaceAll('|', '\\|').replaceAll(/[\r\n]+/g, ' ');
 
 export function summaryTable(config: BenchConfig, summary: Summary): string {
@@ -66,7 +87,9 @@ export function report(config: BenchConfig, run: RunInfo, summary: Summary, item
 		`${config.sampleSize} words per dialect · batch size ${config.batchSize} · seed ${config.seed} · ${run.duration_s.toFixed(1)} s`, '',
 		`Model cost: ${run.cost_usd === null ? 'unreported' : '$' + run.cost_usd.toFixed(4)} · Judge cost: ${run.judge.cost_usd === null ? 'unreported' : '$' + run.judge.cost_usd.toFixed(4)}. Reported costs are sums of known costs; unreported calls are not estimated.`, '',
 		...(config.judge ? [`Tifinagh → English judged by ${cell(config.judge.model)} on ${config.judge.harness}.`, ''] : []),
-		`**Overall score: ${percent(overall.score)}** (${overall.correct} correct, ${overall.partial} partial, ${overall.wrong} wrong, ${overall.errors} errors; ${run.items.pending} pending, ${run.items.skipped} skipped)`, '',
+		`**TifinaghBench: ${benchScore(summary.tifinaghbench)}** · Script score: ${benchScore(summary.script_score)}`, '',
+		'TifinaghBench is the equal-weight mean of the 3 dialects × 2 meaning tasks, with unanswered questions counted as 0; the script score is the same for transliteration. Both need all three dialects.', '',
+		`Pooled accuracy: ${percent(overall.score)} (${overall.correct} correct, ${overall.partial} partial, ${overall.wrong} wrong, ${overall.errors} errors; ${run.items.pending} pending, ${run.items.skipped} skipped)`, '',
 		`${run.sessions.done} sessions (${run.sessions.answers} answer, ${run.sessions.judge} judge); ${run.judge_skipped_by_exact_sense} judge calls skipped by exact sense. Item latency is answer-batch latency. Compare scores only at the same batch size.`, '',
 		summaryTable(config, summary), '',
 		'## Character error rate', '', '| Task | Mean CER |', '| --- | ---: |',

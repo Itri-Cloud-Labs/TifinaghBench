@@ -1,4 +1,6 @@
 {
+	"tifinaghbench": 0.625,
+	"script_score": 1,
 	"overall": {
 		"score": 0.75,
 		"correct": 12,

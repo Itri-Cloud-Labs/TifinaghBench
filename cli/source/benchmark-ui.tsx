@@ -4,7 +4,7 @@ import type {BenchConfig} from './options.js';
 import ProgressScreen from './components/progress.js';
 import {runBenchmark, type RunOptions} from './bench/run.js';
 import type {RunStatus} from './bench/model.js';
-import {percent, summaryTable} from './bench/results.js';
+import {benchScore, percent, summaryTable} from './bench/results.js';
 
 export const benchmarkExitCode = (status: RunStatus): number => status === 'limited' ? 3 : status === 'failed' ? 1 : status === 'cancelled' ? 130 : 0;
 
@@ -29,7 +29,7 @@ export async function executeBenchmark(config: BenchConfig, options: RunOptions 
 		screen = undefined;
 		console.log(`\n${result.run.status}${result.run.message ? `: ${result.run.message}` : ''}`);
 		console.log(summaryTable(result.config, result.summary));
-		console.log(`Score ${percent(result.summary.overall.score)} · ${result.run.items.scored} scored · ${result.run.items.errors} errors · ${result.run.items.skipped} skipped`);
+		console.log(`TifinaghBench ${benchScore(result.summary.tifinaghbench)} · Script ${benchScore(result.summary.script_score)} · Pooled ${percent(result.summary.overall.score)} · ${result.run.items.scored} scored · ${result.run.items.errors} errors · ${result.run.items.skipped} skipped`);
 		console.log(`Results: ${result.config.output}`);
 		process.exitCode = benchmarkExitCode(result.run.status);
 		return result;

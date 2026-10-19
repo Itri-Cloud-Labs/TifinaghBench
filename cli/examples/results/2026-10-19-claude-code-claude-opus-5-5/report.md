@@ -8,7 +8,11 @@ Model cost: $0.0090 · Judge cost: $0.0030. Reported costs are sums of known cos
 
 Tifinagh → English judged by claude-sonnet-5-5 on claude-code.
 
-**Overall score: 75.0%** (12 correct, 3 partial, 3 wrong, 0 errors; 0 pending, 0 skipped)
+**TifinaghBench: 62.5** · Script score: 100.0
+
+TifinaghBench is the equal-weight mean of the 3 dialects × 2 meaning tasks, with unanswered questions counted as 0; the script score is the same for transliteration. Both need all three dialects.
+
+Pooled accuracy: 75.0% (12 correct, 3 partial, 3 wrong, 0 errors; 0 pending, 0 skipped)
 
 12 sessions (9 answer, 3 judge); 3 judge calls skipped by exact sense. Item latency is answer-batch latency. Compare scores only at the same batch size.
 
