@@ -1,0 +1,116 @@
+{
+	"status": "completed",
+	"message": null,
+	"started_at": "2026-10-19T18:58:25.822Z",
+	"finished_at": "2026-10-19T18:58:25.909Z",
+	"duration_s": 0.087,
+	"cli_version": "0.1.0",
+	"harness": {
+		"name": "claude-code",
+		"version": "example-only",
+		"sdk": {
+			"package": "example-fake-harness",
+			"version": "1"
+		},
+		"settings": {
+			"model": "claude-opus-5-5",
+			"example": true
+		}
+	},
+	"dataset": {
+		"ircam": {
+			"file": "ircam_dictionnaire_general_amazighe_en.json",
+			"sha256": "633505d9ccd2244f9a53b64f56bd153c428cc3dbd7229066845404bf3d7c5060",
+			"entries": 13673,
+			"sampled": 2,
+			"skipped": 0,
+			"skipped_by_task": {
+				"tif-to-en": 0,
+				"en-to-tif": 0,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 1,
+				"en-to-tif": 1,
+				"transliterate": 0
+			}
+		},
+		"tarifit": {
+			"file": "abarrou_dictionnaire_rifain_en.json",
+			"sha256": "d144a5619aa31cc06ffcc4eb26c361c65ca2c71451dfdfbea7fa134206481c4f",
+			"entries": 12151,
+			"sampled": 2,
+			"skipped": 0,
+			"skipped_by_task": {
+				"tif-to-en": 0,
+				"en-to-tif": 0,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 78,
+				"en-to-tif": 78,
+				"transliterate": 0
+			}
+		},
+		"kabyle": {
+			"file": "kabyle_english_lexicon_amazigh24.json",
+			"sha256": "ed3a9882ac0f4ef10630917a302fd7d9ff6ac706654bb317b94c715f6b4cf9ea",
+			"entries": 1137,
+			"sampled": 2,
+			"skipped": 0,
+			"skipped_by_task": {
+				"tif-to-en": 0,
+				"en-to-tif": 0,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 3,
+				"en-to-tif": 3,
+				"transliterate": 0
+			}
+		}
+	},
+	"items": {
+		"total": 18,
+		"done": 18,
+		"scored": 18,
+		"errors": 0,
+		"pending": 0,
+		"skipped": 0
+	},
+	"sessions": {
+		"done": 12,
+		"total": 12,
+		"answers": 9,
+		"judge": 3
+	},
+	"answered": 18,
+	"judge_skipped_by_exact_sense": 3,
+	"tokens": {
+		"input": 1080,
+		"output": 270,
+		"reasoning": 90
+	},
+	"cost_usd": 0.009000000000000001,
+	"judge": {
+		"info": {
+			"name": "claude-code",
+			"version": "example-only",
+			"sdk": {
+				"package": "example-fake-harness",
+				"version": "1"
+			},
+			"settings": {
+				"model": "claude-sonnet-5-5",
+				"example": true
+			}
+		},
+		"items_judged": 3,
+		"tokens": {
+			"input": 360,
+			"output": 90,
+			"reasoning": 30
+		},
+		"cost_usd": 0.003
+	}
+}

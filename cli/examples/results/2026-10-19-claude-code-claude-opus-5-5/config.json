@@ -1,0 +1,27 @@
+{
+	"harness": "claude-code",
+	"model": "claude-opus-5-5",
+	"dialects": [
+		"ircam",
+		"tarifit",
+		"kabyle"
+	],
+	"reasoning": "high",
+	"tasks": [
+		"tif-to-en",
+		"en-to-tif",
+		"transliterate"
+	],
+	"judge": {
+		"harness": "claude-code",
+		"model": "claude-sonnet-5-5"
+	},
+	"sampleSize": "2",
+	"batchSize": 100,
+	"concurrency": 2,
+	"seed": 1,
+	"timeout": 600,
+	"retries": 2,
+	"datasetDir": "/path/to/tifinagh-bench/tifinagh-dataset/translated-datasets",
+	"output": "/path/to/tifinagh-bench/cli/examples/results/2026-10-19-claude-code-claude-opus-5-5"
+}

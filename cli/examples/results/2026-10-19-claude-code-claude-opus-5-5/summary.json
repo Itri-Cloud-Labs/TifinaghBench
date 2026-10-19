@@ -1,0 +1,170 @@
+{
+	"overall": {
+		"score": 0.75,
+		"correct": 12,
+		"partial": 3,
+		"wrong": 3,
+		"errors": 0,
+		"n": 18,
+		"scored": 18,
+		"mean_cer": 0.25
+	},
+	"by_task": {
+		"tif-to-en": {
+			"score": 0.75,
+			"correct": 3,
+			"partial": 3,
+			"wrong": 0,
+			"errors": 0,
+			"n": 6,
+			"scored": 6
+		},
+		"en-to-tif": {
+			"score": 0.5,
+			"correct": 3,
+			"partial": 0,
+			"wrong": 3,
+			"errors": 0,
+			"n": 6,
+			"scored": 6,
+			"mean_cer": 0.5
+		},
+		"transliterate": {
+			"score": 1,
+			"correct": 6,
+			"partial": 0,
+			"wrong": 0,
+			"errors": 0,
+			"n": 6,
+			"scored": 6,
+			"mean_cer": 0
+		}
+	},
+	"by_dialect": {
+		"ircam": {
+			"score": 0.75,
+			"correct": 4,
+			"partial": 1,
+			"wrong": 1,
+			"errors": 0,
+			"n": 6,
+			"scored": 6,
+			"mean_cer": 0.25
+		},
+		"tarifit": {
+			"score": 0.75,
+			"correct": 4,
+			"partial": 1,
+			"wrong": 1,
+			"errors": 0,
+			"n": 6,
+			"scored": 6,
+			"mean_cer": 0.25
+		},
+		"kabyle": {
+			"score": 0.75,
+			"correct": 4,
+			"partial": 1,
+			"wrong": 1,
+			"errors": 0,
+			"n": 6,
+			"scored": 6,
+			"mean_cer": 0.25
+		}
+	},
+	"by_dialect_and_task": {
+		"ircam": {
+			"tif-to-en": {
+				"score": 0.75,
+				"correct": 1,
+				"partial": 1,
+				"wrong": 0,
+				"errors": 0,
+				"n": 2,
+				"scored": 2
+			},
+			"en-to-tif": {
+				"score": 0.5,
+				"correct": 1,
+				"partial": 0,
+				"wrong": 1,
+				"errors": 0,
+				"n": 2,
+				"scored": 2,
+				"mean_cer": 0.5
+			},
+			"transliterate": {
+				"score": 1,
+				"correct": 2,
+				"partial": 0,
+				"wrong": 0,
+				"errors": 0,
+				"n": 2,
+				"scored": 2,
+				"mean_cer": 0
+			}
+		},
+		"tarifit": {
+			"tif-to-en": {
+				"score": 0.75,
+				"correct": 1,
+				"partial": 1,
+				"wrong": 0,
+				"errors": 0,
+				"n": 2,
+				"scored": 2
+			},
+			"en-to-tif": {
+				"score": 0.5,
+				"correct": 1,
+				"partial": 0,
+				"wrong": 1,
+				"errors": 0,
+				"n": 2,
+				"scored": 2,
+				"mean_cer": 0.5
+			},
+			"transliterate": {
+				"score": 1,
+				"correct": 2,
+				"partial": 0,
+				"wrong": 0,
+				"errors": 0,
+				"n": 2,
+				"scored": 2,
+				"mean_cer": 0
+			}
+		},
+		"kabyle": {
+			"tif-to-en": {
+				"score": 0.75,
+				"correct": 1,
+				"partial": 1,
+				"wrong": 0,
+				"errors": 0,
+				"n": 2,
+				"scored": 2
+			},
+			"en-to-tif": {
+				"score": 0.5,
+				"correct": 1,
+				"partial": 0,
+				"wrong": 1,
+				"errors": 0,
+				"n": 2,
+				"scored": 2,
+				"mean_cer": 0.5
+			},
+			"transliterate": {
+				"score": 1,
+				"correct": 2,
+				"partial": 0,
+				"wrong": 0,
+				"errors": 0,
+				"n": 2,
+				"scored": 2,
+				"mean_cer": 0
+			}
+		}
+	}
+}

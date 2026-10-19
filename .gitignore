@@ -1,0 +1,23 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Datasets are not published until permission is granted (see tifinagh-dataset/README.md)
+/tifinagh-dataset/*
+!/tifinagh-dataset/README.md
+
+# Benchmark output
+/cli/results/
+/results/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs and OS/editor files
+*.log
+.DS_Store
+.vscode/
+.idea/
+.env
