@@ -56,7 +56,8 @@ export function summaryTable(config: BenchConfig, summary: Summary): string {
 	].join('\n');
 }
 
-export function report(config: BenchConfig, run: RunInfo, summary: Summary, items: Item[]): string {
+// The public report omits example mistakes and error details, which quote dictionary content.
+export function report(config: BenchConfig, run: RunInfo, summary: Summary, items: Item[], {publicReport = false} = {}): string {
 	const overall = summary.overall;
 	const mistakes = items.filter(item => item.grade === 'wrong' || item.grade === 'partial').slice(0, 5);
 	return [
@@ -70,11 +71,16 @@ export function report(config: BenchConfig, run: RunInfo, summary: Summary, item
 		summaryTable(config, summary), '',
 		'## Character error rate', '', '| Task | Mean CER |', '| --- | ---: |',
 		...config.tasks.filter(task => task !== 'tif-to-en').map(task => `| ${task} | ${summary.by_task[task]?.mean_cer?.toFixed(4) ?? '—'} |`), '',
-		'## Example mistakes', '', '| Dialect | Task | Input | Expected | Model answer |', '| --- | --- | --- | --- | --- |',
-		...mistakes.map(item => `| ${item.dialect} | ${item.task} | ${cell(item.input)} | ${cell(item.expected.join(' / '))} | ${cell(item.answer)} |`),
-		...(mistakes.length ? [] : ['No scored wrong or partial answers.']), '',
-		'## Errors', '', `${overall.errors} errors are excluded from scores. Item results are in items.jsonl and session attempts in transcripts/; resume retries pending/error items.`, '',
-		...items.filter(item => item.error).slice(0, 10).map(item => `- ${item.id}: ${cell(item.error!.message)}`), '',
+		...(publicReport ? [
+			'## Errors', '', `${overall.errors} errors are excluded from scores.`, '',
+			'Per-question results and transcripts are withheld until the datasets are released.', '',
+		] : [
+			'## Example mistakes', '', '| Dialect | Task | Input | Expected | Model answer |', '| --- | --- | --- | --- | --- |',
+			...mistakes.map(item => `| ${item.dialect} | ${item.task} | ${cell(item.input)} | ${cell(item.expected.join(' / '))} | ${cell(item.answer)} |`),
+			...(mistakes.length ? [] : ['No scored wrong or partial answers.']), '',
+			'## Errors', '', `${overall.errors} errors are excluded from scores. Item results are in items.jsonl and session attempts in transcripts/; resume retries pending/error items.`, '',
+			...items.filter(item => item.error).slice(0, 10).map(item => `- ${item.id}: ${cell(item.error!.message)}`), '',
+		]),
 	].join('\n');
 }
 
