@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Benchmark LLMs on Amazigh vocabulary in Tifinagh through Codex, Claude Code and OpenCode",
+  "license": "MIT",
   "type": "module",
   "bin": {
     "tifinagh-bench": "dist/cli.js"
