@@ -5,6 +5,7 @@ import meow from 'meow';
 import App, {type Answers, needsJudge, toConfig} from './app.js';
 import {countWords, defaultDatasetDir} from './datasets.js';
 import {executeBenchmark} from './benchmark-ui.js';
+import {exportPublic} from './bench/export.js';
 import {
 	type BenchConfig,
 	type Choice,
@@ -40,10 +41,13 @@ const cli = meow(
 	  --seed         Seed for sampling words (default 1)
 	  --dataset      Folder with the translated datasets
 	  --yes, -y      Skip the review step
+	  --export-public <folder>  Copy a run's shareable results (scores, no dictionary content)
+	                 to --output, or <folder>-public
 
 	Examples
 	  $ tifinagh-bench
 	  $ tifinagh-bench --harness=claude-code --model=claude-opus-5-5 --dialects=ircam,kabyle
+	  $ tifinagh-bench --export-public=results/2026-10-19-codex-gpt-6-luna
 `,
 	{
 		importMeta: import.meta,
@@ -61,6 +65,7 @@ const cli = meow(
 			batchSize: {type: 'number', default: 100},
 			retries: {type: 'number', default: 2},
 			dryRun: {type: 'boolean', default: false},
+			exportPublic: {type: 'string'},
 			output: {type: 'string'},
 			seed: {type: 'number', default: 1},
 			dataset: {type: 'string', default: defaultDatasetDir},
@@ -87,6 +92,15 @@ function many<T extends string>(flag: string, value: string, choices: Array<Choi
 }
 
 const {flags} = cli;
+
+if (flags.exportPublic !== undefined) {
+	try {
+		console.log(`Public results written to ${exportPublic(flags.exportPublic, flags.output)}`);
+		process.exit(0);
+	} catch (error) {
+		fail(error instanceof Error ? error.message : String(error));
+	}
+}
 const initial: Answers = {};
 if (flags.harness !== undefined) initial.harness = one('harness', flags.harness, harnesses);
 if (flags.model !== undefined) {

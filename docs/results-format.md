@@ -58,3 +58,16 @@ Rerun the same command with the same output folder to continue an interrupted, c
 - **Refused:** resuming fails if anything in `config.json` (including batch size and seed) or the dataset checksums changed.
 
 `run.json` timings describe the latest invocation. Session and usage totals add up across all invocations.
+
+## Publishing results
+
+`items.jsonl`, `transcripts/` and `prompts.jsonl` quote the source dictionaries, and so does the "example mistakes" table in `report.md`. Until the datasets are released, publish only what `--export-public <folder>` produces:
+
+| File | Contents |
+| --- | --- |
+| `config.json` | Settings, without local paths |
+| `run.json` | Status, versions, dataset checksums, sessions, tokens and cost; home and temp paths redacted |
+| `summary.json` | All scores and counts |
+| `report.md` | Score tables and error rates, without example mistakes or error details |
+| `README.md` | What was withheld and why |
+

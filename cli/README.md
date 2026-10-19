@@ -44,8 +44,19 @@ npm run dev -- --harness=codex --model=gpt-6-luna --reasoning=low \
 | `--output` | Results folder; default `results/<date>-<harness>-<model>` |
 | `--dry-run` | Sample and build prompts without calling any model |
 | `--yes`, `-y` | Skip the review step |
+| `--export-public <folder>` | Copy a run's shareable results; see below |
 
 Exit codes: 0 completed, 1 failed, 3 stopped at a usage limit (rerun the same command to resume), 130 cancelled.
+
+## Sharing results
+
+Until the datasets are released, only scores can be published: per-question files quote the dictionaries. Export a shareable copy of a run with:
+
+```bash
+npm run dev -- --export-public=results/2026-10-19-codex-gpt-6-luna
+```
+
+This writes `results/2026-10-19-codex-gpt-6-luna-public/` (or `--output`) with `config.json`, `run.json`, `summary.json`, a `report.md` without example mistakes, and a short README. Local paths are redacted. `items.jsonl`, transcripts and prompts are left out.
 
 ## Costs
 
