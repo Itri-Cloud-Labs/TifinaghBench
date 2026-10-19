@@ -7,7 +7,7 @@ results/2026-10-19-claude-code-claude-opus-5-5/
 ├── config.json      resolved settings: harness, model, dialects, tasks, judge, batch size, seed, …
 ├── run.json         status, timings, harness/judge versions and settings, dataset checksums, sessions, tokens, cost
 ├── items.jsonl      one record per question (append-only; the last record per id wins)
-├── summary.json     scores, counts and mean CER by task, by dialect, and by both
+├── summary.json     TifinaghBench and script scores, plus scores, counts and mean CER by task, dialect and both
 ├── report.md        readable summary with example mistakes
 └── transcripts/     one file per session: answer-000001.json, judge-000003.json, …
 ```
@@ -67,7 +67,7 @@ Rerun the same command with the same output folder to continue an interrupted, c
 | --- | --- |
 | `config.json` | Settings, without local paths |
 | `run.json` | Status, versions, dataset checksums, sessions, tokens and cost; home and temp paths redacted |
-| `summary.json` | All scores and counts |
+| `summary.json` | TifinaghBench, script score, and all per-cell scores and counts |
 | `report.md` | Score tables and error rates, without example mistakes or error details |
 | `README.md` | What was withheld and why |
 

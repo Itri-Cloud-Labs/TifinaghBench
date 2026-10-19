@@ -33,6 +33,8 @@ The CLI walks you through the harness, model, dialects, tasks, judge model and s
 - **Fair scoring.** Synonyms and homonyms in the dictionary are all accepted. Free-text meanings are graded by an LLM judge, and exact-match tasks also record a character error rate for near misses.
 - **Reproducible.** A seed picks the same words for every model. Runs resume after interruptions or usage limits, and full transcripts are kept.
 
+The headline **TifinaghBench score** (0–100) is the equal-weight average of the 3 dialects × 2 meaning tasks, with unanswered questions counted as wrong. Transliteration is reported separately as the script score.
+
 Details: [methodology](docs/methodology.md) · [results format](docs/results-format.md) · [harnesses](docs/harnesses.md)
 
 ## Repository layout
