@@ -12,8 +12,9 @@ All runs use the same setup: 1,000 words per dialect, seed 1, batch size 100, al
 | 2 | [GPT-6-Astra](2026-10-20-codex-gpt-6-astra-low/report.md) | Codex | low | **29.4** | 96.4 | 28.5 |
 | 3 | [GPT-6-Luna](2026-10-19-codex-gpt-6-luna-high/report.md) | Codex | high | **18.2** | 88.3 | 17.7 |
 | 4 | [DeepSeek v4.1 Flash](2026-10-20-opencode-go-deepseek-v4.1-flash-high/report.md) | OpenCode | high | **16.8** | 93.1 | 16.3 |
+| 5 | [GLM 5.3 Flash](2026-10-20-opencode-go-glm-5.3-flash-high/report.md) | OpenCode | high | **12.0** | 80.6 | 11.7 |
 
-At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%), so GPT-6.1-Sol and GPT-6-Astra are tied, as are GPT-6-Luna and DeepSeek v4.1 Flash.
+At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%), so GPT-6.1-Sol and GPT-6-Astra are tied, as are GPT-6-Luna and DeepSeek v4.1 Flash. GLM 5.3 Flash is clearly behind both.
 
 ## Scores by dialect and task
 
@@ -25,6 +26,7 @@ Tifinagh → English / English → Tifinagh / Tifinagh ↔ Latin, in %.
 | GPT-6-Astra (low) | 29.0 / 11.7 / 99.0 | 37.8 / 9.0 / 93.0 | 62.1 / 26.7 / 97.1 |
 | GPT-6-Luna (high) | 16.1 / 3.5 / 94.9 | 19.1 / 2.7 / 75.6 | 49.5 / 18.2 / 94.4 |
 | DeepSeek v4.1 Flash (high) | 13.3 / 5.4 / 99.2 | 17.0 / 3.5 / 82.6 | 44.0 / 17.4 / 97.4 |
+| GLM 5.3 Flash (high) | 9.3 / 2.6 / 90.7 | 12.0 / 1.9 / 60.6 | 35.2 / 10.9 / 90.5 |
 
 ## Runs
 
@@ -34,5 +36,6 @@ Each folder has `report.md` (score tables), `summary.json` (all scores and count
 - [`2026-10-20-codex-gpt-6-astra-low`](2026-10-20-codex-gpt-6-astra-low/): 1,042,163 input / 163,647 output tokens (7,775 reasoning); model cost not reported, judge cost $0.19.
 - [`2026-10-19-codex-gpt-6-luna-high`](2026-10-19-codex-gpt-6-luna-high/): 1,003,026 input / 282,988 output tokens (126,226 reasoning); model cost not reported, judge cost $0.20.
 - [`2026-10-20-opencode-go-deepseek-v4.1-flash-high`](2026-10-20-opencode-go-deepseek-v4.1-flash-high/): 212,104 input / 164,952 output tokens (2,826,343 reasoning); model cost $1.83, judge cost $0.22.
+- [`2026-10-20-opencode-go-glm-5.3-flash-high`](2026-10-20-opencode-go-glm-5.3-flash-high/): 212,948 input / 226,739 output tokens (1,213,801 reasoning); model cost $0.75, judge cost $0.23.
 
-GPT-6-Astra stopped at a Codex usage limit and was resumed with the same settings; token totals cover both invocations.
+GPT-6-Astra stopped at a Codex usage limit and was resumed with the same settings; token totals cover both invocations. GLM 5.3 Flash timed out or broke off in 9 of its 102 answer batches; every affected question was answered on retry, so no question counts as unanswered.
