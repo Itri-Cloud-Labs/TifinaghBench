@@ -6,6 +6,7 @@ import App, {type Answers, needsJudge, toConfig} from './app.js';
 import {countWords, defaultDatasetDir} from './datasets.js';
 import {executeBenchmark} from './benchmark-ui.js';
 import {exportPublic} from './bench/export.js';
+import {rescore} from './bench/rescore.js';
 import {
 	type BenchConfig,
 	type Choice,
@@ -41,6 +42,7 @@ const cli = meow(
 	  --seed         Seed for sampling words (default 1)
 	  --dataset      Folder with the translated datasets
 	  --yes, -y      Skip the review step
+	  --rescore <folder>  Re-apply the current exact-match scoring to a finished run (no model calls)
 	  --export-public <folder>  Copy a run's shareable results (scores, no dictionary content)
 	                 to --output, or <folder>-public
 
@@ -66,6 +68,7 @@ const cli = meow(
 			retries: {type: 'number', default: 2},
 			dryRun: {type: 'boolean', default: false},
 			exportPublic: {type: 'string'},
+			rescore: {type: 'string'},
 			output: {type: 'string'},
 			seed: {type: 'number', default: 1},
 			dataset: {type: 'string', default: defaultDatasetDir},
@@ -92,6 +95,16 @@ function many<T extends string>(flag: string, value: string, choices: Array<Choi
 }
 
 const {flags} = cli;
+
+if (flags.rescore !== undefined) {
+	try {
+		const {changed, total} = rescore(flags.rescore);
+		console.log(`Rescored ${flags.rescore}: ${changed} of ${total} scores changed. summary.json and report.md updated.`);
+		process.exit(0);
+	} catch (error) {
+		fail(error instanceof Error ? error.message : String(error));
+	}
+}
 
 if (flags.exportPublic !== undefined) {
 	try {

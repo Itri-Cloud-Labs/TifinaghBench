@@ -40,6 +40,8 @@ export type Item = {
 	expected: string[];
 	expected_entry_ids?: Array<string | number>;
 	matched_entry_id?: string | number | null;
+	/** Exact-match tasks: whether the answer also matched without spelling-convention folding. */
+	strict?: boolean;
 	answer: string | null;
 	grade: Grade | null;
 	score: number | null;
@@ -72,6 +74,9 @@ export type Summary = {
 	tifinaghbench: number | null;
 	/** Same, for transliteration only. */
 	script_score: number | null;
+	/** Both scores again with exact matches required to use the dictionary's own spelling conventions. */
+	tifinaghbench_strict: number | null;
+	script_score_strict: number | null;
 	/** Pooled accuracy over scored questions (errors excluded). */
 	overall: Aggregate;
 	by_task: Partial<Record<Task, Aggregate>>;

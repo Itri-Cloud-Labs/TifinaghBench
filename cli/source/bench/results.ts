@@ -37,17 +37,19 @@ export function aggregate(items: Item[]): Aggregate {
 
 // Score of one dialect × task cell over every planned question. Questions that failed after all retries count as 0;
 // the cell is null while any question is still unasked or awaiting the judge, so unfinished runs show no score.
-function strictCell(items: Item[], planned: Array<Pick<Item, 'dialect' | 'task'>>, dialect: Dialect, task: Task): number | null {
+const itemScore = (item: Item, strict: boolean): number => strict && item.strict !== undefined ? Number(item.strict) : item.score!;
+
+function strictCell(items: Item[], planned: Array<Pick<Item, 'dialect' | 'task'>>, dialect: Dialect, task: Task, strict = false): number | null {
 	const total = planned.filter(question => question.dialect === dialect && question.task === task).length;
 	const cell = items.filter(item => item.dialect === dialect && item.task === task);
 	if (total === 0 || cell.length < total || cell.some(item => item.error?.type === 'pending-judge')) return null;
-	return cell.reduce((sum, item) => sum + (item.error === null && item.score !== null ? item.score : 0), 0) / total;
+	return cell.reduce((sum, item) => sum + (item.error === null && item.score !== null ? itemScore(item, strict) : 0), 0) / total;
 }
 
-function meanOfCells(items: Item[], planned: Array<Pick<Item, 'dialect' | 'task'>>, config: BenchConfig, cellTasks: Task[]): number | null {
+function meanOfCells(items: Item[], planned: Array<Pick<Item, 'dialect' | 'task'>>, config: BenchConfig, cellTasks: Task[], strict = false): number | null {
 	const allDialects = dialects.map(choice => choice.value);
 	if (!allDialects.every(dialect => config.dialects.includes(dialect)) || !cellTasks.every(task => config.tasks.includes(task))) return null;
-	const cells = allDialects.flatMap(dialect => cellTasks.map(task => strictCell(items, planned, dialect, task)));
+	const cells = allDialects.flatMap(dialect => cellTasks.map(task => strictCell(items, planned, dialect, task, strict)));
 	return cells.some(value => value === null) ? null : cells.reduce<number>((sum, value) => sum + value!, 0) / cells.length;
 }
 
@@ -56,6 +58,8 @@ export function summarize(items: Item[], config: BenchConfig, planned: Array<Pic
 	return {
 		tifinaghbench: meanOfCells(items, planned, config, ['tif-to-en', 'en-to-tif']),
 		script_score: meanOfCells(items, planned, config, ['transliterate']),
+		tifinaghbench_strict: meanOfCells(items, planned, config, ['tif-to-en', 'en-to-tif'], true),
+		script_score_strict: meanOfCells(items, planned, config, ['transliterate'], true),
 		overall: aggregate(items),
 		by_task: Object.fromEntries(config.tasks.map(task => [task, aggregate(items.filter(item => item.task === task))])),
 		by_dialect: Object.fromEntries(config.dialects.map(dialect => [dialect, aggregate(items.filter(item => item.dialect === dialect))])),
@@ -88,6 +92,7 @@ export function report(config: BenchConfig, run: RunInfo, summary: Summary, item
 		`Model cost: ${run.cost_usd === null ? 'unreported' : '$' + run.cost_usd.toFixed(4)} · Judge cost: ${run.judge.cost_usd === null ? 'unreported' : '$' + run.judge.cost_usd.toFixed(4)}. Reported costs are sums of known costs; unreported calls are not estimated.`, '',
 		...(config.judge ? [`Tifinagh → English judged by ${cell(config.judge.model)} on ${config.judge.harness}.`, ''] : []),
 		`**TifinaghBench: ${benchScore(summary.tifinaghbench)}** · Script score: ${benchScore(summary.script_score)}`, '',
+		`With the dictionaries' own spelling conventions required: TifinaghBench ${benchScore(summary.tifinaghbench_strict)} · Script score ${benchScore(summary.script_score_strict)}`, '',
 		'TifinaghBench is the equal-weight mean of the 3 dialects × 2 meaning tasks, with unanswered questions counted as 0; the script score is the same for transliteration. Both need all three dialects.', '',
 		`Pooled accuracy: ${percent(overall.score)} (${overall.correct} correct, ${overall.partial} partial, ${overall.wrong} wrong, ${overall.errors} errors; ${run.items.pending} pending, ${run.items.skipped} skipped)`, '',
 		`${run.sessions.done} sessions (${run.sessions.answers} answer, ${run.sessions.judge} judge); ${run.judge_skipped_by_exact_sense} judge calls skipped by exact sense. Item latency is answer-batch latency. Compare scores only at the same batch size.`, '',
