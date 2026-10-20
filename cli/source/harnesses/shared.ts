@@ -88,7 +88,9 @@ function resetTime(error: unknown): string | undefined {
 	}
 
 	return /["']?(?:resetsAt|resets_at|resetAt|reset_at)["']?\s*[:=]\s*["']([^"']+)["']/i.exec(message)?.[1]
-		?? /\bresets?\s+(?:at\s+|on\s+|in\s+)?([^\n"}]+)/i.exec(message)?.[1]?.trim();
+		?? /\bresets?\s+(?:at\s+|on\s+|in\s+)?([^\n"}]+)/i.exec(message)?.[1]?.trim()
+		// Codex: "… or try again at 10:17 AM."
+		?? /\btry again (?:at|in|after)\s+([^\n"}.]+(?:\.\d+)?)/i.exec(message)?.[1]?.trim();
 }
 
 export function harnessError(error: unknown, signal?: AbortSignal): HarnessError {
@@ -123,7 +125,18 @@ export function lifecycle() {
 	return {
 		run(request: AskRequest, operation: (signal: AbortSignal) => Promise<AskResult>): Promise<AskResult> {
 			if (closing.signal.aborted) return Promise.reject(new HarnessError('harness', 'Harness session is closed', false));
-			const signal = AbortSignal.any([request.signal, closing.signal]);
+			// Forward aborts only while the request runs. SDKs bind this signal to child processes they may stop
+			// listening to after an error; aborting those later (e.g. on close after a usage limit) emitted an
+			// unhandled 'error' event that crashed the CLI.
+			const local = new AbortController();
+			const sources = [request.signal, closing.signal];
+			const forward = (event: Event) => local.abort((event.target as AbortSignal).reason);
+			for (const source of sources) {
+				if (source.aborted) local.abort(source.reason);
+				else source.addEventListener('abort', forward, {once: true});
+			}
+
+			const signal = local.signal;
 			const promise = (async () => {
 				try {
 					signal.throwIfAborted();
@@ -132,6 +145,8 @@ export function lifecycle() {
 					return result;
 				} catch (error) {
 					throw harnessError(error, signal);
+				} finally {
+					for (const source of sources) source.removeEventListener('abort', forward);
 				}
 			})();
 			pending.add(promise);
