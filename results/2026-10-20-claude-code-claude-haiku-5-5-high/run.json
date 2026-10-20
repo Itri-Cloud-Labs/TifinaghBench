@@ -1,0 +1,173 @@
+{
+	"status": "completed",
+	"message": null,
+	"started_at": "2026-10-20T14:05:12.558Z",
+	"finished_at": "2026-10-20T14:30:41.039Z",
+	"duration_s": 1528.559,
+	"cli_version": "0.1.0",
+	"harness": {
+		"name": "claude-code",
+		"version": "2.1.302 (Claude Code)",
+		"sdk": {
+			"package": "@anthropic-ai/claude-agent-sdk",
+			"version": "0.3.303"
+		},
+		"settings": {
+			"model": "claude-haiku-5-5",
+			"cwd": "<tmp>",
+			"tools": [],
+			"allowedTools": [],
+			"mcpServers": {},
+			"strictMcpConfig": true,
+			"settingSources": [],
+			"plugins": [],
+			"skills": [],
+			"persistSession": false,
+			"settings": {
+				"disableAllHooks": true,
+				"autoMemoryEnabled": false,
+				"disableBundledSkills": true,
+				"syncClaudeAiSkills": false,
+				"syncClaudeAiPlugins": false,
+				"enabledPlugins": {
+					"cc-plugin-agents-md@builtin": false,
+					"cc-plugin-telemetry@builtin": false,
+					"cc-plugin-plugin-authoring@builtin": false
+				}
+			},
+			"permissionMode": "dontAsk",
+			"extraArgs": {
+				"safe-mode": null,
+				"disable-slash-commands": null,
+				"no-chrome": null
+			},
+			"effort": "high",
+			"systemPrompt": "custom string replacing preset"
+		}
+	},
+	"dataset": {
+		"ircam": {
+			"file": "ircam_dictionnaire_general_amazighe_en.json",
+			"sha256": "633505d9ccd2244f9a53b64f56bd153c428cc3dbd7229066845404bf3d7c5060",
+			"entries": 13673,
+			"sampled": 1000,
+			"skipped": 0,
+			"skipped_by_task": {
+				"tif-to-en": 0,
+				"en-to-tif": 0,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 1,
+				"en-to-tif": 1,
+				"transliterate": 0
+			}
+		},
+		"tarifit": {
+			"file": "abarrou_dictionnaire_rifain_en.json",
+			"sha256": "d144a5619aa31cc06ffcc4eb26c361c65ca2c71451dfdfbea7fa134206481c4f",
+			"entries": 12151,
+			"sampled": 1000,
+			"skipped": 14,
+			"skipped_by_task": {
+				"tif-to-en": 7,
+				"en-to-tif": 7,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 78,
+				"en-to-tif": 78,
+				"transliterate": 0
+			}
+		},
+		"kabyle": {
+			"file": "kabyle_english_lexicon_amazigh24.json",
+			"sha256": "ed3a9882ac0f4ef10630917a302fd7d9ff6ac706654bb317b94c715f6b4cf9ea",
+			"entries": 1137,
+			"sampled": 1000,
+			"skipped": 6,
+			"skipped_by_task": {
+				"tif-to-en": 3,
+				"en-to-tif": 3,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 3,
+				"en-to-tif": 3,
+				"transliterate": 0
+			}
+		}
+	},
+	"items": {
+		"total": 8980,
+		"done": 8980,
+		"scored": 8980,
+		"errors": 0,
+		"pending": 0,
+		"skipped": 20
+	},
+	"sessions": {
+		"done": 123,
+		"total": 123,
+		"answers": 93,
+		"judge": 30
+	},
+	"answered": 8980,
+	"judge_skipped_by_exact_sense": 105,
+	"tokens": {
+		"input": 784886,
+		"output": 1170057,
+		"reasoning": 923891,
+		"cachedInput": 61837
+	},
+	"cost_usd": 0.69333267,
+	"judge": {
+		"info": {
+			"name": "claude-code",
+			"version": "2.1.302 (Claude Code)",
+			"sdk": {
+				"package": "@anthropic-ai/claude-agent-sdk",
+				"version": "0.3.303"
+			},
+			"settings": {
+				"model": "claude-haiku-5-5",
+				"cwd": "<tmp>",
+				"tools": [],
+				"allowedTools": [],
+				"mcpServers": {},
+				"strictMcpConfig": true,
+				"settingSources": [],
+				"plugins": [],
+				"skills": [],
+				"persistSession": false,
+				"settings": {
+					"disableAllHooks": true,
+					"autoMemoryEnabled": false,
+					"disableBundledSkills": true,
+					"syncClaudeAiSkills": false,
+					"syncClaudeAiPlugins": false,
+					"enabledPlugins": {
+						"cc-plugin-agents-md@builtin": false,
+						"cc-plugin-telemetry@builtin": false,
+						"cc-plugin-plugin-authoring@builtin": false
+					}
+				},
+				"permissionMode": "dontAsk",
+				"extraArgs": {
+					"safe-mode": null,
+					"disable-slash-commands": null,
+					"no-chrome": null
+				},
+				"systemPrompt": "custom string replacing preset"
+			}
+		},
+		"items_judged": 2885,
+		"tokens": {
+			"input": 581998,
+			"output": 265711,
+			"reasoning": 133500,
+			"cachedInput": 18630
+		},
+		"cost_usd": 0.21667400000000003
+	}
+}
