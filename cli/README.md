@@ -44,6 +44,7 @@ npm run dev -- --harness=codex --model=gpt-6-luna --reasoning=low \
 | `--output` | Results folder; default `results/<date>-<harness>-<model>` |
 | `--dry-run` | Sample and build prompts without calling any model |
 | `--yes`, `-y` | Skip the review step |
+| `--rescore <folder>` | Re-apply the current scoring to a finished run, without model calls |
 | `--export-public <folder>` | Copy a run's shareable results; see below |
 
 Exit codes: 0 completed, 1 failed, 3 stopped at a usage limit (rerun the same command to resume), 130 cancelled.

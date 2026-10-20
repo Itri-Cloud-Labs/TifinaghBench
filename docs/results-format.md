@@ -29,6 +29,7 @@ One JSON object per question:
 | `matched_entry_id` | English → Tifinagh: which accepted word the model wrote, or null |
 | `grade`, `score` | `correct`/`partial`/`wrong` → 1 / 0.5 / 0 |
 | `scored_by` | `exact`, `exact-sense`, `judge` or `empty` |
+| `strict` | Exact-match tasks: whether the answer also matched without folding spelling conventions |
 | `cer` | Character error rate, for exact-match tasks |
 | `judge`, `judge_note` | Judge attempts, usage and cost, and the judge's one-sentence explanation |
 | `batch_id`, `judge_batch_id` | Transcript files for the answer and judge sessions |
@@ -49,6 +50,10 @@ Each `transcripts/<batch_id>.json` holds:
 ## Usage and cost
 
 Usage is recorded once per session, with model and judge totals kept separate in `run.json`. Item shares are split evenly, so per-item numbers add up to the session totals. Costs are only what the harness reports. Codex reports none, so its cost stays `null` rather than being estimated.
+
+## Rescoring
+
+`--rescore <folder>` re-applies the current exact-match scoring to a finished run from its saved answers, without any model calls, and rewrites `summary.json` and `report.md`. Judged Tifinagh → English results are left as they are. Use it after the scoring rules change.
 
 ## Resuming
 

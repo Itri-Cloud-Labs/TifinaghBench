@@ -69,8 +69,21 @@ The answer must match the other script exactly.
 ### Normalisation
 
 - **All exact matching:** NFC, trim, collapse whitespace.
-- **Latin script:** also lowercase, and fold `ǝ` (U+01DD) → `ə` (U+0259) and Greek `ε` (U+03B5) → Latin `ɛ` (U+025B), which the sources mix. Other letters and diacritics stay distinct (`ḏ`/`d`, `ṯ`/`t`, `ʷ`/`w`, …).
+- **Latin script:** also lowercase, and fold `ǝ` (U+01DD) → `ə` (U+0259) and Greek `ε` (U+03B5) → Latin `ɛ` (U+025B), which the sources mix.
 - **English (meaning grouping and exact-sense matching):** NFC, lowercase, trim, collapse whitespace, strip trailing punctuation.
+
+### Spelling conventions
+
+The dictionaries spell the same sounds differently, and the Tarifit dictionary drops the schwa from its Tifinagh spellings inconsistently, so a correct answer in another standard convention would otherwise score 0. English → Tifinagh and transliteration therefore compare answers after folding these conventions together:
+
+| Script | Folded |
+| --- | --- |
+| Tifinagh | Schwa `ⴻ` removed; spirant letters mapped to plain ones: `ⵝ`→`ⵜ`, `ⴸ`→`ⴷ`, `ⴲ`→`ⴱ`, `ⴿ`→`ⴽ`, `ⴵ`→`ⴳ` |
+| Latin | Schwa (`ǝ`, `ə`, `e`) removed; `š`→`c`, `ž`→`j`, `ǧ`→`j`; accents such as the line below `ḏ ṯ ḇ` removed |
+
+The dot below that marks emphatic consonants (`ḍ ṭ ṣ ẓ ṛ ḥ`) is kept, so `ḍ` and `d` stay different. The effect is large for Tarifit transliteration: GPT-6-Luna's score went from 26.2% to 75.6%, almost all of it from schwa and spirant spellings. Other cells moved by 0–2 points.
+
+Each item also records `strict`: whether the answer matched the dictionary's own spelling exactly. `summary.json` reports `tifinaghbench_strict` and `script_score_strict` computed from it.
 
 ### Character error rate
 
@@ -96,7 +109,7 @@ Why this formula:
 - **Meaning tasks only.** Transliteration is close to a letter-for-letter mapping, so it measures knowledge of the script rather than the language. It is reported separately as the **script score**: the same formula with $T$ = {transliteration}.
 - **Unanswered counts as 0.** Questions that failed after all retries don't drop out of the score, so a model can't gain by timing out on hard questions.
 
-Both scores are `null` unless the run covers all three dialects and the relevant tasks, and while any question is still unasked or awaiting the judge, so unfinished or cancelled runs show no score. `summary.json` also keeps the pooled accuracy (`overall`, all scored questions, errors excluded) and every per-cell score.
+The official scores use folded matching; the strict versions are reported alongside. Both scores are `null` unless the run covers all three dialects and the relevant tasks, and while any question is still unasked or awaiting the judge, so unfinished or cancelled runs show no score. `summary.json` also keeps the pooled accuracy (`overall`, all scored questions, errors excluded) and every per-cell score.
 
 Compare TifinaghBench scores only between runs with the same judge model, batch size, seed and sample size.
 

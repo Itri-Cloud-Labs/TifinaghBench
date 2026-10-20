@@ -44,13 +44,22 @@ export async function cliVersion(binary: string, env?: NodeJS.ProcessEnv): Promi
 	}
 }
 
+// Models sometimes wrap the JSON in a code fence or put a sentence before it, so try those shapes too.
 export function parseObject(text: string): unknown {
-	try {
-		const value: unknown = JSON.parse(text.trim().replace(/^```(?:json)?\s*\n?([\s\S]*?)\n?```$/i, '$1'));
-		return value !== null && typeof value === 'object' && !Array.isArray(value) ? value : null;
-	} catch {
-		return null;
+	const trimmed = text.trim();
+	const fenced = /```(?:json)?\s*\n?([\s\S]*?)\n?```/i.exec(trimmed)?.[1];
+	const first = trimmed.indexOf('{');
+	const last = trimmed.lastIndexOf('}');
+	const candidates = [trimmed, fenced, first >= 0 && last > first ? trimmed.slice(first, last + 1) : undefined];
+	for (const candidate of candidates) {
+		if (candidate === undefined) continue;
+		try {
+			const value: unknown = JSON.parse(candidate);
+			if (value !== null && typeof value === 'object' && !Array.isArray(value)) return value;
+		} catch {}
 	}
+
+	return null;
 }
 
 /** Include structured status/cause fields, including non-enumerable Error properties. */
