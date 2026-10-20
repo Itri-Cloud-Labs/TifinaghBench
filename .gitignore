@@ -7,9 +7,8 @@ dist/
 /tifinagh-dataset/*
 !/tifinagh-dataset/README.md
 
-# Benchmark output
+# Full benchmark output (per-question files quote the dictionaries); publish only --export-public copies in /results/
 /cli/results/
-/results/
 
 # Python
 __pycache__/
