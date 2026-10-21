@@ -18,6 +18,7 @@ import { Route as LangDialectsRouteImport } from './routes/$lang/dialects'
 import { Route as LangFindingsRouteImport } from './routes/$lang/findings'
 import { Route as LangMethodologyRouteImport } from './routes/$lang/methodology'
 import { Route as LangRunRouteImport } from './routes/$lang/run'
+import { Route as LangSupportRouteImport } from './routes/$lang/support'
 import { Route as LangModelsSlugRouteImport } from './routes/$lang/models/$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -65,6 +66,11 @@ const LangRunRoute = LangRunRouteImport.update({
   path: '/run',
   getParentRoute: () => LangRoute,
 } as any)
+const LangSupportRoute = LangSupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => LangRoute,
+} as any)
 const LangModelsSlugRoute = LangModelsSlugRouteImport.update({
   id: '/models/$slug',
   path: '/models/$slug',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/$lang/findings': typeof LangFindingsRoute
   '/$lang/methodology': typeof LangMethodologyRoute
   '/$lang/run': typeof LangRunRoute
+  '/$lang/support': typeof LangSupportRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/models/$slug': typeof LangModelsSlugRoute
 }
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/$lang/findings': typeof LangFindingsRoute
   '/$lang/methodology': typeof LangMethodologyRoute
   '/$lang/run': typeof LangRunRoute
+  '/$lang/support': typeof LangSupportRoute
   '/$lang': typeof LangIndexRoute
   '/$lang/models/$slug': typeof LangModelsSlugRoute
 }
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/$lang/findings': typeof LangFindingsRoute
   '/$lang/methodology': typeof LangMethodologyRoute
   '/$lang/run': typeof LangRunRoute
+  '/$lang/support': typeof LangSupportRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/models/$slug': typeof LangModelsSlugRoute
 }
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/$lang/findings'
     | '/$lang/methodology'
     | '/$lang/run'
+    | '/$lang/support'
     | '/$lang/'
     | '/$lang/models/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/$lang/findings'
     | '/$lang/methodology'
     | '/$lang/run'
+    | '/$lang/support'
     | '/$lang'
     | '/$lang/models/$slug'
   id:
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/$lang/findings'
     | '/$lang/methodology'
     | '/$lang/run'
+    | '/$lang/support'
     | '/$lang/'
     | '/$lang/models/$slug'
   fileRoutesById: FileRoutesById
@@ -216,6 +228,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangRunRouteImport
       parentRoute: typeof LangRoute
     }
+    '/$lang/support': {
+      id: '/$lang/support'
+      path: '/support'
+      fullPath: '/$lang/support'
+      preLoaderRoute: typeof LangSupportRouteImport
+      parentRoute: typeof LangRoute
+    }
     '/$lang/models/$slug': {
       id: '/$lang/models/$slug'
       path: '/models/$slug'
@@ -232,6 +251,7 @@ interface LangRouteChildren {
   LangFindingsRoute: typeof LangFindingsRoute
   LangMethodologyRoute: typeof LangMethodologyRoute
   LangRunRoute: typeof LangRunRoute
+  LangSupportRoute: typeof LangSupportRoute
   LangIndexRoute: typeof LangIndexRoute
   LangModelsSlugRoute: typeof LangModelsSlugRoute
 }
@@ -242,6 +262,7 @@ const LangRouteChildren: LangRouteChildren = {
   LangFindingsRoute: LangFindingsRoute,
   LangMethodologyRoute: LangMethodologyRoute,
   LangRunRoute: LangRunRoute,
+  LangSupportRoute: LangSupportRoute,
   LangIndexRoute: LangIndexRoute,
   LangModelsSlugRoute: LangModelsSlugRoute,
 }

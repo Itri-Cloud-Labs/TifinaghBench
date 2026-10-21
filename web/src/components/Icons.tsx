@@ -12,6 +12,9 @@ export const MoonIcon = (props: SVGProps<SVGSVGElement>) => (
 export const GithubIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg {...base} {...props}><path d="M7.6 16.2c-3.2 1-3.2-1.6-4.5-1.9m9 3.5v-2.5c0-.8.1-1.3-.4-1.8 2-.2 4.2-1 4.2-4.6 0-1-.4-1.9-1-2.6.1-.3.4-1.3-.1-2.6 0 0-.8-.3-2.6 1a9 9 0 0 0-4.7 0C5.8 3.7 5 4 5 4c-.5 1.3-.2 2.3-.1 2.6-.6.7-1 1.6-1 2.6 0 3.6 2.2 4.4 4.2 4.6-.5.4-.5 1-.4 1.8v2.5" /></svg>
 );
+export const HeartIcon = (props: SVGProps<SVGSVGElement>) => (
+	<svg {...base} {...props}><path d="M10 16.2s-6.2-3.6-6.2-8.1A3.4 3.4 0 0 1 10 6.1a3.4 3.4 0 0 1 6.2 2c0 4.5-6.2 8.1-6.2 8.1Z" /></svg>
+);
 export const ArrowLeftIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg {...base} {...props}><path d="M12.5 4.5 7 10l5.5 5.5" /></svg>
 );

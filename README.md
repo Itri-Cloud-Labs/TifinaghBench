@@ -60,6 +60,8 @@ The English meanings for the IRCAM and Tarifit dictionaries were machine-transla
 
 TifinaghBench is built and run by [Itri Cloud Labs](https://ic-labs.cloud).
 
+Running every new model costs real money. If TifinaghBench is useful to you, you can [sponsor it on GitHub](https://github.com/sponsors/Itri-Cloud-Labs).
+
 ## License
 
 The code is released under the [MIT License](LICENSE). The datasets will have their own license, set by the permission terms, when they are released.

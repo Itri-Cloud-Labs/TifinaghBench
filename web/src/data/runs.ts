@@ -100,5 +100,6 @@ export const lastUpdated = runs.reduce<string | null>((latest, run) => {
 	return finished && (!latest || finished > latest) ? finished : latest;
 }, null);
 export const lab = {name: 'Itri Cloud Labs', url: 'https://ic-labs.cloud'};
+export const sponsorUrl = 'https://github.com/sponsors/Itri-Cloud-Labs';
 export const githubUrl = 'https://github.com/Itri-Cloud-Labs/TifinaghBench';
 export const runFolderUrl = (folder: string) => `${githubUrl}/tree/main/results/${folder}`;

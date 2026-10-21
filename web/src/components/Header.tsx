@@ -3,7 +3,7 @@ import {Link, useLocation} from '@tanstack/react-router';
 import {githubUrl} from '../data/runs';
 import {useI18n} from '../lib/lang';
 import {Hem} from './Frieze';
-import {GithubIcon, MenuIcon, MoonIcon, SunIcon} from './Icons';
+import {GithubIcon, HeartIcon, MenuIcon, MoonIcon, SunIcon} from './Icons';
 
 type Theme = 'light' | 'dark';
 
@@ -95,6 +95,10 @@ export function Header() {
 				<div className="ml-auto flex items-center gap-2 lg:ml-0">
 					<LanguageSwitch />
 					<ThemeToggle />
+					<Link to="/$lang/support" params={{lang}} className="hidden h-9 items-center gap-1.5 sm:inline-flex rounded-sm px-2 text-sm font-medium text-clay-ink no-underline transition-colors duration-150 hover:bg-clay-deep data-[status=active]:bg-clay-deep" aria-label={t.nav.support} title={t.nav.support}>
+						<HeartIcon />
+						<span className="hidden xl:inline">{t.nav.support}</span>
+					</Link>
 					<a href={githubUrl} className="hidden size-9 items-center justify-center rounded-sm text-clay-ink transition-colors duration-150 hover:bg-clay-deep sm:inline-flex" aria-label={t.nav.github} title={t.nav.github}>
 						<GithubIcon />
 					</a>
@@ -113,6 +117,7 @@ export function Header() {
 							</Link>
 						</li>
 					))}
+					<li><Link to="/$lang/support" params={{lang}} className="block rounded-sm px-3 py-2.5 text-clay-ink no-underline data-[status=active]:bg-clay-deep">{t.nav.support}</Link></li>
 					<li><a href={githubUrl} className="block rounded-sm px-3 py-2.5 text-clay-ink no-underline">{t.nav.github}</a></li>
 				</ul>
 			</nav>
