@@ -20,3 +20,6 @@ __pycache__/
 .vscode/
 .idea/
 .env
+
+# Impeccable review captures (regenerated per review round)
+/.impeccable/review/
