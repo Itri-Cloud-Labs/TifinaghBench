@@ -3,6 +3,7 @@
 	"private": true,
 	"type": "module",
 	"license": "MIT",
+	"author": "Itri Cloud Labs (https://ic-labs.cloud)",
 	"description": "Public website for TifinaghBench, prerendered from the results/ exports",
 	"scripts": {
 		"dev": "vite dev",

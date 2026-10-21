@@ -1,5 +1,5 @@
 import {Link} from '@tanstack/react-router';
-import {githubUrl, lastUpdated} from '../data/runs';
+import {githubUrl, lab, lastUpdated} from '../data/runs';
 import {useI18n} from '../lib/lang';
 import {Frieze} from './Frieze';
 
@@ -13,6 +13,7 @@ export function Footer() {
 					<p className="flex items-center gap-2 text-base font-semibold text-clay-ink">
 						<span lang="zgh" className="tifinagh text-xl leading-none" aria-hidden="true">ⵣ</span> TifinaghBench
 					</p>
+					<p className="text-clay-ink">{t.footer.by} <a href={lab.url} className="font-semibold text-clay-ink">{lab.name}</a></p>
 					<p>{t.footer.license} {t.footer.datasets}</p>
 					{lastUpdated && <p>{t.footer.updated(f.date(lastUpdated))}</p>}
 				</div>

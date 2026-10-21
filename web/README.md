@@ -12,6 +12,8 @@ npm run typecheck
 
 Requires Node 22.13 or later.
 
+TifinaghBench is a project by [Itri Cloud Labs](https://ic-labs.cloud).
+
 ## How the data gets in
 
 - `src/data/runs.ts` reads every `results/*/{summary,config,run}.json` at build time and validates it with zod (`src/data/schema.ts`). A malformed export fails the build.

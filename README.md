@@ -56,6 +56,10 @@ tifinagh-dataset/    dataset notes (data to be released once permission is grant
 
 The English meanings for the IRCAM and Tarifit dictionaries were machine-translated from French, and Kabyle Tifinagh spellings were generated from Latin script. Treat scores as relative comparisons between models rather than absolute measures of fluency. See [`tifinagh-dataset/README.md`](tifinagh-dataset/README.md).
 
+## Credits
+
+TifinaghBench is built and run by [Itri Cloud Labs](https://ic-labs.cloud).
+
 ## License
 
 The code is released under the [MIT License](LICENSE). The datasets will have their own license, set by the permission terms, when they are released.

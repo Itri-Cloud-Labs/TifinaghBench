@@ -1,5 +1,6 @@
 import type {Lang} from '../i18n';
 import {languages, messagesFor} from '../i18n';
+import {lab} from '../data/runs';
 
 // Per-page <title>, description, Open Graph and hreflang alternates. `path` is the route after /<lang>.
 export function pageHead(lang: Lang, path: string, title: string | null, description?: string) {
@@ -10,6 +11,7 @@ export function pageHead(lang: Lang, path: string, title: string | null, descrip
 		meta: [
 			{title: full},
 			{name: 'description', content: text},
+			{name: 'author', content: lab.name},
 			{property: 'og:title', content: full},
 			{property: 'og:description', content: text},
 			{property: 'og:type', content: 'website'},

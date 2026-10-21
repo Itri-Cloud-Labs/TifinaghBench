@@ -203,6 +203,7 @@ export const en = {
 		openRepo: 'Open the repository',
 	},
 	footer: {
+		by: 'A project by',
 		license: 'Code under the MIT License.',
 		datasets: 'Datasets will be released once the rights holders agree.',
 		updated: (date: string) => `Results updated ${date}.`,

@@ -205,6 +205,7 @@ export const fr: Messages = {
 		openRepo: 'Ouvrir le dépôt',
 	},
 	footer: {
+		by: 'Un projet de',
 		license: 'Code sous licence MIT.',
 		datasets: 'Les jeux de données seront publiés avec l’accord des ayants droit.',
 		updated: (date: string) => `Résultats mis à jour le ${date}.`,
