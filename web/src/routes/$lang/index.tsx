@@ -52,6 +52,7 @@ function Home() {
 					<h2 className="text-xl">{t.home.whatTitle}</h2>
 					{t.home.what.map(paragraph => <p key={paragraph} className="mt-3 max-w-[60ch] text-ink-2">{paragraph}</p>)}
 					<p className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-medium">
+						<Link to="/$lang/findings" params={{lang}}>{t.home.seeFindings}</Link>
 						<Link to="/$lang/methodology" params={{lang}}>{t.home.readMethodology}</Link>
 						{leaders.length > 1 && <Link to="/$lang/compare" params={{lang}} search={{models: top}}>{t.home.compareTop}</Link>}
 					</p>

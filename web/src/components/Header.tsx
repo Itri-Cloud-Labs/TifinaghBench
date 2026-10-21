@@ -64,6 +64,7 @@ export function Header() {
 	const items = [
 		{to: '/$lang', label: t.nav.leaderboard, exact: true},
 		{to: '/$lang/compare', label: t.nav.compare},
+		{to: '/$lang/findings', label: t.nav.findings},
 		{to: '/$lang/methodology', label: t.nav.methodology},
 		{to: '/$lang/dialects', label: t.nav.dialects},
 		{to: '/$lang/run', label: t.nav.run},
@@ -75,7 +76,7 @@ export function Header() {
 					<span lang="zgh" className="tifinagh text-[1.65rem] leading-none" aria-hidden="true">ⵣ</span>
 					<span className="text-lg font-bold tracking-[-0.01em]">TifinaghBench</span>
 				</Link>
-				<nav aria-label="Main" className="hidden flex-1 md:block">
+				<nav aria-label="Main" className="hidden flex-1 lg:block">
 					<ul className="flex items-center gap-1">
 						{items.map(item => (
 							<li key={item.to}>
@@ -91,19 +92,19 @@ export function Header() {
 						))}
 					</ul>
 				</nav>
-				<div className="ml-auto flex items-center gap-2 md:ml-0">
+				<div className="ml-auto flex items-center gap-2 lg:ml-0">
 					<LanguageSwitch />
 					<ThemeToggle />
 					<a href={githubUrl} className="hidden size-9 items-center justify-center rounded-sm text-clay-ink transition-colors duration-150 hover:bg-clay-deep sm:inline-flex" aria-label={t.nav.github} title={t.nav.github}>
 						<GithubIcon />
 					</a>
-					<button type="button" className="inline-flex size-9 items-center justify-center rounded-sm text-clay-ink hover:bg-clay-deep md:hidden" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(value => !value)}>
+					<button type="button" className="inline-flex size-9 items-center justify-center rounded-sm text-clay-ink hover:bg-clay-deep lg:hidden" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(value => !value)}>
 						<MenuIcon />
 						<span className="sr-only">{t.nav.menu}</span>
 					</button>
 				</div>
 			</div>
-			<nav id="mobile-nav" aria-label="Main" hidden={!open} className="border-t border-clay-ink/20 md:hidden">
+			<nav id="mobile-nav" aria-label="Main" hidden={!open} className="border-t border-clay-ink/20 lg:hidden">
 				<ul className="mx-auto max-w-[84rem] px-5 py-2">
 					{items.map(item => (
 						<li key={item.to}>

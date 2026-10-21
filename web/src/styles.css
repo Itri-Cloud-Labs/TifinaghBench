@@ -27,6 +27,9 @@
 	--series-2: #12876a;
 	--series-3: #c08a12;
 	--series-4: #5f4a8b;
+	/* Two shades of one ochre for before/after pairs (dumbbells); --pair-b is the stronger end. Validated --ordinal. */
+	--pair-a: #b0801a;
+	--pair-b: #4a300c;
 	--ramp-1: #cfa04e;
 	--ramp-2: #ba8636;
 	--ramp-3: #94641f;
@@ -64,6 +67,8 @@
 	--series-2: #22a080;
 	--series-3: #ab9426;
 	--series-4: #9a7ccc;
+	--pair-a: #8a6420;
+	--pair-b: #e2bd6c;
 	--ramp-1: #3a2a14;
 	--ramp-2: #5c4118;
 	--ramp-3: #82601f;

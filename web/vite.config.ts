@@ -12,7 +12,7 @@ const resultsDir = path.resolve(here, '../results');
 const slugs = fs.readdirSync(resultsDir, {withFileTypes: true})
 	.filter(entry => entry.isDirectory() && fs.existsSync(path.join(resultsDir, entry.name, 'summary.json')))
 	.map(entry => entry.name.replace(/^\d{4}-\d{2}-\d{2}-/, ''));
-const sections = ['', '/compare', '/methodology', '/dialects', '/run'];
+const sections = ['', '/compare', '/findings', '/methodology', '/dialects', '/run'];
 const pages = ['/', '/404', ...['en', 'fr'].flatMap(lang => [
 	...sections.map(section => `/${lang}${section}`),
 	...slugs.map(slug => `/${lang}/models/${slug}`),

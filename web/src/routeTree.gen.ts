@@ -15,6 +15,7 @@ import { Route as R404RouteImport } from './routes/404'
 import { Route as LangIndexRouteImport } from './routes/$lang/index'
 import { Route as LangCompareRouteImport } from './routes/$lang/compare'
 import { Route as LangDialectsRouteImport } from './routes/$lang/dialects'
+import { Route as LangFindingsRouteImport } from './routes/$lang/findings'
 import { Route as LangMethodologyRouteImport } from './routes/$lang/methodology'
 import { Route as LangRunRouteImport } from './routes/$lang/run'
 import { Route as LangModelsSlugRouteImport } from './routes/$lang/models/$slug'
@@ -49,6 +50,11 @@ const LangDialectsRoute = LangDialectsRouteImport.update({
   path: '/dialects',
   getParentRoute: () => LangRoute,
 } as any)
+const LangFindingsRoute = LangFindingsRouteImport.update({
+  id: '/findings',
+  path: '/findings',
+  getParentRoute: () => LangRoute,
+} as any)
 const LangMethodologyRoute = LangMethodologyRouteImport.update({
   id: '/methodology',
   path: '/methodology',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/404': typeof R404Route
   '/$lang/compare': typeof LangCompareRoute
   '/$lang/dialects': typeof LangDialectsRoute
+  '/$lang/findings': typeof LangFindingsRoute
   '/$lang/methodology': typeof LangMethodologyRoute
   '/$lang/run': typeof LangRunRoute
   '/$lang/': typeof LangIndexRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/404': typeof R404Route
   '/$lang/compare': typeof LangCompareRoute
   '/$lang/dialects': typeof LangDialectsRoute
+  '/$lang/findings': typeof LangFindingsRoute
   '/$lang/methodology': typeof LangMethodologyRoute
   '/$lang/run': typeof LangRunRoute
   '/$lang': typeof LangIndexRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/404': typeof R404Route
   '/$lang/compare': typeof LangCompareRoute
   '/$lang/dialects': typeof LangDialectsRoute
+  '/$lang/findings': typeof LangFindingsRoute
   '/$lang/methodology': typeof LangMethodologyRoute
   '/$lang/run': typeof LangRunRoute
   '/$lang/': typeof LangIndexRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/$lang/compare'
     | '/$lang/dialects'
+    | '/$lang/findings'
     | '/$lang/methodology'
     | '/$lang/run'
     | '/$lang/'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/$lang/compare'
     | '/$lang/dialects'
+    | '/$lang/findings'
     | '/$lang/methodology'
     | '/$lang/run'
     | '/$lang'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/$lang/compare'
     | '/$lang/dialects'
+    | '/$lang/findings'
     | '/$lang/methodology'
     | '/$lang/run'
     | '/$lang/'
@@ -183,6 +195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDialectsRouteImport
       parentRoute: typeof LangRoute
     }
+    '/$lang/findings': {
+      id: '/$lang/findings'
+      path: '/findings'
+      fullPath: '/$lang/findings'
+      preLoaderRoute: typeof LangFindingsRouteImport
+      parentRoute: typeof LangRoute
+    }
     '/$lang/methodology': {
       id: '/$lang/methodology'
       path: '/methodology'
@@ -210,6 +229,7 @@ declare module '@tanstack/react-router' {
 interface LangRouteChildren {
   LangCompareRoute: typeof LangCompareRoute
   LangDialectsRoute: typeof LangDialectsRoute
+  LangFindingsRoute: typeof LangFindingsRoute
   LangMethodologyRoute: typeof LangMethodologyRoute
   LangRunRoute: typeof LangRunRoute
   LangIndexRoute: typeof LangIndexRoute
@@ -219,6 +239,7 @@ interface LangRouteChildren {
 const LangRouteChildren: LangRouteChildren = {
   LangCompareRoute: LangCompareRoute,
   LangDialectsRoute: LangDialectsRoute,
+  LangFindingsRoute: LangFindingsRoute,
   LangMethodologyRoute: LangMethodologyRoute,
   LangRunRoute: LangRunRoute,
   LangIndexRoute: LangIndexRoute,

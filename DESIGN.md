@@ -22,6 +22,8 @@ colors:
   series-2: "#12876a"
   series-3: "#c08a12"
   series-4: "#5f4a8b"
+  pair-a: "#b0801a"
+  pair-b: "#4a300c"
   ramp-1: "#cfa04e"
   ramp-2: "#ba8636"
   ramp-3: "#94641f"
@@ -48,6 +50,8 @@ colors:
   dark-series-2: "#22a080"
   dark-series-3: "#ab9426"
   dark-series-4: "#9a7ccc"
+  dark-pair-a: "#8a6420"
+  dark-pair-b: "#e2bd6c"
   dark-ramp-1: "#3a2a14"
   dark-ramp-2: "#5c4118"
   dark-ramp-3: "#82601f"
@@ -220,7 +224,8 @@ A cool slip ground, manganese ink, one fired-clay shell colour, and earth-pigmen
 - **Ochre Ramp** (`ramp-1` to `ramp-6`): the sequential scale for every score, binned at 0, 10, 20, 35, 55, 80. Light runs pale yellow ochre to burnt umber; dark reverses so higher scores are brighter. `ramp-3` is the leaderboard bar fill; `ramp-2` is the ochre heart in the tier band; `ramp-5`/`ramp-2` are correct/partial in grade bars. Text on each bin uses the paired on-ramp colour recorded in the sidecar (ink on the two palest light bins, near-white on the rest; reversed in dark).
 
 ### Tertiary
-- **Glaze Slots** (`series-1` clay red, `series-2` copper green, `series-3` ochre, `series-4` manganese violet): compare-page identity colours for up to four chosen runs, assigned by slot. Validated all-pairs for colour-vision separation in light and dark; they are the only categorical set.
+- **Glaze Slots** (`series-1` clay red, `series-2` copper green, `series-3` ochre, `series-4` manganese violet): compare-page identity colours for up to four chosen runs, assigned by slot. Validated all-pairs for colour-vision separation in light and dark; they are the only categorical set. The Findings page also uses the first three for the three dialects.
+- **Ochre Pair** (`pair-a`, `pair-b`): two shades of one ochre for before/after dumbbells (writing then reading, strict then accepted). `pair-b` is the stronger end in both themes. Validated as an ordinal pair against each surface.
 
 ### Neutral
 - **Kaolin Slip** (`slip`): page ground and table rows at rest.
@@ -296,7 +301,7 @@ Quiet and functional; there is no filled primary button in content.
 - **Focus:** a 2px focus-blue outline offset 2px on every focusable element. Caret is clay.
 
 ### Navigation
-Clay header rail: ⵣ plus the bold TifinaghBench wordmark at left, then text links at 0.875rem/500 in rail blush; hover and the active route take a kiln-shadow fill and rail-slip text. At right: an EN/FR segmented switch (current segment inverted to rail-slip ground with clay text), the theme toggle, GitHub. A sawtooth hem hangs below the rail onto the slip. Below 768px the links move into a disclosure panel with 10px vertical item padding.
+Clay header rail: ⵣ plus the bold TifinaghBench wordmark at left, then text links at 0.875rem/500 in rail blush; hover and the active route take a kiln-shadow fill and rail-slip text. At right: an EN/FR segmented switch (current segment inverted to rail-slip ground with clay text), the theme toggle, GitHub. A sawtooth hem hangs below the rail onto the slip. Below 1024px the links move into a disclosure panel with 10px vertical item padding.
 
 ### Leaderboard
 The signature component. Rows on slip with hairline dividers, wet-slip on hover, the model name linking to its page. Each row carries rank (with `=` for a statistical tie), score in title-size tabular figures over a `± interval` line, and a score bar. When sorted by score descending, a painted tier band separates statistically distinct tiers; in any other sort the bands disappear because tiers only read in their natural order. Re-sorting slides each row from its old position (260ms, cubic-bezier(0.16, 1, 0.3, 1)).
@@ -315,6 +320,7 @@ All are decorative and `aria-hidden`.
 - **Bars:** label column plus a 0 to 100 track with a strong-hairline origin, ramp-coloured bar with a 4px end cap, tabular value.
 - **Grade bars:** one 100% bar per dialect split into correct (ramp-5), partial (ramp-2), wrong (slip-3), failed (ink-3).
 - **Ramp legend:** the six bins as 36px swatches with their floors.
+- **Dot rows** (Findings): one row per model on the fixed 0 to 100 track with hairline ticks at every 25. Two or three 14px dots ringed in slip, joined by a 2px ink-3 line for before/after pairs, or a single ochre bar with a 4px end cap. A legend sits above; hovering a row dims the others to 45% and opens a readout with the values first and line keys. Each chart carries a table of the same numbers, always available to assistive tech and shown on screen with a button. Section headings state a finding computed from the data.
 - **Scatter:** knowing-the-words against reading-the-script, hairline grid, diagonal reference, interval crosshairs in ink-3, manganese dots with the focused run in clay; below 640px replaced by per-run gap strips.
 
 ## Do's and Don'ts

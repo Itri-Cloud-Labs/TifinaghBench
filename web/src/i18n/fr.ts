@@ -9,6 +9,7 @@ export const fr: Messages = {
 		skip: 'Aller au contenu',
 		leaderboard: 'Classement',
 		compare: 'Comparer',
+		findings: 'Constats',
 		methodology: 'Méthodologie',
 		dialects: 'Dialectes',
 		run: 'Lancer',
@@ -65,6 +66,7 @@ export const fr: Messages = {
 		],
 		readMethodology: 'Lire la méthodologie',
 		compareTop: 'Comparer le premier palier',
+		seeFindings: 'Voir les constats',
 		table: 'Tableau',
 	},
 	model: {
@@ -118,6 +120,43 @@ export const fr: Messages = {
 		compareWith: 'Comparer avec d’autres',
 		setup: 'Protocole',
 		setupOfficial: 'Protocole officiel',
+	},
+	findings: {
+		title: 'Constats',
+		lede: 'Ce que les essais montrent au-delà du classement. Chaque titre de cette page est calculé à partir des résultats publiés : il reste vrai quand des modèles s’ajoutent.',
+		legend: 'Légende',
+		table: 'Afficher les chiffres',
+		hideTable: 'Masquer les chiffres',
+		readWrite: {
+			title: (count: number, total: number) => (count === total ? 'Tous les modèles lisent le tifinagh mieux qu’ils ne l’écrivent' : `${count} modèles sur ${total} lisent le tifinagh mieux qu’ils ne l’écrivent`),
+			text: (ratio: string) => `Tifinagh → anglais demande le sens d’un mot ; anglais → tifinagh demande au modèle d’écrire le mot lui-même. En moyenne sur les trois dialectes, le modèle médian obtient un score ${ratio} fois plus élevé en lecture qu’en écriture.`,
+			read: 'Lecture (tifinagh → anglais)',
+			write: 'Écriture (anglais → tifinagh)',
+			caption: 'Score de sens sur 100 dans chaque sens, en moyenne sur les trois dialectes.',
+		},
+		dialects: {
+			title: (dialect: string, count: number, total: number) => {
+				const name = /^[aeiouâéèêîôû]/i.test(dialect) ? `L’${dialect.toLowerCase()}` : `Le ${dialect.toLowerCase()}`;
+				return count === total ? `${name} est le dialecte le plus facile pour tous les modèles` : `${name} est le dialecte le plus facile pour ${count} modèles sur ${total}`;
+			},
+			text: 'Score de sens dans chaque dialecte, les deux tâches de sens réunies. Lisez l’écart avec prudence : le lexique kabyle est le plus petit des trois et ses graphies tifinagh ont été générées à partir de l’écriture latine ; ce n’est donc pas tout à fait le même test.',
+			caption: 'Score de sens sur 100 par dialecte.',
+		},
+		conventions: {
+			title: (script: string, meaning: string) => `Les conventions d’écriture font varier le score d’écriture jusqu’à ${script} points, et le score TifinaghBench d’au plus ${meaning}`,
+			text: 'Les dictionnaires écrivent les mêmes sons de façons différentes, et le dictionnaire tarifit omet le schwa de façon irrégulière. La notation stricte n’accepte que la graphie du dictionnaire ; les scores officiels acceptent aussi les conventions standard. Cela sauve beaucoup de translittérations, mais presque aucun sens : un modèle qui ne connaît pas un mot ne gagne rien aux règles d’orthographe.',
+			strict: 'Orthographe stricte',
+			accepted: 'Conventions acceptées',
+			script: 'Score d’écriture',
+			meaning: 'TifinaghBench',
+			caption: 'Scores sur 100, en notation stricte et avec les conventions standard acceptées.',
+		},
+		cer: {
+			title: (near: boolean) => (near ? 'Beaucoup de graphies tifinagh fausses sont presque justes' : 'Les graphies tifinagh fausses sont rarement presque justes'),
+			text: (median: string) => `Pour anglais → tifinagh, le taux d’erreur par caractère compte les modifications nécessaires pour atteindre une graphie acceptée, divisées par sa longueur. Sur l’ensemble des réponses, le modèle médian devrait changer ${median} % des caractères : la plupart des réponses fausses sont un autre mot, pas une coquille.`,
+			series: 'Taux d’erreur par caractère',
+			caption: 'Taux d’erreur par caractère moyen des réponses anglais → tifinagh, en pourcentage de la longueur du mot. Plus bas, c’est plus proche.',
+		},
 	},
 	compare: {
 		title: 'Comparer des essais',
