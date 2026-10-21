@@ -321,7 +321,7 @@ All are decorative and `aria-hidden`.
 - **Grade bars:** one 100% bar per dialect split into correct (ramp-5), partial (ramp-2), wrong (slip-3), failed (ink-3).
 - **Ramp legend:** the six bins as 36px swatches with their floors.
 - **Dot rows** (Findings): one row per model on the fixed 0 to 100 track with hairline ticks at every 25. Two or three 14px dots ringed in slip, joined by a 2px ink-3 line for before/after pairs, or a single ochre bar with a 4px end cap. A legend sits above; hovering a row dims the others to 45% and opens a readout with the values first and line keys. Each chart carries a table of the same numbers, always available to assistive tech and shown on screen with a button. Section headings state a finding computed from the data.
-- **Scatter:** knowing-the-words against reading-the-script, hairline grid, diagonal reference, interval crosshairs in ink-3, manganese dots with the focused run in clay; below 640px replaced by per-run gap strips.
+- **Cliff** (home): a slope chart with two fixed 0 to 100 axes, script score on the left and TifinaghBench on the right. One 1.5px ink-3 line per run, 10px manganese dots ringed in slip at both ends, names with their scores right of the right axis, dodged one line apart. Hover or focus draws that run in `series-1` at 2.5px with its script value in a slip halo and dims the rest to 22%. The median drop is a proportional display figure in the link colour in the empty lower-left triangle, or above the chart below 520px. The SVG is drawn at the container's real width so text keeps its size.
 
 ## Do's and Don'ts
 

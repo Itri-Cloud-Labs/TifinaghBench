@@ -1,6 +1,6 @@
 import {createFileRoute, Link} from '@tanstack/react-router';
 import {Leaderboard} from '../../components/Leaderboard';
-import {Scatter} from '../../components/Scatter';
+import {Cliff} from '../../components/Cliff';
 import {rankedRuns, runs} from '../../data/runs';
 import type {Lang} from '../../i18n';
 import {pageHead} from '../../lib/head';
@@ -43,10 +43,10 @@ function Home() {
 
 			<Leaderboard runs={runs} />
 
-			<section aria-labelledby="scatter-heading" className="mt-24 grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+			<section aria-labelledby="cliff-heading" className="mt-24 grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
 				<div>
-					<h2 id="scatter-heading" className="text-2xl">{t.home.scatterTitle}</h2>
-					<div className="mt-6"><Scatter runs={ranked} /></div>
+					<h2 id="cliff-heading" className="text-2xl">{t.home.cliffTitle}</h2>
+					<div className="mt-6"><Cliff runs={ranked} /></div>
 				</div>
 				<div className="lg:pt-14">
 					<h2 className="text-xl">{t.home.whatTitle}</h2>
