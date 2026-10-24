@@ -1,0 +1,319 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource/noto-sans-tifinagh/tifinagh-400.css';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* Kabyle and Rif painted pottery on a working screen: kaolin slip, fired clay, manganese ink, ochres. */
+:root {
+	color-scheme: light;
+	--slip: #f5f5f2;
+	--slip-2: #ecebe6;
+	--slip-3: #e2e0d8;
+	--rule: #d3cfc4;
+	--rule-strong: #b3ab9c;
+	--ink: #241a14;
+	--ink-2: #5a4c42;
+	--ink-3: #75675c;
+	--clay: #9c3a22;
+	--clay-deep: #7c2c18;
+	--clay-ink: #f7efe6;
+	--clay-ink-2: #f0d7c7;
+	--link: #9a3820;
+	--focus: #1769aa;
+	--mark: #241a14;
+	/* Compare slots: clay, copper green, ochre, manganese violet — glaze colours, validated for all pairs. */
+	--series-1: #b4432a;
+	--series-2: #12876a;
+	--series-3: #c08a12;
+	--series-4: #5f4a8b;
+	/* Two shades of one ochre for before/after pairs (dumbbells); --pair-b is the stronger end. Validated --ordinal. */
+	--pair-a: #b0801a;
+	--pair-b: #4a300c;
+	--ramp-1: #cfa04e;
+	--ramp-2: #ba8636;
+	--ramp-3: #94641f;
+	--ramp-4: #7a5218;
+	--ramp-5: #5c3c10;
+	--ramp-6: #3e280a;
+	--on-ramp-1: #241a14;
+	--on-ramp-2: #241a14;
+	--on-ramp-3: #fbf7f0;
+	--on-ramp-4: #fbf7f0;
+	--on-ramp-5: #fbf7f0;
+	--on-ramp-6: #fbf7f0;
+	--good: #2d7a3e;
+	--selection: #f0d7c7;
+}
+
+[data-theme='dark'] {
+	color-scheme: dark;
+	--slip: #18130f;
+	--slip-2: #211a15;
+	--slip-3: #2b221c;
+	--rule: #3b3029;
+	--rule-strong: #5c4c40;
+	--ink: #efe9e1;
+	--ink-2: #c3b6a9;
+	--ink-3: #a39587;
+	--clay: #7e2e1b;
+	--clay-deep: #5e2213;
+	--clay-ink: #f7efe6;
+	--clay-ink-2: #ecc9b6;
+	--link: #e8987d;
+	--focus: #6aa8e6;
+	--mark: #efe9e1;
+	--series-1: #d4503c;
+	--series-2: #22a080;
+	--series-3: #ab9426;
+	--series-4: #9a7ccc;
+	--pair-a: #8a6420;
+	--pair-b: #e2bd6c;
+	--ramp-1: #3a2a14;
+	--ramp-2: #5c4118;
+	--ramp-3: #82601f;
+	--ramp-4: #a98232;
+	--ramp-5: #cfa552;
+	--ramp-6: #ebcb86;
+	--on-ramp-1: #efe9e1;
+	--on-ramp-2: #efe9e1;
+	--on-ramp-3: #efe9e1;
+	--on-ramp-4: #18130f;
+	--on-ramp-5: #18130f;
+	--on-ramp-6: #18130f;
+	--good: #6cbf7c;
+	--selection: #5e2213;
+}
+
+@theme {
+	--font-sans: 'Archivo Variable', 'Archivo', ui-sans-serif, system-ui, sans-serif;
+	--font-tifinagh: 'Noto Sans Tifinagh', 'Archivo Variable', sans-serif;
+	--font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', Menlo, monospace;
+	--color-slip: var(--slip);
+	--color-slip-2: var(--slip-2);
+	--color-slip-3: var(--slip-3);
+	--color-rule: var(--rule);
+	--color-rule-strong: var(--rule-strong);
+	--color-ink: var(--ink);
+	--color-ink-2: var(--ink-2);
+	--color-ink-3: var(--ink-3);
+	--color-mark: var(--mark);
+	--color-clay: var(--clay);
+	--color-clay-deep: var(--clay-deep);
+	--color-clay-ink: var(--clay-ink);
+	--color-clay-ink-2: var(--clay-ink-2);
+	--color-link: var(--link);
+	--color-focus: var(--focus);
+	--radius-sm: 2px;
+	--text-xs: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-lg: 1.125rem;
+	--text-xl: 1.3125rem;
+	--text-2xl: 1.625rem;
+	--text-3xl: 2.125rem;
+	--text-4xl: 2.75rem;
+}
+
+@layer base {
+	html {
+		background: var(--slip);
+		color: var(--ink);
+		font-family: var(--font-sans);
+		font-size: 100%;
+		-webkit-text-size-adjust: 100%;
+		text-rendering: optimizeLegibility;
+		scrollbar-color: var(--rule-strong) var(--slip);
+		accent-color: var(--clay);
+	}
+	body {
+		min-height: 100dvh;
+		font-size: 1rem;
+		line-height: 1.55;
+		font-variation-settings: 'wdth' 100;
+	}
+	::selection {
+		background: var(--selection);
+		color: var(--ink);
+	}
+	:focus-visible {
+		outline: 2px solid var(--focus);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+	a {
+		color: var(--link);
+		text-decoration-line: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+		text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+	}
+	a:hover {
+		text-decoration-color: currentColor;
+	}
+	h1, h2, h3 {
+		text-wrap: balance;
+		letter-spacing: -0.02em;
+		font-weight: 650;
+		line-height: 1.15;
+	}
+	p {
+		text-wrap: pretty;
+	}
+	[lang='zgh'], .tifinagh {
+		font-family: var(--font-tifinagh);
+		letter-spacing: 0;
+	}
+	input, textarea {
+		caret-color: var(--clay);
+	}
+}
+
+@layer components {
+	.num {
+		font-variant-numeric: tabular-nums lining-nums;
+		font-feature-settings: 'tnum' 1, 'lnum' 1;
+	}
+	.label {
+		font-size: var(--text-xs);
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-variation-settings: 'wdth' 88;
+		color: var(--ink-2);
+	}
+	/* Explainer popovers sit in the top layer; placed by script next to their button. */
+	.explain {
+		position: fixed;
+		inset: auto;
+		opacity: 1;
+		translate: 0 0;
+		transition: opacity 160ms cubic-bezier(0.25, 1, 0.5, 1), translate 160ms cubic-bezier(0.25, 1, 0.5, 1), display 160ms allow-discrete, overlay 160ms allow-discrete;
+	}
+	.explain:not(:popover-open) {
+		opacity: 0;
+		translate: 0 -4px;
+	}
+	@starting-style {
+		.explain:popover-open {
+			opacity: 0;
+			translate: 0 -4px;
+		}
+	}
+	/* Each letter of a typed name settles into place as it appears. */
+	.letter-in {
+		display: inline-block;
+		animation: letter-in 220ms cubic-bezier(0.25, 1, 0.5, 1);
+	}
+	@keyframes letter-in {
+		from {
+			opacity: 0;
+			transform: translateY(0.12em);
+		}
+	}
+	.condensed {
+		font-variation-settings: 'wdth' 85;
+	}
+	.prose-doc {
+		max-width: 70ch;
+		color: var(--ink);
+	}
+	.prose-doc h1 {
+		display: none;
+	}
+	.prose-doc h2 {
+		font-size: var(--text-2xl);
+		margin: 3rem 0 0.75rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--rule);
+	}
+	.prose-doc h3 {
+		font-size: var(--text-lg);
+		margin: 2rem 0 0.5rem;
+	}
+	.prose-doc p, .prose-doc ul, .prose-doc ol {
+		margin: 0.75rem 0;
+	}
+	.prose-doc ul {
+		list-style: disc;
+		padding-left: 1.25rem;
+	}
+	.prose-doc ol {
+		list-style: decimal;
+		padding-left: 1.5rem;
+	}
+	.prose-doc li {
+		margin: 0.25rem 0;
+	}
+	.prose-doc li::marker {
+		color: var(--ink-3);
+	}
+	.prose-doc strong {
+		font-weight: 650;
+	}
+	.prose-doc code {
+		font-family: var(--font-mono);
+		font-size: 0.88em;
+		background: var(--slip-2);
+		padding: 0.1em 0.3em;
+		border-radius: 2px;
+	}
+	.prose-doc pre {
+		background: var(--slip-2);
+		border: 1px solid var(--rule);
+		border-radius: 2px;
+		padding: 1rem;
+		overflow-x: auto;
+		font-size: var(--text-sm);
+		line-height: 1.5;
+		margin: 1rem 0;
+	}
+	.prose-doc pre code {
+		background: none;
+		padding: 0;
+	}
+	.prose-doc table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1.25rem 0;
+		font-size: var(--text-sm);
+		display: block;
+		overflow-x: auto;
+	}
+	.prose-doc th {
+		text-align: left;
+		font-weight: 600;
+		color: var(--ink-2);
+		border-bottom: 1px solid var(--rule-strong);
+		padding: 0.5rem 0.75rem 0.5rem 0;
+	}
+	.prose-doc td {
+		border-bottom: 1px solid var(--rule);
+		padding: 0.5rem 0.75rem 0.5rem 0;
+		vertical-align: top;
+	}
+	.prose-doc .katex-display {
+		overflow-x: auto;
+		overflow-y: hidden;
+		margin: 1.25rem 0;
+		padding: 1rem;
+		background: var(--slip-2);
+		border-radius: 2px;
+	}
+	.prose-doc .katex {
+		font-size: 1.08em;
+	}
+	.prose-doc h2, .prose-doc h3 {
+		scroll-margin-top: 1.5rem;
+	}
+	.prose-doc :lang(zgh), .prose-doc .tifinagh {
+		font-family: var(--font-tifinagh);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
+}

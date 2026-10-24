@@ -43,12 +43,24 @@ Details: [methodology](docs/methodology.md) · [results format](docs/results-for
 cli/                 the benchmark CLI (TypeScript, Ink)
   examples/results/  a made-up miniature run showing the output format
 docs/                methodology, results format, harness notes
+results/             public exports of every published run
+web/                 the website (TanStack Start, English and French)
 tifinagh-dataset/    dataset notes (data to be released once permission is granted)
 ```
+
+## Website
+
+`web/` holds the public site: the leaderboard with tiers, a page per run, Compare, Methodology and Dialects. It is built statically from `results/`. See [web/README.md](web/README.md).
 
 ## Dataset caveats
 
 The English meanings for the IRCAM and Tarifit dictionaries were machine-translated from French, and Kabyle Tifinagh spellings were generated from Latin script. Treat scores as relative comparisons between models rather than absolute measures of fluency. See [`tifinagh-dataset/README.md`](tifinagh-dataset/README.md).
+
+## Credits
+
+TifinaghBench is built and run by [Itri Cloud Labs](https://ic-labs.cloud).
+
+Running every new model costs real money. If TifinaghBench is useful to you, you can [sponsor it on GitHub](https://github.com/sponsors/Itri-Cloud-Labs).
 
 ## License
 

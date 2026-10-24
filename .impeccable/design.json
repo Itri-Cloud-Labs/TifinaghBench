@@ -1,0 +1,1031 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T10:41:46+00:00",
+  "title": "Design System: TifinaghBench",
+  "extensions": {
+    "colorMeta": {
+      "slip": {
+        "role": "neutral",
+        "displayName": "Kaolin Slip",
+        "canonical": "#f5f5f2",
+        "tonalRamp": [
+          "#0b0b09",
+          "#272724",
+          "#454543",
+          "#666664",
+          "#898987",
+          "#aeaeab",
+          "#d1d1ce",
+          "#efefec"
+        ]
+      },
+      "slip-2": {
+        "role": "neutral",
+        "displayName": "Wet Slip",
+        "canonical": "#ecebe6",
+        "tonalRamp": [
+          "#0c0b08",
+          "#272623",
+          "#464541",
+          "#676662",
+          "#8a8985",
+          "#afaea9",
+          "#d2d1cc",
+          "#f0eee9"
+        ]
+      },
+      "slip-3": {
+        "role": "neutral",
+        "displayName": "Leather-hard Slip",
+        "canonical": "#e2e0d8",
+        "tonalRamp": [
+          "#0d0b06",
+          "#282620",
+          "#47453f",
+          "#68665f",
+          "#8b8982",
+          "#b0aea6",
+          "#d3d1c9",
+          "#f1efe6"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d3cfc4",
+        "tonalRamp": [
+          "#0e0b05",
+          "#29261e",
+          "#48453c",
+          "#69665c",
+          "#8d897f",
+          "#b2aea3",
+          "#d5d1c6",
+          "#f2eee3"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "#b3ab9c",
+        "tonalRamp": [
+          "#100a02",
+          "#2c261a",
+          "#4b4437",
+          "#6c6557",
+          "#90887a",
+          "#b5ad9e",
+          "#d8d0c0",
+          "#f6eede"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Manganese Ink",
+        "canonical": "#241a14",
+        "tonalRamp": [
+          "#120905",
+          "#2e241e",
+          "#4e423c",
+          "#70635c",
+          "#93867f",
+          "#b9aba3",
+          "#dccec6",
+          "#faebe3"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "#5a4c42",
+        "tonalRamp": [
+          "#130803",
+          "#30231a",
+          "#504238",
+          "#716358",
+          "#95867b",
+          "#bbaa9f",
+          "#decdc2",
+          "#fcebdf"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "#75675c",
+        "tonalRamp": [
+          "#130903",
+          "#2f241a",
+          "#4f4238",
+          "#716358",
+          "#95867b",
+          "#baab9f",
+          "#decec1",
+          "#fbebde"
+        ]
+      },
+      "mark": {
+        "role": "neutral",
+        "displayName": "Mark",
+        "canonical": "#241a14",
+        "tonalRamp": [
+          "#120905",
+          "#2e241e",
+          "#4e423c",
+          "#70635c",
+          "#93867f",
+          "#b9aba3",
+          "#dccec6",
+          "#faebe3"
+        ]
+      },
+      "clay": {
+        "role": "primary",
+        "displayName": "Fired Clay",
+        "canonical": "#9c3a22",
+        "tonalRamp": [
+          "#1d0200",
+          "#490f02",
+          "#7e1c01",
+          "#a5422a",
+          "#ce674e",
+          "#f78c71",
+          "#fec0b0",
+          "#fee9e4"
+        ]
+      },
+      "clay-deep": {
+        "role": "primary",
+        "displayName": "Kiln Shadow",
+        "canonical": "#7c2c18",
+        "tonalRamp": [
+          "#1d0200",
+          "#490f02",
+          "#762713",
+          "#9d4a35",
+          "#c56e58",
+          "#ed927b",
+          "#ffc0af",
+          "#fee9e4"
+        ]
+      },
+      "clay-ink": {
+        "role": "primary",
+        "displayName": "Rail Slip",
+        "canonical": "#f7efe6",
+        "tonalRamp": [
+          "#0f0a05",
+          "#2b251f",
+          "#4a443d",
+          "#6c655d",
+          "#8f8880",
+          "#b4ada4",
+          "#d7d0c7",
+          "#f5ede4"
+        ]
+      },
+      "clay-ink-2": {
+        "role": "primary",
+        "displayName": "Rail Blush",
+        "canonical": "#f0d7c7",
+        "tonalRamp": [
+          "#160700",
+          "#342215",
+          "#544033",
+          "#776153",
+          "#9b8475",
+          "#c0a999",
+          "#e4cbbc",
+          "#feeade"
+        ]
+      },
+      "link": {
+        "role": "primary",
+        "displayName": "Clay Link",
+        "canonical": "#9a3820",
+        "tonalRamp": [
+          "#1d0200",
+          "#490f02",
+          "#7e1c01",
+          "#a5422a",
+          "#ce674e",
+          "#f78c71",
+          "#ffc0b0",
+          "#fee9e4"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus Blue",
+        "canonical": "#1769aa",
+        "tonalRamp": [
+          "#000c1b",
+          "#022847",
+          "#0b4777",
+          "#186aab",
+          "#438ed2",
+          "#69b4fa",
+          "#add6fe",
+          "#e3f0fe"
+        ]
+      },
+      "selection": {
+        "role": "primary",
+        "displayName": "Selection Blush",
+        "canonical": "#f0d7c7",
+        "tonalRamp": [
+          "#160700",
+          "#342215",
+          "#544033",
+          "#776153",
+          "#9b8475",
+          "#c0a999",
+          "#e4cbbc",
+          "#feeade"
+        ]
+      },
+      "series-1": {
+        "role": "tertiary",
+        "displayName": "Clay Red Glaze",
+        "canonical": "#b4432a",
+        "tonalRamp": [
+          "#1d0100",
+          "#4a0e02",
+          "#7f1900",
+          "#ac3b22",
+          "#d56147",
+          "#ff876b",
+          "#fcc1b2",
+          "#fee9e4"
+        ]
+      },
+      "series-2": {
+        "role": "tertiary",
+        "displayName": "Copper Green Glaze",
+        "canonical": "#12876a",
+        "tonalRamp": [
+          "#000f09",
+          "#042e23",
+          "#03523f",
+          "#0d785e",
+          "#359e7f",
+          "#60c4a4",
+          "#84e8c7",
+          "#c0fee7"
+        ]
+      },
+      "series-3": {
+        "role": "tertiary",
+        "displayName": "Ochre Glaze",
+        "canonical": "#c08a12",
+        "tonalRamp": [
+          "#120900",
+          "#342302",
+          "#5a400a",
+          "#855e02",
+          "#b07f18",
+          "#daa339",
+          "#fcc86d",
+          "#ffeccd"
+        ]
+      },
+      "series-4": {
+        "role": "tertiary",
+        "displayName": "Manganese Violet Glaze",
+        "canonical": "#5f4a8b",
+        "tonalRamp": [
+          "#100028",
+          "#2d1552",
+          "#4c3675",
+          "#6d589a",
+          "#907bc1",
+          "#b5a0e8",
+          "#d6c7fd",
+          "#f0ebfe"
+        ]
+      },
+      "ramp-1": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 1",
+        "canonical": "#cfa04e",
+        "tonalRamp": [
+          "#3e280a",
+          "#5c3c10",
+          "#7a5218",
+          "#94641f",
+          "#ba8636",
+          "#cfa04e"
+        ]
+      },
+      "ramp-2": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 2",
+        "canonical": "#ba8636",
+        "tonalRamp": [
+          "#3e280a",
+          "#5c3c10",
+          "#7a5218",
+          "#94641f",
+          "#ba8636",
+          "#cfa04e"
+        ]
+      },
+      "ramp-3": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 3",
+        "canonical": "#94641f",
+        "tonalRamp": [
+          "#3e280a",
+          "#5c3c10",
+          "#7a5218",
+          "#94641f",
+          "#ba8636",
+          "#cfa04e"
+        ]
+      },
+      "ramp-4": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 4",
+        "canonical": "#7a5218",
+        "tonalRamp": [
+          "#3e280a",
+          "#5c3c10",
+          "#7a5218",
+          "#94641f",
+          "#ba8636",
+          "#cfa04e"
+        ]
+      },
+      "ramp-5": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 5",
+        "canonical": "#5c3c10",
+        "tonalRamp": [
+          "#3e280a",
+          "#5c3c10",
+          "#7a5218",
+          "#94641f",
+          "#ba8636",
+          "#cfa04e"
+        ]
+      },
+      "ramp-6": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 6",
+        "canonical": "#3e280a",
+        "tonalRamp": [
+          "#3e280a",
+          "#5c3c10",
+          "#7a5218",
+          "#94641f",
+          "#ba8636",
+          "#cfa04e"
+        ]
+      },
+      "dark-slip": {
+        "role": "neutral",
+        "displayName": "Kaolin Slip (dark theme)",
+        "canonical": "#18130f",
+        "tonalRamp": [
+          "#0f0a07",
+          "#2b2521",
+          "#4a443f",
+          "#6b6560",
+          "#8e8882",
+          "#b4aca7",
+          "#d7cfca",
+          "#f4ede7"
+        ]
+      },
+      "dark-slip-2": {
+        "role": "neutral",
+        "displayName": "Wet Slip (dark theme)",
+        "canonical": "#211a15",
+        "tonalRamp": [
+          "#100a06",
+          "#2c2520",
+          "#4b433e",
+          "#6d645e",
+          "#908781",
+          "#b5aca5",
+          "#d9cfc8",
+          "#f6ece5"
+        ]
+      },
+      "dark-slip-3": {
+        "role": "neutral",
+        "displayName": "Leather-hard Slip (dark theme)",
+        "canonical": "#2b221c",
+        "tonalRamp": [
+          "#110905",
+          "#2d241e",
+          "#4d433c",
+          "#6e645d",
+          "#92877f",
+          "#b7aba4",
+          "#dbcec6",
+          "#f8ece4"
+        ]
+      },
+      "dark-rule": {
+        "role": "neutral",
+        "displayName": "Hairline (dark theme)",
+        "canonical": "#3b3029",
+        "tonalRamp": [
+          "#120904",
+          "#2e241d",
+          "#4e423b",
+          "#70635b",
+          "#93867e",
+          "#b9aba2",
+          "#dccec5",
+          "#faebe2"
+        ]
+      },
+      "dark-rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline (dark theme)",
+        "canonical": "#5c4c40",
+        "tonalRamp": [
+          "#140802",
+          "#312318",
+          "#514136",
+          "#736256",
+          "#978578",
+          "#bcaa9c",
+          "#e0cdbf",
+          "#feeadc"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Manganese Ink (dark theme)",
+        "canonical": "#efe9e1",
+        "tonalRamp": [
+          "#0e0a06",
+          "#2a2620",
+          "#49443e",
+          "#6a655e",
+          "#8e8881",
+          "#b3ada5",
+          "#d6d0c8",
+          "#f3ede5"
+        ]
+      },
+      "dark-ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2 (dark theme)",
+        "canonical": "#c3b6a9",
+        "tonalRamp": [
+          "#120903",
+          "#2e241a",
+          "#4e4338",
+          "#6f6458",
+          "#93877a",
+          "#b8ab9f",
+          "#dccec1",
+          "#faecde"
+        ]
+      },
+      "dark-ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3 (dark theme)",
+        "canonical": "#a39587",
+        "tonalRamp": [
+          "#120902",
+          "#2f2419",
+          "#4f4336",
+          "#716456",
+          "#948679",
+          "#baab9d",
+          "#ddcebf",
+          "#fbecdc"
+        ]
+      },
+      "dark-mark": {
+        "role": "neutral",
+        "displayName": "Mark (dark theme)",
+        "canonical": "#efe9e1",
+        "tonalRamp": [
+          "#0e0a06",
+          "#2a2620",
+          "#49443e",
+          "#6a655e",
+          "#8e8881",
+          "#b3ada5",
+          "#d6d0c8",
+          "#f3ede5"
+        ]
+      },
+      "dark-clay": {
+        "role": "primary",
+        "displayName": "Fired Clay (dark theme)",
+        "canonical": "#7e2e1b",
+        "tonalRamp": [
+          "#1d0200",
+          "#490f03",
+          "#762714",
+          "#9d4a36",
+          "#c56e58",
+          "#ed927c",
+          "#ffc0b0",
+          "#fee9e4"
+        ]
+      },
+      "dark-clay-deep": {
+        "role": "primary",
+        "displayName": "Kiln Shadow (dark theme)",
+        "canonical": "#5e2213",
+        "tonalRamp": [
+          "#1c0200",
+          "#490e01",
+          "#6d3021",
+          "#935141",
+          "#ba7563",
+          "#e19986",
+          "#fcc1b2",
+          "#fee9e4"
+        ]
+      },
+      "dark-clay-ink": {
+        "role": "primary",
+        "displayName": "Rail Slip (dark theme)",
+        "canonical": "#f7efe6",
+        "tonalRamp": [
+          "#0f0a05",
+          "#2b251f",
+          "#4a443d",
+          "#6c655d",
+          "#8f8880",
+          "#b4ada4",
+          "#d7d0c7",
+          "#f5ede4"
+        ]
+      },
+      "dark-clay-ink-2": {
+        "role": "primary",
+        "displayName": "Rail Blush (dark theme)",
+        "canonical": "#ecc9b6",
+        "tonalRamp": [
+          "#180600",
+          "#391f10",
+          "#5a3e2e",
+          "#7d5e4e",
+          "#a18170",
+          "#c8a694",
+          "#ecc9b6",
+          "#feeadf"
+        ]
+      },
+      "dark-link": {
+        "role": "primary",
+        "displayName": "Clay Link (dark theme)",
+        "canonical": "#e8987d",
+        "tonalRamp": [
+          "#1b0300",
+          "#451402",
+          "#712d14",
+          "#974f36",
+          "#bf7258",
+          "#e7977c",
+          "#fdc1ad",
+          "#ffe9e2"
+        ]
+      },
+      "dark-focus": {
+        "role": "neutral",
+        "displayName": "Focus Blue (dark theme)",
+        "canonical": "#6aa8e6",
+        "tonalRamp": [
+          "#000c1b",
+          "#012848",
+          "#0a4779",
+          "#2b69a3",
+          "#508eca",
+          "#75b3f2",
+          "#b0d5fc",
+          "#e3f0fe"
+        ]
+      },
+      "dark-selection": {
+        "role": "primary",
+        "displayName": "Selection Blush (dark theme)",
+        "canonical": "#5e2213",
+        "tonalRamp": [
+          "#1c0200",
+          "#490e01",
+          "#6d3021",
+          "#935141",
+          "#ba7563",
+          "#e19986",
+          "#fcc1b2",
+          "#fee9e4"
+        ]
+      },
+      "dark-series-1": {
+        "role": "tertiary",
+        "displayName": "Clay Red Glaze (dark theme)",
+        "canonical": "#d4503c",
+        "tonalRamp": [
+          "#1e0100",
+          "#4d0601",
+          "#811506",
+          "#b3301e",
+          "#dd5844",
+          "#fc8874",
+          "#fec0b4",
+          "#ffe9e4"
+        ]
+      },
+      "dark-series-2": {
+        "role": "tertiary",
+        "displayName": "Copper Green Glaze (dark theme)",
+        "canonical": "#22a080",
+        "tonalRamp": [
+          "#000f09",
+          "#032e23",
+          "#01523f",
+          "#09785e",
+          "#219f7f",
+          "#53c6a4",
+          "#79eac6",
+          "#bfffe8"
+        ]
+      },
+      "dark-series-3": {
+        "role": "tertiary",
+        "displayName": "Ochre Glaze (dark theme)",
+        "canonical": "#ab9426",
+        "tonalRamp": [
+          "#0f0b00",
+          "#2e2601",
+          "#514507",
+          "#766514",
+          "#9f8812",
+          "#c5ae45",
+          "#e9d16b",
+          "#feefaf"
+        ]
+      },
+      "dark-series-4": {
+        "role": "tertiary",
+        "displayName": "Manganese Violet Glaze (dark theme)",
+        "canonical": "#9a7ccc",
+        "tonalRamp": [
+          "#120026",
+          "#310e56",
+          "#50317a",
+          "#7254a0",
+          "#9577c7",
+          "#ba9cef",
+          "#d9c6fe",
+          "#f1ebfe"
+        ]
+      },
+      "dark-ramp-1": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 1 (dark theme)",
+        "canonical": "#3a2a14",
+        "tonalRamp": [
+          "#3a2a14",
+          "#5c4118",
+          "#82601f",
+          "#a98232",
+          "#cfa552",
+          "#ebcb86"
+        ]
+      },
+      "dark-ramp-2": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 2 (dark theme)",
+        "canonical": "#5c4118",
+        "tonalRamp": [
+          "#3a2a14",
+          "#5c4118",
+          "#82601f",
+          "#a98232",
+          "#cfa552",
+          "#ebcb86"
+        ]
+      },
+      "dark-ramp-3": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 3 (dark theme)",
+        "canonical": "#82601f",
+        "tonalRamp": [
+          "#3a2a14",
+          "#5c4118",
+          "#82601f",
+          "#a98232",
+          "#cfa552",
+          "#ebcb86"
+        ]
+      },
+      "dark-ramp-4": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 4 (dark theme)",
+        "canonical": "#a98232",
+        "tonalRamp": [
+          "#3a2a14",
+          "#5c4118",
+          "#82601f",
+          "#a98232",
+          "#cfa552",
+          "#ebcb86"
+        ]
+      },
+      "dark-ramp-5": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 5 (dark theme)",
+        "canonical": "#cfa552",
+        "tonalRamp": [
+          "#3a2a14",
+          "#5c4118",
+          "#82601f",
+          "#a98232",
+          "#cfa552",
+          "#ebcb86"
+        ]
+      },
+      "dark-ramp-6": {
+        "role": "secondary",
+        "displayName": "Ochre Bin 6 (dark theme)",
+        "canonical": "#ebcb86",
+        "tonalRamp": [
+          "#3a2a14",
+          "#5c4118",
+          "#82601f",
+          "#a98232",
+          "#cfa552",
+          "#ebcb86"
+        ]
+      }
+    },
+    "onRamp": {
+      "light": {
+        "ramp-1": "#241a14",
+        "ramp-2": "#241a14",
+        "ramp-3": "#fbf7f0",
+        "ramp-4": "#fbf7f0",
+        "ramp-5": "#fbf7f0",
+        "ramp-6": "#fbf7f0"
+      },
+      "dark": {
+        "ramp-1": "#efe9e1",
+        "ramp-2": "#efe9e1",
+        "ramp-3": "#efe9e1",
+        "ramp-4": "#18130f",
+        "ramp-5": "#18130f",
+        "ramp-6": "#18130f"
+      },
+      "purpose": "Text colour on each ochre bin (heatmap tiles)."
+    },
+    "rampBins": [
+      0,
+      10,
+      20,
+      35,
+      55,
+      80
+    ],
+    "themes": {
+      "mechanism": "[data-theme='dark'] on <html>, persisted in localStorage; dark-* frontmatter keys are the same CSS variables re-stepped."
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "One page title per page, 640px and up."
+      },
+      "display-compact": {
+        "displayName": "Display (compact)",
+        "purpose": "Page title below 640px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles; methodology prose h2 with a hairline above."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Secondary section heads."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Paragraph under each page title, ink-2, 58-60ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 70ch max in prose."
+      },
+      "score": {
+        "displayName": "Score figure",
+        "purpose": "In-row and heatmap score numbers, tabular lining."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase condensed: table heads, field names, definition terms, axis names. Never a kicker."
+      },
+      "tifinagh": {
+        "displayName": "Tifinagh",
+        "purpose": "The wordmark mark and single alphabet letters only, lang=zgh."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Commands and hashes."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "hover-fade",
+        "value": "150ms color/background-color",
+        "purpose": "Hover fills on rail items, rows, buttons."
+      },
+      {
+        "name": "row-reorder",
+        "value": "260ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "FLIP slide of leaderboard rows when re-sorted; skipped under prefers-reduced-motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "All animations and transitions collapse under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ],
+    "focusRing": {
+      "value": "2px solid var(--focus); outline-offset: 2px; border-radius: 2px",
+      "purpose": "Every focusable element."
+    },
+    "ornament": [
+      {
+        "name": "tier-lozenge",
+        "height": "10px",
+        "tile": "10x10",
+        "purpose": "Marks a statistically distinct tier gap beside a plain sentence giving its size, score-descending sort only."
+      },
+      {
+        "name": "frieze",
+        "height": "14px",
+        "tile": "24x14",
+        "purpose": "Footer top (rail blush, 70% opacity) and section break (ink-2)."
+      },
+      {
+        "name": "hem",
+        "height": "8px",
+        "tile": "16x8",
+        "purpose": "Sawtooth under the header rail."
+      }
+    ],
+    "icons": {
+      "grid": "20px",
+      "stroke": 1.6,
+      "caps": "round",
+      "format": "inline SVG, currentColor"
+    }
+  },
+  "components": [
+    {
+      "name": "Header Rail",
+      "kind": "nav",
+      "refersTo": "header-rail",
+      "description": "Clay rail with the ⵣ wordmark, text nav, EN/FR switch; sawtooth hem below.",
+      "html": "<header class=\"ds-rail\"><div class=\"ds-rail-in\"><a class=\"ds-mark\" href=\"#\"><span lang=\"zgh\" class=\"ds-z\">ⵣ</span><b>TifinaghBench</b></a><nav><a class=\"ds-nav ds-on\" href=\"#\">Leaderboard</a><a class=\"ds-nav\" href=\"#\">Compare</a><a class=\"ds-nav\" href=\"#\">Methodology</a></nav><span class=\"ds-lang\"><a class=\"ds-cur\" href=\"#\">EN</a><a href=\"#\">FR</a></span></div><div style=\"background:var(--slip,#f5f5f2)\"><svg width=\"100%\" height=\"8\" aria-hidden=\"true\" style=\"display:block\"><defs><pattern id=\"ds-hem\" width=\"16\" height=\"8\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 0h16L8 8Z\" fill=\"var(--clay,#9c3a22)\"/></pattern></defs><rect width=\"100%\" height=\"8\" fill=\"url(#ds-hem)\"/></svg></div></header>",
+      "css": ".ds-rail{background:var(--clay,#9c3a22);color:var(--clay-ink,#f7efe6);font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;}.ds-rail-in{display:flex;align-items:center;gap:24px;padding:12px 32px}.ds-mark{display:flex;align-items:center;gap:10px;color:var(--clay-ink,#f7efe6);text-decoration:none;font-size:1.125rem;letter-spacing:-0.01em}.ds-z{font-family:'Noto Sans Tifinagh',sans-serif;font-size:1.65rem;line-height:1}.ds-rail nav{display:flex;gap:4px}.ds-nav{display:block;padding:6px 12px;border-radius:2px;font-size:.875rem;font-weight:500;color:var(--clay-ink-2,#f0d7c7);text-decoration:none;transition:background-color 150ms,color 150ms}.ds-nav:hover,.ds-nav.ds-on{background:var(--clay-deep,#7c2c18);color:var(--clay-ink,#f7efe6)}.ds-nav:focus-visible,.ds-lang a:focus-visible{outline:2px solid var(--focus,#1769aa);outline-offset:2px}.ds-lang{margin-left:auto;display:flex;border:1px solid rgba(247,239,230,.35);border-radius:2px;font-size:.75rem;font-weight:600}.ds-lang a{padding:4px 8px;color:var(--clay-ink,#f7efe6);text-decoration:none}.ds-lang a:hover{background:var(--clay-deep,#7c2c18)}.ds-lang a.ds-cur{background:var(--clay-ink,#f7efe6);color:var(--clay,#9c3a22)}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "The only content button style: outlined, 2px corners, wet-slip hover.",
+      "html": "<button class=\"ds-btn\">Reset filters</button>",
+      "css": ".ds-btn{font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;font-size:.875rem;color:var(--ink,#241a14);background:transparent;border:1px solid var(--rule-strong,#b3ab9c);border-radius:2px;padding:6px 12px;cursor:pointer;transition:background-color 150ms}.ds-btn:hover{background:var(--slip-2,#ecebe6)}.ds-btn:focus-visible{outline:2px solid var(--focus,#1769aa);outline-offset:2px}"
+    },
+    {
+      "name": "Select Field",
+      "kind": "input",
+      "refersTo": "select",
+      "description": "Labelled filter select: label type above, 36px hairline-bordered field.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">Harness</span><select class=\"ds-select\"><option>All</option><option>Codex</option></select></label>",
+      "css": ".ds-field{display:inline-flex;flex-direction:column;gap:4px;font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;}.ds-label{font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'wdth' 88;color:var(--ink-2,#5a4c42)}.ds-select{height:36px;min-width:144px;padding:0 8px;font:inherit;font-size:.875rem;color:var(--ink,#241a14);background:var(--slip,#f5f5f2);border:1px solid var(--rule-strong,#b3ab9c);border-radius:2px}.ds-select:hover{border-color:var(--ink-3,#75675c)}.ds-select:focus-visible{outline:2px solid var(--focus,#1769aa);outline-offset:2px}"
+    },
+    {
+      "name": "Setup Badge",
+      "kind": "chip",
+      "refersTo": "setup-badge",
+      "description": "Outlined marker on runs from a non-official setup.",
+      "html": "<span class=\"ds-badge\">Different setup</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;font-size:.6875rem;font-weight:600;color:var(--ink-2,#5a4c42);border:1px solid var(--rule-strong,#b3ab9c);border-radius:2px;padding:2px 6px}"
+    },
+    {
+      "name": "Model Chip",
+      "kind": "chip",
+      "refersTo": "model-chip",
+      "description": "Chosen run on the compare page: glaze swatch, name, remove control.",
+      "html": "<span class=\"ds-chip\"><span class=\"ds-sw\"></span>Claude Opus 5.5<button class=\"ds-x\" aria-label=\"Remove\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"><path d=\"m5 5 10 10M15 5 5 15\"/></svg></button></span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 4px 0 12px;font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;font-size:.875rem;color:var(--ink,#241a14);background:var(--slip-2,#ecebe6);border:1px solid var(--rule-strong,#b3ab9c);border-radius:2px}.ds-sw{width:12px;height:12px;border-radius:2px;background:var(--series-2,#12876a)}.ds-x{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:0;background:transparent;color:var(--ink-2,#5a4c42);border-radius:2px;cursor:pointer}.ds-x:hover{background:var(--slip-3,#e2e0d8);color:var(--ink,#241a14)}.ds-x:focus-visible{outline:2px solid var(--focus,#1769aa);outline-offset:2px}"
+    },
+    {
+      "name": "Leaderboard Rows with Tier Gaps",
+      "kind": "custom",
+      "refersTo": "leaderboard-row",
+      "description": "Signature: tabular rows, score bar with interval whisker, \"tied\" on shared ranks, and a lozenge plus plain sentence between tiers.",
+      "html": "<table class=\"ds-board\"><thead><tr><th>Rank</th><th>Model</th><th>TifinaghBench</th></tr></thead><tbody><tr><td class=\"ds-n\">1 <small>tied</small></td><td><b>GPT-6.1-Sol</b><br><small>OpenAI</small></td><td><span class=\"ds-score\"><b class=\"ds-n\">29.9</b><small class=\"ds-n\">± 1.0</small></span><svg class=\"ds-bar\" viewBox=\"0 0 100 20\" preserveAspectRatio=\"none\" height=\"20\"><line x1=\"0\" x2=\"100\" y1=\"10\" y2=\"10\" stroke=\"var(--rule,#d3cfc4)\" vector-effect=\"non-scaling-stroke\"/><rect x=\"0\" y=\"7\" width=\"29.9\" height=\"6\" fill=\"var(--ramp-3,#94641f)\"/><g stroke=\"var(--mark,#241a14)\" stroke-width=\"1.5\" vector-effect=\"non-scaling-stroke\"><line x1=\"28.9\" x2=\"30.9\" y1=\"10\" y2=\"10\" vector-effect=\"non-scaling-stroke\"/></g></svg></td></tr><tr class=\"ds-div\"><td colspan=\"3\"><span style=\"display:flex;align-items:center;gap:10px;padding:20px 0 6px;font-size:.75rem;font-weight:500;color:var(--ink-2,#5a4c42)\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" aria-hidden=\"true\"><path d=\"M5 0 10 5 5 10 0 5Z\" fill=\"var(--clay,#9c3a22)\"/></svg>Clear gap: 2.1 points below the group above</span></td></tr><tr><td class=\"ds-n\">3</td><td><b>Claude Opus 5.5</b><br><small>Anthropic</small></td><td><span class=\"ds-score\"><b class=\"ds-n\">27.3</b><small class=\"ds-n\">± 1.0</small></span><svg class=\"ds-bar\" viewBox=\"0 0 100 20\" preserveAspectRatio=\"none\" height=\"20\"><line x1=\"0\" x2=\"100\" y1=\"10\" y2=\"10\" stroke=\"var(--rule,#d3cfc4)\" vector-effect=\"non-scaling-stroke\"/><rect x=\"0\" y=\"7\" width=\"27.3\" height=\"6\" fill=\"var(--ramp-3,#94641f)\"/></svg></td></tr></tbody></table>",
+      "css": ".ds-board{width:100%;border-collapse:collapse;font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;color:var(--ink,#241a14);background:var(--slip,#f5f5f2)}.ds-board th{text-align:left;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'wdth' 88;color:var(--ink-2,#5a4c42);padding:12px 16px 12px 0;border-bottom:1px solid var(--rule-strong,#b3ab9c)}.ds-board td{padding:14px 16px 14px 0;vertical-align:middle;border-bottom:1px solid var(--rule,#d3cfc4)}.ds-board tbody tr:not(.ds-div){transition:background-color 150ms}.ds-board tbody tr:not(.ds-div):hover{background:var(--slip-2,#ecebe6)}.ds-board tr.ds-div td{padding:6px 0;border:0}.ds-board small{font-size:.75rem;color:var(--ink-2,#5a4c42)}.ds-n{font-variant-numeric:tabular-nums lining-nums}.ds-score{display:inline-flex;flex-direction:column;align-items:flex-end;width:4.5rem;vertical-align:middle;margin-right:16px;line-height:1.25}.ds-score b{font-size:1.3125rem;font-weight:600}.ds-score small{font-size:.6875rem;color:var(--ink-3,#75675c)}.ds-bar{display:inline-block;width:60%;vertical-align:middle}"
+    },
+    {
+      "name": "Heatmap Tile",
+      "kind": "custom",
+      "refersTo": "heatmap-tile",
+      "description": "Score tile filled from the ochre ramp with its paired on-ramp text colour.",
+      "html": "<div style=\"display:flex;gap:3px\"><div class=\"ds-tile\" tabindex=\"0\" style=\"background:var(--ramp-2,#ba8636);color:#241a14\"><b>17.4</b><small>174 / 1000</small></div><div class=\"ds-tile\" tabindex=\"0\" style=\"background:var(--ramp-6,#3e280a);color:#fbf7f0\"><b>96.5</b><small>965 / 1000</small></div></div>",
+      "css": ".ds-tile{display:flex;flex-direction:column;justify-content:center;min-height:64px;min-width:120px;padding:10px 12px;border-radius:2px;font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums lining-nums}.ds-tile b{font-size:1.3125rem;font-weight:600;line-height:1}.ds-tile small{font-size:.75rem;margin-top:4px}.ds-tile:focus-visible{outline:2px solid var(--focus,#1769aa);outline-offset:2px}"
+    },
+    {
+      "name": "Frieze",
+      "kind": "custom",
+      "description": "Painted section band: rails, lozenges, chevrons. Meaning-bearing breaks only.",
+      "html": "<div class=\"ds-frz\"><svg width=\"100%\" height=\"14\" aria-hidden=\"true\"><defs><pattern id=\"ds-frieze\" width=\"24\" height=\"14\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 1.5h24M0 12.5h24\" stroke=\"var(--ink-2,#5a4c42)\" stroke-width=\"1\"/><path d=\"M12 3.5 16.5 7 12 10.5 7.5 7Z\" fill=\"var(--ink-2,#5a4c42)\"/><path d=\"M0 3.5 3 7 0 10.5M24 3.5 21 7l3 3.5\" fill=\"none\" stroke=\"var(--ink-2,#5a4c42)\" stroke-width=\"1\"/></pattern></defs><rect width=\"100%\" height=\"14\" fill=\"url(#ds-frieze)\"/></svg></div>",
+      "css": ".ds-frz{background:var(--slip,#f5f5f2);padding:8px 0}.ds-frz svg{display:block}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Painted Register",
+    "overview": "Kabyle and Rif hand-painted pottery, translated to a working screen. The ground is cool kaolin slip; fired-clay red owns the shell (the header rail and the footer, nothing in between); manganese brown-black ink carries text and linework; ochres carry the numbers. Ornament is the potter's frieze: lozenges, sawtooth and hairline rails, drawn as crisp inline SVG, and it appears only where a band means something. Between leaderboard tiers a single clay lozenge marks the statistical gap, with a plain sentence saying how big it is.",
+    "keyCharacteristics": [
+      "Clay rail top and bottom, slip ground between; the shell colour never enters content as a fill; inside content it appears only as the small tier lozenge.",
+      "Painted friezes as meaning-bearing dividers only (header hem, footer, section breaks).",
+      "One ochre sequential ramp for every score; four glaze colours only for comparing named runs.",
+      "Flat: hairlines and tonal slip steps, zero shadows.",
+      "Archivo variable with width axis; tabular lining figures for every number.",
+      "Motion is functional: rows slide in place when re-sorted (260ms), hovers fade in 150ms; reduced motion is honoured."
+    ],
+    "rules": [
+      {
+        "name": "The Shell Rule",
+        "body": "Clay fills the header rail and the footer, and marks tier gaps with a 10px lozenge; nothing else. Content surfaces stay slip.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Ramp Rule",
+        "body": "Any score, anywhere, takes its colour from the six-bin ochre ramp on a fixed 0 to 100 scale. Never rescale to the data range and never introduce a second sequential palette.",
+        "section": "colors"
+      },
+      {
+        "name": "The Glaze-for-Identity Rule",
+        "body": "Series colours identify a chosen run on the compare page; they never encode magnitude, and the ochre ramp never identifies a run.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every number (scores, intervals, ranks, counts, codepoints) is set with tabular lining figures and right-aligned or fixed-width so columns scan.",
+        "section": "typography"
+      },
+      {
+        "name": "The Labels-Name-Data Rule",
+        "body": "Uppercase label type sits on a table head, field, term or chart axis. It never sits above a page or section headline as a kicker.",
+        "section": "typography"
+      },
+      {
+        "name": "The Script-as-Letters Rule",
+        "body": "Tifinagh appears only as the alphabet's single letters and the ⵣ mark, always in Noto Sans Tifinagh under `lang=\"zgh\"`. No dictionary words, ever (enforced at build by `web/scripts/postbuild.mjs`).",
+        "section": "typography"
+      },
+      {
+        "name": "The Fired-Flat Rule",
+        "body": "No box-shadow, drop-shadow or blur on any element. Separation is a hairline, a slip step, or a painted band.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep clay to the header rail, footer and tier lozenge, with slip as the only content ground.",
+      "**Do** colour every score from the six-bin ochre ramp with bins at 0, 10, 20, 35, 55, 80, on a fixed 0 to 100 axis.",
+      "**Do** show uncertainty wherever a score appears: the interval whisker on bars, `± value` under scores, `=` on tied ranks.",
+      "**Do** set every number with tabular lining figures.",
+      "**Do** use the painted frieze and hem as inline SVG at their recorded sizes, only where a band carries meaning.",
+      "**Do** keep corners at 2px and separation to hairlines and slip steps.",
+      "**Do** give Tifinagh text `lang=\"zgh\"` and the Noto Sans Tifinagh face."
+    ],
+    "donts": [
+      "**Don't** add shadows, blurs or elevated cards; this world is fired flat.",
+      "**Don't** use glaze series colours for magnitude or the ochre ramp for identity.",
+      "**Don't** put uppercase label type above a headline as a kicker or eyebrow.",
+      "**Don't** show dictionary words, model answers or example mistakes, in Tifinagh or any script.",
+      "**Don't** draw tier-gap lines in any sort order other than score descending.",
+      "**Don't** ship raster ornament or raster icons; ornament, icons and the favicon are SVG, icons on a 20px grid with a 1.6 stroke and round caps.",
+      "**Don't** use focus blue for anything but focus."
+    ]
+  }
+}

@@ -20,3 +20,9 @@ __pycache__/
 .vscode/
 .idea/
 .env
+
+# Impeccable review captures (regenerated per review round)
+/.impeccable/review/
+
+# Launch video project (HyperFrames), kept out of the repo for now
+/video/
