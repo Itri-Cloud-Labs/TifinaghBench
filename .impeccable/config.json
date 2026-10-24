@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "video/compositions/cliff.html"
+        ],
+        "createdAt": "2026-10-23T17:09:12.059Z",
+        "reason": "agent: HyperFrames video scene at 1920x1080; type scaled for video per hyperframes look.md, web type ramp does not apply"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "video/compositions/reveal.html"
+        ],
+        "createdAt": "2026-10-23T17:11:55.081Z",
+        "reason": "agent: HyperFrames video scene at 1920x1080; type scaled for video per hyperframes look.md, web type ramp does not apply"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "video/compositions/board.html"
+        ],
+        "createdAt": "2026-10-23T17:11:55.202Z",
+        "reason": "agent: HyperFrames video scene at 1920x1080; type scaled for video per hyperframes look.md, web type ramp does not apply"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "video/compositions/payoff.html"
+        ],
+        "createdAt": "2026-10-23T17:11:55.419Z",
+        "reason": "agent: HyperFrames video scene at 1920x1080; type scaled for video per hyperframes look.md, web type ramp does not apply"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "video/compositions/endcard.html"
+        ],
+        "createdAt": "2026-10-23T17:11:55.648Z",
+        "reason": "agent: HyperFrames video scene at 1920x1080; type scaled for video per hyperframes look.md, web type ramp does not apply"
+      }
+    ]
+  }
+}
