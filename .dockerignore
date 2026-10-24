@@ -1,0 +1,8 @@
+# The website image only needs the site and the public results.
+# Everything else stays out, including the unpublished datasets.
+*
+!web/
+!results/
+!.gitignore
+web/node_modules/
+web/dist/
