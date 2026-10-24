@@ -13,7 +13,12 @@ const html = fs
 fs.writeFileSync(to, html);
 console.log('Wrote dist/client/404.html');
 
-// The site must never show dictionary words: Tifinagh appears only as single letters (plus the labialization mark ⵯ).
+// The site must never show words from the unpublished dictionaries: Tifinagh appears as single letters
+// (plus the labialization mark ⵯ), and as the few everyday words and letter pairs listed here on purpose.
+const allowed = new Set([
+	'ⴰⵣⵓⵍ', // Azul, "hello": the home page greeting
+	'ⴽⵙ', 'ⵏⵢ', 'ⵙⵙ', 'ⴰⵢ', // name converter: x, ñ, ß and æ take two letters
+]);
 const words = [];
 const walk = dir => {
 	for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
@@ -21,7 +26,7 @@ const walk = dir => {
 		if (entry.isDirectory()) walk(path);
 		else if (/\.(html|js|json|txt|xml)$/.test(entry.name)) {
 			for (const [match] of fs.readFileSync(path, 'utf8').matchAll(/[ⴰ-⵿]{2,}/g)) {
-				if (!/^[ⴰ-⵿]ⵯ$/.test(match)) words.push(`${path.pathname.split('/dist/client/')[1]}: ${match}`);
+				if (!/^[ⴰ-⵿]ⵯ$/.test(match) && !allowed.has(match)) words.push(`${path.pathname.split('/dist/client/')[1]}: ${match}`);
 			}
 		}
 	}

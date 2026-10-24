@@ -7,7 +7,7 @@ import {judgeName} from '../../../data/models';
 import type {Run} from '../../../data/runs';
 import {rankedRuns, runBySlug, runFolderUrl, runs} from '../../../data/runs';
 import {dialects, meaningTasks, tasks} from '../../../data/schema';
-import {cellAverage} from '../../../data/stats';
+import {cellAverage, cellMoments} from '../../../data/stats';
 import type {Lang} from '../../../i18n';
 import {messagesFor} from '../../../i18n';
 import {pageHead} from '../../../lib/head';
@@ -43,6 +43,30 @@ function Figure({label, estimate, strict, hint}: {label: string; estimate: Run['
 			<div className="mt-3"><ScoreBar estimate={estimate} label={label} /></div>
 			{hint && <p className="mt-2 text-xs text-ink-3">{hint}</p>}
 		</div>
+	);
+}
+
+// The run in plain words: right answers in 10, best dialect, weakest cell, and how it handles the script.
+function Summary({run}: {run: Run}) {
+	const {t, f} = useI18n();
+	if (!run.score) return null;
+	const grid = run.summary.by_dialect_and_task;
+	const meaning = (dialect: (typeof dialects)[number]) => {
+		const cells = meaningTasks.map(task => grid[dialect]?.[task]).filter(cell => cell !== undefined);
+		return cells.length === 2 ? cellAverage(cells).value : -1;
+	};
+	const best = [...dialects].sort((a, b) => meaning(b) - meaning(a))[0]!;
+	const weakest = dialects.flatMap(dialect => meaningTasks.map(task => ({dialect, task, cell: grid[dialect]?.[task]})))
+		.filter(entry => entry.cell !== undefined)
+		.sort((a, b) => cellMoments(a.cell!).mean - cellMoments(b.cell!).mean)[0];
+	const script = run.script?.value;
+	return (
+		<p className="mt-5 max-w-[48ch] text-lg">
+			{t.model.inTen(run.name, Math.round(run.score.value / 10))}{' '}
+			{t.model.best(t.dialect[best])}{' '}
+			{weakest && t.model.weakest(weakest.task, t.dialect[weakest.dialect])}
+			{script !== undefined && <>{' '}<span className="text-ink-2">{t.model.scriptLevel(script >= 95 ? 'high' : script >= 85 ? 'good' : 'low', f.score(script))}</span></>}
+		</p>
 	);
 }
 
@@ -89,6 +113,7 @@ function ModelPage() {
 						<span>{t.model.reasoning}: {t.reasoning[run.reasoning] ?? run.reasoning}</span>
 						{!run.official && <SetupBadge differences={run.differences} />}
 					</p>
+					<Summary run={run} />
 					<p className="mt-6 text-lg">
 						{run.rank !== null ? (
 							<>

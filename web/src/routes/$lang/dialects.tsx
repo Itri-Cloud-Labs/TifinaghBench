@@ -1,5 +1,6 @@
 import {createFileRoute} from '@tanstack/react-router';
 import {Frieze} from '../../components/Frieze';
+import {NameInTifinagh} from '../../components/NameInTifinagh';
 import {runs} from '../../data/runs';
 import {dialects} from '../../data/schema';
 import type {Lang} from '../../i18n';
@@ -92,6 +93,10 @@ function Dialects() {
 						))}
 					</ul>
 				</div>
+			</section>
+
+			<section id="your-name" aria-labelledby="name-title" className="mt-20 scroll-mt-8">
+				<NameInTifinagh />
 			</section>
 
 			<section aria-labelledby="spirants-title" className="mt-20 grid gap-x-16 gap-y-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">

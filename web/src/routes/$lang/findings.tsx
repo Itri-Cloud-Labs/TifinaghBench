@@ -1,6 +1,8 @@
 import {createFileRoute} from '@tanstack/react-router';
 import type {DotRow} from '../../components/DotRows';
 import {DotRows} from '../../components/DotRows';
+import {Cliff} from '../../components/Cliff';
+import {rankedRuns} from '../../data/runs';
 import {conventions, dialectScores, directions, easiestDialect, findingRuns, median, writingCer} from '../../data/findings';
 import {dialects} from '../../data/schema';
 import type {Lang} from '../../i18n';
@@ -53,6 +55,10 @@ function Findings() {
 				<h1 className="text-3xl sm:text-4xl">{t.findings.title}</h1>
 				<p className="mt-3 max-w-[60ch] text-lg text-ink-2">{t.findings.lede}</p>
 			</header>
+
+			<Finding id="script-words" title={t.home.cliffTitle} text={t.findings.cliffText}>
+				<Cliff runs={rankedRuns()} />
+			</Finding>
 
 			<Finding id="read-write" title={t.findings.readWrite.title(readsBetter, total)} text={t.findings.readWrite.text(f.score(ratio))}>
 				<DotRows

@@ -18,6 +18,7 @@ export function Footer() {
 					{lastUpdated && <p>{t.footer.updated(f.date(lastUpdated))}</p>}
 				</div>
 				<ul className="flex flex-wrap items-start gap-x-5 gap-y-2">
+					<li><Link to="/$lang/dialects" params={{lang}} hash="your-name" className="text-clay-ink">{t.dialects.name.title}</Link></li>
 					<li><Link to="/$lang/methodology" params={{lang}} className="text-clay-ink">{t.nav.methodology}</Link></li>
 					<li><Link to="/$lang/run" params={{lang}} className="text-clay-ink">{t.nav.run}</Link></li>
 					<li><Link to="/$lang/support" params={{lang}} className="text-clay-ink">{t.nav.support}</Link></li>

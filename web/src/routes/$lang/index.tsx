@@ -1,6 +1,5 @@
 import {createFileRoute, Link} from '@tanstack/react-router';
 import {Leaderboard} from '../../components/Leaderboard';
-import {Cliff} from '../../components/Cliff';
 import {rankedRuns, runs} from '../../data/runs';
 import type {Lang} from '../../i18n';
 import {pageHead} from '../../lib/head';
@@ -11,53 +10,41 @@ export const Route = createFileRoute('/$lang/')({
 	component: Home,
 });
 
-const median = (values: number[]) => {
-	const sorted = [...values].sort((a, b) => a - b);
-	const middle = Math.floor(sorted.length / 2);
-	return sorted.length % 2 ? sorted[middle]! : (sorted[middle - 1]! + sorted[middle]!) / 2;
-};
-
+// One question on this page: which models know Amazigh, and by how much. Everything else is one click away.
 function Home() {
 	const {lang, t, f} = useI18n();
-	const ranked = rankedRuns();
-	const leaders = ranked.filter(run => run.tier === 0);
-	const meaning = median(ranked.map(run => run.score!.value));
-	const script = median(ranked.filter(run => run.script).map(run => run.script!.value));
-	const top = leaders.slice(0, 4).map(run => run.slug).join(',');
+	const leaders = rankedRuns().filter(run => run.tier === 0);
+	const top = leaders[0]?.score?.value;
+	const compare = rankedRuns().slice(0, Math.max(2, Math.min(4, leaders.length))).map(run => run.slug).join(',');
+	const item = (title: string, text: string) => (
+		<>
+			<span className="font-semibold text-link group-hover:underline">{title}</span>
+			<span className="mt-1 block text-sm text-ink-2">{text}</span>
+		</>
+	);
 	return (
 		<div className="mx-auto max-w-[84rem] px-5 sm:px-8">
-			<section className="grid grid-cols-1 gap-x-16 gap-y-6 pt-12 pb-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-end">
-				<div>
-					<h1 className="text-3xl sm:text-4xl">{t.home.title}</h1>
-					<p className="mt-4 max-w-[58ch] text-lg text-ink-2">{t.home.lede}</p>
-				</div>
-				{leaders.length > 0 && (
-					<ul className="grid gap-4 text-base sm:grid-cols-2 lg:grid-cols-1">
-						<li className="border-t border-rule-strong pt-3">
-							{t.home.leader(f.list(leaders.map(run => run.name)), f.score(leaders[0]!.score!.value))}
-						</li>
-						<li className="border-t border-rule-strong pt-3">{t.home.gap(f.score(meaning), f.score(script))}</li>
-					</ul>
+			<section className="pt-12 pb-10">
+				<p className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+					<span lang="zgh" className="tifinagh text-3xl leading-none text-clay dark:text-link">ⴰⵣⵓⵍ</span>
+					<span className="text-sm text-ink-2">{t.home.greeting}</span>
+				</p>
+				<h1 className="text-3xl sm:text-4xl">{t.home.title}</h1>
+				<p className="mt-4 max-w-[52ch] text-lg text-ink-2">{t.home.lede}</p>
+				{top !== undefined && (
+					<p className="mt-5 max-w-[52ch] text-lg">
+						{t.home.answer(f.integer(Math.round(top / 10)), f.list(leaders.map(run => run.name)), f.score(top))}
+					</p>
 				)}
 			</section>
 
 			<Leaderboard runs={runs} />
 
-			<section aria-labelledby="cliff-heading" className="mt-24 grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
-				<div>
-					<h2 id="cliff-heading" className="text-2xl">{t.home.cliffTitle}</h2>
-					<div className="mt-6"><Cliff runs={ranked} /></div>
-				</div>
-				<div className="lg:pt-14">
-					<h2 className="text-xl">{t.home.whatTitle}</h2>
-					{t.home.what.map(paragraph => <p key={paragraph} className="mt-3 max-w-[60ch] text-ink-2">{paragraph}</p>)}
-					<p className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-medium">
-						<Link to="/$lang/findings" params={{lang}}>{t.home.seeFindings}</Link>
-						<Link to="/$lang/methodology" params={{lang}}>{t.home.readMethodology}</Link>
-						{leaders.length > 1 && <Link to="/$lang/compare" params={{lang}} search={{models: top}}>{t.home.compareTop}</Link>}
-					</p>
-				</div>
-			</section>
+			<nav aria-label={t.home.nextLabel} className="mt-20 grid gap-x-12 gap-y-6 border-t border-rule-strong pt-8 sm:grid-cols-3">
+				<Link to="/$lang/findings" params={{lang}} className="group block no-underline">{item(t.nav.findings, t.home.next.findings)}</Link>
+				<Link to="/$lang/methodology" params={{lang}} className="group block no-underline">{item(t.nav.methodology, t.home.next.methodology)}</Link>
+				<Link to="/$lang/compare" params={{lang}} search={{models: compare}} className="group block no-underline">{item(t.nav.compare, t.home.next.compare)}</Link>
+			</nav>
 		</div>
 	);
 }

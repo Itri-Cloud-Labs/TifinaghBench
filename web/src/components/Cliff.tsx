@@ -137,7 +137,6 @@ export function Cliff({runs}: {runs: Run[]}) {
 					})}
 				</svg>
 			</div>
-			<figcaption className="mt-3 max-w-[62ch] text-sm text-ink-2">{t.home.cliff.caption}</figcaption>
 		</figure>
 	);
 }

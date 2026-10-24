@@ -196,32 +196,32 @@ components:
 
 **Creative North Star: "The Painted Register"**
 
-Kabyle and Rif hand-painted pottery, translated to a working screen. The ground is cool kaolin slip; fired-clay red owns the shell (the header rail and the footer, nothing in between); manganese brown-black ink carries text and linework; ochres carry the numbers. Ornament is the potter's frieze: lozenges, sawtooth and hairline rails, drawn as crisp inline SVG, and it appears only where a band means something. Between leaderboard tiers it is the statistical gap made visible, so a change of tier reads as a change of register rather than a rule.
+Kabyle and Rif hand-painted pottery, translated to a working screen. The ground is cool kaolin slip; fired-clay red owns the shell (the header rail and the footer, nothing in between); manganese brown-black ink carries text and linework; ochres carry the numbers. Ornament is the potter's frieze: lozenges, sawtooth and hairline rails, drawn as crisp inline SVG, and it appears only where a band means something. Between leaderboard tiers a single clay lozenge marks the statistical gap, with a plain sentence saying how big it is.
 
 The surface is a research instrument first. Density is that of a well-set table: hairline rules, tabular figures, generous row height (14px vertical padding), no cards, no shadows, 2px corners. Every score on the site sits on a fixed 0 to 100 scale and is coloured from one stepped ochre ramp, so a colour and a bar length mean the same number on every page. The dark theme is the same pot fired the other way: manganese ground, slip-white ink, the clay deepened and the ochres re-stepped light-on-dark.
 
 Tifinagh is treated as a living script, not decoration: it appears as the ⵣ in the wordmark and as single letters of the alphabet, always in Noto Sans Tifinagh with a `lang="zgh"` attribute, never as words.
 
 **Key Characteristics:**
-- Clay rail top and bottom, slip ground between; the shell colour never enters content as a fill except in the tier band.
-- Painted friezes as meaning-bearing dividers only (tier gaps, header hem, footer, one section break).
+- Clay rail top and bottom, slip ground between; the shell colour never enters content as a fill; inside content it appears only as the small tier lozenge.
+- Painted friezes as meaning-bearing dividers only (header hem, footer, section breaks).
 - One ochre sequential ramp for every score; four glaze colours only for comparing named runs.
 - Flat: hairlines and tonal slip steps, zero shadows.
 - Archivo variable with width axis; tabular lining figures for every number.
-- Motion is functional: rows slide in place when re-sorted (260ms), hovers fade in 150ms; reduced motion is honoured.
+- Motion is functional: hovers fade in 150ms, explainers fade in 160ms, typed Tifinagh letters settle in 220ms; reduced motion is honoured.
 
 ## Colors
 
 A cool slip ground, manganese ink, one fired-clay shell colour, and earth-pigment data colours: ochres for magnitude, glazes for identity.
 
 ### Primary
-- **Fired Clay** (`clay`): the header rail, footer field and tier-band ground. The single brand fill; it frames content, it does not decorate it. In dark it deepens (`dark-clay`) so the slip-white rail text keeps contrast.
+- **Fired Clay** (`clay`): the header rail, footer field and the tier lozenge. The single brand fill; it frames content, it does not decorate it. In dark it deepens (`dark-clay`) so the slip-white rail text keeps contrast.
 - **Kiln Shadow** (`clay-deep`): hover and active fill on the rail (nav items, icon buttons, language switch). Exists only on clay.
 - **Rail Slip** (`clay-ink`) and **Rail Blush** (`clay-ink-2`): text on clay. Rail Slip for the wordmark, active nav and icons; Rail Blush for resting nav links and footer body copy, and the footer frieze tone.
 - **Clay Link** (`link`): in-content links, underlined at 40% currentColor, full on hover. Dark: a light terracotta (`dark-link`).
 
 ### Secondary
-- **Ochre Ramp** (`ramp-1` to `ramp-6`): the sequential scale for every score, binned at 0, 10, 20, 35, 55, 80. Light runs pale yellow ochre to burnt umber; dark reverses so higher scores are brighter. `ramp-3` is the leaderboard bar fill; `ramp-2` is the ochre heart in the tier band; `ramp-5`/`ramp-2` are correct/partial in grade bars. Text on each bin uses the paired on-ramp colour recorded in the sidecar (ink on the two palest light bins, near-white on the rest; reversed in dark).
+- **Ochre Ramp** (`ramp-1` to `ramp-6`): the sequential scale for every score, binned at 0, 10, 20, 35, 55, 80. Light runs pale yellow ochre to burnt umber; dark reverses so higher scores are brighter. `ramp-3` is the leaderboard bar fill; `ramp-5`/`ramp-2` are correct/partial in grade bars. Text on each bin uses the paired on-ramp colour recorded in the sidecar (ink on the two palest light bins, near-white on the rest; reversed in dark).
 
 ### Tertiary
 - **Glaze Slots** (`series-1` clay red, `series-2` copper green, `series-3` ochre, `series-4` manganese violet): compare-page identity colours for up to four chosen runs, assigned by slot. Validated all-pairs for colour-vision separation in light and dark; they are the only categorical set. The Findings page also uses the first three for the three dialects.
@@ -236,7 +236,7 @@ A cool slip ground, manganese ink, one fired-clay shell colour, and earth-pigmen
 - **Focus Blue** (`focus`): the focus ring only, deliberately outside the pottery palette so it is never mistaken for data.
 
 ### Named Rules
-**The Shell Rule.** Clay fills the header rail, the footer and the tier band, and nothing else. Content surfaces stay slip.
+**The Shell Rule.** Clay fills the header rail and the footer, and marks tier gaps with a 10px lozenge; nothing else. Content surfaces stay slip.
 
 **The One Ramp Rule.** Any score, anywhere, takes its colour from the six-bin ochre ramp on a fixed 0 to 100 scale. Never rescale to the data range and never introduce a second sequential palette.
 
@@ -269,14 +269,14 @@ A cool slip ground, manganese ink, one fired-clay shell colour, and earth-pigmen
 
 ## Layout
 
-One centred container (max 84rem) with 20px gutters, 32px from 640px. Pages open with a title block 48px below the rail; major sections are separated by 96px. Two-column compositions use asymmetric fractional grids (roughly 1.15 : 1 on the home intro, 1.5 : 1 for scatter and explanation, 1 : 1.3 on model headers, 1 : 2 on the alphabet) with a 64px column gap, collapsing to one column below 1024px. The leaderboard is a full-width table from 768px with the score column taking 38%; below 768px it becomes a ranked list of stacked entries with the same tier bands between groups. Below 640px the scatter becomes one 0 to 100 line per run carrying both scores, and the model heatmap stacks tasks under each dialect. Long-form pages keep prose at 70ch with a sticky contents rail from 1024px. Navigation collapses to a disclosure menu below 768px.
+One centred container (max 84rem) with 20px gutters, 32px from 640px. Pages open with a title block 48px below the rail; major sections are separated by 96px. Two-column compositions use asymmetric fractional grids (1 : 2 on Findings sections and the alphabet, 1 : 1.3 on model headers) with a 64px column gap, collapsing to one column below 1024px. The home page is one column: a short intro (greeting, title, one sentence, the headline answer at 52ch), the leaderboard, and three plain links onward. The leaderboard is a three-column list from 768px (rank 4rem, model, score with bar); below 768px the score drops under the model name. Below 520px the cliff chart moves its median label above the chart, and the model heatmap stacks tasks under each dialect. Long-form pages keep prose at 70ch with a sticky contents rail from 1024px. Navigation collapses to a disclosure menu below 768px.
 
 ## Elevation & Depth
 
 Completely flat. There are no shadows anywhere; depth is conveyed by tonal slip steps (slip, slip-2, slip-3) and by hairline rules in two strengths. The clay rail sits at the same plane as content and is separated by its painted sawtooth hem, not by a shadow.
 
 ### Named Rules
-**The Fired-Flat Rule.** No box-shadow, drop-shadow or blur on any element. Separation is a hairline, a slip step, or a painted band.
+**The Fired-Flat Rule.** No box-shadow, drop-shadow or blur on any element. Separation is a hairline, a slip step, or a painted band. Explainer popovers float on a strong hairline alone.
 
 ## Shapes
 
@@ -288,7 +288,6 @@ Corners are barely softened (2px) on every interactive or contained element: but
 Quiet and functional; there is no filled primary button in content.
 - **Shape:** 2px corners.
 - **Quiet button** (reset filters): 1px strong-hairline border, ink text, 6px 12px padding; hover fills wet slip.
-- **Sortable column head:** label type as a button with a sort glyph; hover darkens to ink. Sort state is announced via `aria-sort`.
 - **Rail icon buttons:** 36px square, rail-slip icon, kiln-shadow fill on hover. 150ms colour transitions.
 
 ### Chips
@@ -297,20 +296,24 @@ Quiet and functional; there is no filled primary button in content.
 
 ### Inputs / Fields
 - **Select:** 36px tall, slip ground, strong-hairline border, 2px corners, 0.875rem ink text; hover border shifts to ink-3. The field name sits above in label type.
-- **Checkbox toggles:** native 16px checkbox tinted by clay `accent-color`, label text inline at 0.875rem.
 - **Focus:** a 2px focus-blue outline offset 2px on every focusable element. Caret is clay.
 
 ### Navigation
 Clay header rail: ⵣ plus the bold TifinaghBench wordmark at left, then text links at 0.875rem/500 in rail blush; hover and the active route take a kiln-shadow fill and rail-slip text. At right: an EN/FR segmented switch (current segment inverted to rail-slip ground with clay text), the theme toggle, GitHub. A sawtooth hem hangs below the rail onto the slip. Below 1024px the links move into a disclosure panel with 10px vertical item padding.
 
 ### Leaderboard
-The signature component. Rows on slip with hairline dividers, wet-slip on hover, the model name linking to its page. Each row carries rank (with `=` for a statistical tie), score in title-size tabular figures over a `± interval` line, and a score bar. When sorted by score descending, a painted tier band separates statistically distinct tiers; in any other sort the bands disappear because tiers only read in their natural order. Re-sorting slides each row from its old position (260ms, cubic-bezier(0.16, 1, 0.3, 1)).
+The signature component, kept to three things: rank, model, score. Rows on slip with hairline dividers, the model name linking to its page, with lab · harness · reasoning in small ink-2 text below it. Rank carries a small "tied" word for a statistical tie; the score is title-size tabular figures over a `± interval` line, then the score bar. A tier-gap line separates statistically distinct tiers: a 10px clay lozenge (link colour in dark) and a 0.75rem ink-2 sentence giving the gap in points ("Clear gap: 2.1 points below the group above"). No filters, sorting, script or strict columns on the home page: those live on model pages, Compare and Findings. "How to read this table" beside the title opens every explanation at once.
+
+### Explainer
+A 24px round "?" button (ink-3, wet-slip on hover) or a text link with the same glyph, opening a native popover: slip ground, strong hairline, 2px corners, 0.875rem text, a semibold question over an ink-2 answer, 288px wide (384px for the full glossary), placed under its button and scrolling inside when long. Fades and drops 4px in over 160ms. Plain language first; every term that needs the Methodology page to understand gets one.
+
+### Name in Tifinagh (Dialects page)
+A text field turns a Latin-script name into Tifinagh sound by sound (`web/src/lib/tifinagh.ts`). The result sets at clamp(2.5rem, 7vw, 4.5rem) under a 2px ink rule, each new letter settling 0.12em upward over 220ms, with a letter-by-letter row of wet-slip chips below (Tifinagh over its Latin sound) and a copy button. Empty, it shows the placeholder name faded as a preview.
 
 ### Score Bar
 One run on the fixed 0 to 100 axis: a hairline baseline with ticks at 0, 25, 50, 75, 100, an ochre bar (ramp-3) to the score, the 95% interval as a manganese whisker, and the estimate as a manganese dot ringed in slip. Always labelled for assistive tech.
 
 ### Painted Bands
-- **Tier band:** 16px clay field tiled every 24px with a slip lozenge holding an ochre heart and ochre half-lozenges at the seams. Only between leaderboard tiers.
 - **Frieze:** 14px band of two 1px rails with a filled lozenge and open chevrons, in ink-2 on slip or rail blush on clay (the footer, at 70% opacity). Used as a section break on the dialects page and atop the footer.
 - **Hem:** 8px sawtooth of clay triangles hanging under the header rail.
 All are decorative and `aria-hidden`.
@@ -321,16 +324,16 @@ All are decorative and `aria-hidden`.
 - **Grade bars:** one 100% bar per dialect split into correct (ramp-5), partial (ramp-2), wrong (slip-3), failed (ink-3).
 - **Ramp legend:** the six bins as 36px swatches with their floors.
 - **Dot rows** (Findings): one row per model on the fixed 0 to 100 track with hairline ticks at every 25. Two or three 14px dots ringed in slip, joined by a 2px ink-3 line for before/after pairs, or a single ochre bar with a 4px end cap. A legend sits above; hovering a row dims the others to 45% and opens a readout with the values first and line keys. Each chart carries a table of the same numbers, always available to assistive tech and shown on screen with a button. Section headings state a finding computed from the data.
-- **Cliff** (home): a slope chart with two fixed 0 to 100 axes, script score on the left and TifinaghBench on the right. One 1.5px ink-3 line per run, 10px manganese dots ringed in slip at both ends, names with their scores right of the right axis, dodged one line apart. Hover or focus draws that run in `series-1` at 2.5px with its script value in a slip halo and dims the rest to 22%. The median drop is a proportional display figure in the link colour in the empty lower-left triangle, or above the chart below 520px. The SVG is drawn at the container's real width so text keeps its size.
+- **Cliff** (Findings, first section): a slope chart with two fixed 0 to 100 axes, script score on the left and TifinaghBench on the right. One 1.5px ink-3 line per run, 10px manganese dots ringed in slip at both ends, names with their scores right of the right axis, dodged one line apart. Hover or focus draws that run in `series-1` at 2.5px with its script value in a slip halo and dims the rest to 22%. The median drop is a proportional display figure in the link colour in the empty lower-left triangle, or above the chart below 520px. The SVG is drawn at the container's real width so text keeps its size.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep clay to the header rail, footer and tier band, with slip as the only content ground.
+- **Do** keep clay to the header rail, footer and tier lozenge, with slip as the only content ground.
 - **Do** colour every score from the six-bin ochre ramp with bins at 0, 10, 20, 35, 55, 80, on a fixed 0 to 100 axis.
-- **Do** show uncertainty wherever a score appears: the interval whisker on bars, `± value` under scores, `=` on tied ranks.
+- **Do** show uncertainty wherever a score appears: the interval whisker on bars, `± value` under scores, "tied" on tied ranks.
 - **Do** set every number with tabular lining figures.
-- **Do** use the painted frieze, tier band and hem as inline SVG at their recorded sizes, only where a band carries meaning.
+- **Do** use the painted frieze and hem as inline SVG at their recorded sizes, only where a band carries meaning.
 - **Do** keep corners at 2px and separation to hairlines and slip steps.
 - **Do** give Tifinagh text `lang="zgh"` and the Noto Sans Tifinagh face.
 
@@ -338,7 +341,8 @@ All are decorative and `aria-hidden`.
 - **Don't** add shadows, blurs or elevated cards; this world is fired flat.
 - **Don't** use glaze series colours for magnitude or the ochre ramp for identity.
 - **Don't** put uppercase label type above a headline as a kicker or eyebrow.
-- **Don't** show dictionary words, model answers or example mistakes, in Tifinagh or any script.
-- **Don't** draw a tier band in any sort order other than score descending.
+- **Don't** show dictionary entries, model answers or example mistakes, in Tifinagh or any script. Everyday words like ⴰⵣⵓⵍ are fine and go on the build allowlist.
+- **Don't** add columns, filters or charts back to the home page; it answers one question, and depth is one click away.
+- **Don't** replace an exact number with a plain-language reading; put the reading next to it.
 - **Don't** ship raster ornament or raster icons; ornament, icons and the favicon are SVG, icons on a 20px grid with a 1.6 stroke and round caps.
 - **Don't** use focus blue for anything but focus.

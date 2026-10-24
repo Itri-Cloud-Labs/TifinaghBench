@@ -34,7 +34,7 @@ The only benchmark of LLMs on Amazigh vocabulary in Tifinagh. It runs models thr
 
 ## Capabilities and Constraints
 
-- **Data boundary:** the source dictionaries are unpublished pending permission from their rights holders. The site must never show dictionary words, model answers or example mistakes; only aggregate scores and run metadata. Tifinagh shown on the site is the alphabet itself, not dataset words.
+- **Data boundary:** the source dictionaries are unpublished pending permission from their rights holders. The site must never show dictionary words, model answers or example mistakes; only aggregate scores and run metadata. Tifinagh shown on the site is the alphabet itself plus a few everyday words such as ⴰⵣⵓⵍ (Azul, hello), which nobody owns (user decision); never dataset entries. `web/scripts/postbuild.mjs` fails the build on any other Tifinagh word.
 - **Official setup:** judge Claude Haiku 5.5 on Claude Code, 1,000 words per dialect, seed 1, batch size 100, all dialects and tasks. Runs on another setup appear on the main leaderboard, unranked and clearly marked with what differs (user decision).
 - **Uncertainty:** at 1,000 words per dialect the TifinaghBench margin is about ±1–2 points; rankings must show statistical ties honestly rather than imply false precision.
 - **Costs** are reported unevenly: Codex reports none, Claude Code reports API-equivalent figures for subscription runs, OpenCode reports real spend. Never compare them as if equal.

@@ -871,10 +871,10 @@
     },
     "ornament": [
       {
-        "name": "tier-band",
-        "height": "16px",
-        "tile": "24x16",
-        "purpose": "Between statistically distinct leaderboard tiers, score-descending sort only."
+        "name": "tier-lozenge",
+        "height": "10px",
+        "tile": "10x10",
+        "purpose": "Marks a statistically distinct tier gap beside a plain sentence giving its size, score-descending sort only."
       },
       {
         "name": "frieze",
@@ -938,11 +938,11 @@
       "css": ".ds-chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 4px 0 12px;font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;font-size:.875rem;color:var(--ink,#241a14);background:var(--slip-2,#ecebe6);border:1px solid var(--rule-strong,#b3ab9c);border-radius:2px}.ds-sw{width:12px;height:12px;border-radius:2px;background:var(--series-2,#12876a)}.ds-x{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:0;background:transparent;color:var(--ink-2,#5a4c42);border-radius:2px;cursor:pointer}.ds-x:hover{background:var(--slip-3,#e2e0d8);color:var(--ink,#241a14)}.ds-x:focus-visible{outline:2px solid var(--focus,#1769aa);outline-offset:2px}"
     },
     {
-      "name": "Leaderboard Rows with Tier Band",
+      "name": "Leaderboard Rows with Tier Gaps",
       "kind": "custom",
       "refersTo": "leaderboard-row",
-      "description": "Signature: tabular rows, score bar with interval whisker, painted band between tiers.",
-      "html": "<table class=\"ds-board\"><thead><tr><th>Rank</th><th>Model</th><th>TifinaghBench</th></tr></thead><tbody><tr><td class=\"ds-n\">1 <small>=</small></td><td><b>GPT-6.1-Sol</b><br><small>OpenAI</small></td><td><span class=\"ds-score\"><b class=\"ds-n\">29.9</b><small class=\"ds-n\">± 1.0</small></span><svg class=\"ds-bar\" viewBox=\"0 0 100 20\" preserveAspectRatio=\"none\" height=\"20\"><line x1=\"0\" x2=\"100\" y1=\"10\" y2=\"10\" stroke=\"var(--rule,#d3cfc4)\" vector-effect=\"non-scaling-stroke\"/><rect x=\"0\" y=\"7\" width=\"29.9\" height=\"6\" fill=\"var(--ramp-3,#94641f)\"/><g stroke=\"var(--mark,#241a14)\" stroke-width=\"1.5\" vector-effect=\"non-scaling-stroke\"><line x1=\"28.9\" x2=\"30.9\" y1=\"10\" y2=\"10\" vector-effect=\"non-scaling-stroke\"/></g></svg></td></tr><tr class=\"ds-div\"><td colspan=\"3\"><svg width=\"100%\" height=\"16\" aria-hidden=\"true\"><defs><pattern id=\"ds-band\" width=\"24\" height=\"16\" patternUnits=\"userSpaceOnUse\"><rect width=\"24\" height=\"16\" fill=\"var(--clay,#9c3a22)\"/><path d=\"M12 2.5 17.5 8 12 13.5 6.5 8Z\" fill=\"var(--slip,#f5f5f2)\"/><path d=\"M12 5.5 14.5 8 12 10.5 9.5 8Z\" fill=\"var(--ramp-2,#ba8636)\"/><path d=\"M0 2.5 3 8 0 13.5ZM24 2.5 21 8l3 5.5Z\" fill=\"var(--ramp-2,#ba8636)\"/></pattern></defs><rect width=\"100%\" height=\"16\" fill=\"url(#ds-band)\"/></svg></td></tr><tr><td class=\"ds-n\">3</td><td><b>Claude Opus 5.5</b><br><small>Anthropic</small></td><td><span class=\"ds-score\"><b class=\"ds-n\">27.3</b><small class=\"ds-n\">± 1.0</small></span><svg class=\"ds-bar\" viewBox=\"0 0 100 20\" preserveAspectRatio=\"none\" height=\"20\"><line x1=\"0\" x2=\"100\" y1=\"10\" y2=\"10\" stroke=\"var(--rule,#d3cfc4)\" vector-effect=\"non-scaling-stroke\"/><rect x=\"0\" y=\"7\" width=\"27.3\" height=\"6\" fill=\"var(--ramp-3,#94641f)\"/></svg></td></tr></tbody></table>",
+      "description": "Signature: tabular rows, score bar with interval whisker, \"tied\" on shared ranks, and a lozenge plus plain sentence between tiers.",
+      "html": "<table class=\"ds-board\"><thead><tr><th>Rank</th><th>Model</th><th>TifinaghBench</th></tr></thead><tbody><tr><td class=\"ds-n\">1 <small>tied</small></td><td><b>GPT-6.1-Sol</b><br><small>OpenAI</small></td><td><span class=\"ds-score\"><b class=\"ds-n\">29.9</b><small class=\"ds-n\">± 1.0</small></span><svg class=\"ds-bar\" viewBox=\"0 0 100 20\" preserveAspectRatio=\"none\" height=\"20\"><line x1=\"0\" x2=\"100\" y1=\"10\" y2=\"10\" stroke=\"var(--rule,#d3cfc4)\" vector-effect=\"non-scaling-stroke\"/><rect x=\"0\" y=\"7\" width=\"29.9\" height=\"6\" fill=\"var(--ramp-3,#94641f)\"/><g stroke=\"var(--mark,#241a14)\" stroke-width=\"1.5\" vector-effect=\"non-scaling-stroke\"><line x1=\"28.9\" x2=\"30.9\" y1=\"10\" y2=\"10\" vector-effect=\"non-scaling-stroke\"/></g></svg></td></tr><tr class=\"ds-div\"><td colspan=\"3\"><span style=\"display:flex;align-items:center;gap:10px;padding:20px 0 6px;font-size:.75rem;font-weight:500;color:var(--ink-2,#5a4c42)\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" aria-hidden=\"true\"><path d=\"M5 0 10 5 5 10 0 5Z\" fill=\"var(--clay,#9c3a22)\"/></svg>Clear gap: 2.1 points below the group above</span></td></tr><tr><td class=\"ds-n\">3</td><td><b>Claude Opus 5.5</b><br><small>Anthropic</small></td><td><span class=\"ds-score\"><b class=\"ds-n\">27.3</b><small class=\"ds-n\">± 1.0</small></span><svg class=\"ds-bar\" viewBox=\"0 0 100 20\" preserveAspectRatio=\"none\" height=\"20\"><line x1=\"0\" x2=\"100\" y1=\"10\" y2=\"10\" stroke=\"var(--rule,#d3cfc4)\" vector-effect=\"non-scaling-stroke\"/><rect x=\"0\" y=\"7\" width=\"27.3\" height=\"6\" fill=\"var(--ramp-3,#94641f)\"/></svg></td></tr></tbody></table>",
       "css": ".ds-board{width:100%;border-collapse:collapse;font-family:'Archivo Variable','Archivo',ui-sans-serif,system-ui,sans-serif;color:var(--ink,#241a14);background:var(--slip,#f5f5f2)}.ds-board th{text-align:left;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'wdth' 88;color:var(--ink-2,#5a4c42);padding:12px 16px 12px 0;border-bottom:1px solid var(--rule-strong,#b3ab9c)}.ds-board td{padding:14px 16px 14px 0;vertical-align:middle;border-bottom:1px solid var(--rule,#d3cfc4)}.ds-board tbody tr:not(.ds-div){transition:background-color 150ms}.ds-board tbody tr:not(.ds-div):hover{background:var(--slip-2,#ecebe6)}.ds-board tr.ds-div td{padding:6px 0;border:0}.ds-board small{font-size:.75rem;color:var(--ink-2,#5a4c42)}.ds-n{font-variant-numeric:tabular-nums lining-nums}.ds-score{display:inline-flex;flex-direction:column;align-items:flex-end;width:4.5rem;vertical-align:middle;margin-right:16px;line-height:1.25}.ds-score b{font-size:1.3125rem;font-weight:600}.ds-score small{font-size:.6875rem;color:var(--ink-3,#75675c)}.ds-bar{display:inline-block;width:60%;vertical-align:middle}"
     },
     {
@@ -963,10 +963,10 @@
   ],
   "narrative": {
     "northStar": "The Painted Register",
-    "overview": "Kabyle and Rif hand-painted pottery, translated to a working screen. The ground is cool kaolin slip; fired-clay red owns the shell (the header rail and the footer, nothing in between); manganese brown-black ink carries text and linework; ochres carry the numbers. Ornament is the potter's frieze: lozenges, sawtooth and hairline rails, drawn as crisp inline SVG, and it appears only where a band means something. Between leaderboard tiers it is the statistical gap made visible, so a change of tier reads as a change of register rather than a rule.\n\nThe surface is a research instrument first. Density is that of a well-set table: hairline rules, tabular figures, generous row height (14px vertical padding), no cards, no shadows, 2px corners. Every score on the site sits on a fixed 0 to 100 scale and is coloured from one stepped ochre ramp, so a colour and a bar length mean the same number on every page. The dark theme is the same pot fired the other way: manganese ground, slip-white ink, the clay deepened and the ochres re-stepped light-on-dark.\n\nTifinagh is treated as a living script, not decoration: it appears as the ⵣ in the wordmark and as single letters of the alphabet, always in Noto Sans Tifinagh with a `lang=\"zgh\"` attribute, never as words.",
+    "overview": "Kabyle and Rif hand-painted pottery, translated to a working screen. The ground is cool kaolin slip; fired-clay red owns the shell (the header rail and the footer, nothing in between); manganese brown-black ink carries text and linework; ochres carry the numbers. Ornament is the potter's frieze: lozenges, sawtooth and hairline rails, drawn as crisp inline SVG, and it appears only where a band means something. Between leaderboard tiers a single clay lozenge marks the statistical gap, with a plain sentence saying how big it is.",
     "keyCharacteristics": [
-      "Clay rail top and bottom, slip ground between; the shell colour never enters content as a fill except in the tier band.",
-      "Painted friezes as meaning-bearing dividers only (tier gaps, header hem, footer, one section break).",
+      "Clay rail top and bottom, slip ground between; the shell colour never enters content as a fill; inside content it appears only as the small tier lozenge.",
+      "Painted friezes as meaning-bearing dividers only (header hem, footer, section breaks).",
       "One ochre sequential ramp for every score; four glaze colours only for comparing named runs.",
       "Flat: hairlines and tonal slip steps, zero shadows.",
       "Archivo variable with width axis; tabular lining figures for every number.",
@@ -975,7 +975,7 @@
     "rules": [
       {
         "name": "The Shell Rule",
-        "body": "Clay fills the header rail, the footer and the tier band, and nothing else. Content surfaces stay slip.",
+        "body": "Clay fills the header rail and the footer, and marks tier gaps with a 10px lozenge; nothing else. Content surfaces stay slip.",
         "section": "colors"
       },
       {
@@ -1010,11 +1010,11 @@
       }
     ],
     "dos": [
-      "**Do** keep clay to the header rail, footer and tier band, with slip as the only content ground.",
+      "**Do** keep clay to the header rail, footer and tier lozenge, with slip as the only content ground.",
       "**Do** colour every score from the six-bin ochre ramp with bins at 0, 10, 20, 35, 55, 80, on a fixed 0 to 100 axis.",
       "**Do** show uncertainty wherever a score appears: the interval whisker on bars, `± value` under scores, `=` on tied ranks.",
       "**Do** set every number with tabular lining figures.",
-      "**Do** use the painted frieze, tier band and hem as inline SVG at their recorded sizes, only where a band carries meaning.",
+      "**Do** use the painted frieze and hem as inline SVG at their recorded sizes, only where a band carries meaning.",
       "**Do** keep corners at 2px and separation to hairlines and slip steps.",
       "**Do** give Tifinagh text `lang=\"zgh\"` and the Noto Sans Tifinagh face."
     ],
@@ -1023,7 +1023,7 @@
       "**Don't** use glaze series colours for magnitude or the ochre ramp for identity.",
       "**Don't** put uppercase label type above a headline as a kicker or eyebrow.",
       "**Don't** show dictionary words, model answers or example mistakes, in Tifinagh or any script.",
-      "**Don't** draw a tier band in any sort order other than score descending.",
+      "**Don't** draw tier-gap lines in any sort order other than score descending.",
       "**Don't** ship raster ornament or raster icons; ornament, icons and the favicon are SVG, icons on a 20px grid with a 1.6 stroke and round caps.",
       "**Don't** use focus blue for anything but focus."
     ]

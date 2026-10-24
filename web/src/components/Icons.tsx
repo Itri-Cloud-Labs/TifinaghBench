@@ -21,12 +21,6 @@ export const ArrowLeftIcon = (props: SVGProps<SVGSVGElement>) => (
 export const ArrowRightIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg {...base} {...props}><path d="m7.5 4.5 5.5 5.5-5.5 5.5" /></svg>
 );
-export const SortIcon = ({sorted, ...props}: SVGProps<SVGSVGElement> & {sorted: 'asc' | 'desc' | null}) => (
-	<svg {...base} width={14} height={14} {...props}>
-		<path d="m6 8 4-4 4 4" opacity={sorted === 'asc' ? 1 : 0.35} />
-		<path d="m6 12 4 4 4-4" opacity={sorted === 'desc' ? 1 : 0.35} />
-	</svg>
-);
 export const CloseIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg {...base} width={14} height={14} {...props}><path d="m5 5 10 10M15 5 5 15" /></svg>
 );
