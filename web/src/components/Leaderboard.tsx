@@ -4,6 +4,7 @@ import type {Run} from '../data/runs';
 import type {SetupDifference} from '../data/stats';
 import {useI18n} from '../lib/lang';
 import {Explain} from './Explain';
+import {LabLogo} from './LabLogo';
 import {ScoreBar} from './ScoreBar';
 
 export function SetupBadge({differences}: {differences: SetupDifference[]}) {
@@ -40,12 +41,15 @@ export function Leaderboard({runs}: {runs: Run[]}) {
 							{run.tiedWith.length > 0 && <span className="text-xs font-semibold whitespace-nowrap text-ink-2" title={t.home.tiedRank}>{t.home.tied}<span className="sr-only">: {t.home.tiedRank}</span></span>}
 						</>}
 				</span>
-				<div className="min-w-0">
-					<Link to="/$lang/models/$slug" params={{lang, slug: run.slug}} className="font-semibold text-ink no-underline group-hover:underline">{run.name}</Link>
-					<p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-2">
-						{run.lab} · {run.harnessName} · {t.home.reasoningLevel(t.reasoning[run.reasoning] ?? run.reasoning)}
-						{!run.official && <SetupBadge differences={run.differences} />}
-					</p>
+				<div className="flex min-w-0 items-center gap-3">
+					<span className="flex size-9 shrink-0 items-center justify-center rounded-sm bg-slip-3 text-ink"><LabLogo lab={run.lab} size={20} /></span>
+					<div className="min-w-0">
+						<Link to="/$lang/models/$slug" params={{lang, slug: run.slug}} className="font-semibold text-ink no-underline group-hover:underline">{run.name}</Link>
+						<p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-2">
+							{run.lab} · {run.harnessName} · {t.home.reasoningLevel(t.reasoning[run.reasoning] ?? run.reasoning)}
+							{!run.official && <SetupBadge differences={run.differences} />}
+						</p>
+					</div>
 				</div>
 				<div className="col-start-2 flex items-center gap-4 md:col-start-auto">
 					<span className="flex w-[4.25rem] shrink-0 flex-col items-end leading-tight">

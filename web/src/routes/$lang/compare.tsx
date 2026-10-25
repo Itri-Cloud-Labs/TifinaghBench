@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {createFileRoute, Link, useNavigate} from '@tanstack/react-router';
 import {CloseIcon} from '../../components/Icons';
+import {LabLogo} from '../../components/LabLogo';
 import type {Run} from '../../data/runs';
 import {runBySlug, runs} from '../../data/runs';
 import type {Dialect, Task} from '../../data/schema';
@@ -75,6 +76,7 @@ function Compare() {
 					{chosen.map(({run, slot}) => (
 						<span key={run.slug} className="inline-flex h-9 items-center gap-2 rounded-sm border border-rule-strong bg-slip-2 pr-1 pl-3 text-sm">
 							<span className="inline-block size-3 rounded-[2px]" style={{background: `var(--series-${slot + 1})`}} aria-hidden="true" />
+							<LabLogo lab={run.lab} className="shrink-0 text-ink-2" />
 							<Link to="/$lang/models/$slug" params={{lang, slug: run.slug}} className="font-semibold text-ink no-underline hover:underline">{run.name}</Link>
 							<span className="text-xs text-ink-3">{t.reasoning[run.reasoning] ?? run.reasoning}</span>
 							<button type="button" onClick={() => remove(slot)} className="inline-flex size-7 items-center justify-center rounded-sm text-ink-2 hover:bg-slip-3 hover:text-ink" aria-label={t.compare.remove(run.name)}>
