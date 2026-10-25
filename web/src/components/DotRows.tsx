@@ -1,8 +1,10 @@
 import {useState} from 'react';
+import type {Lab} from '../data/models';
 import {useI18n} from '../lib/lang';
+import {LabLogo} from './LabLogo';
 
 export type Series = {key: string; label: string; color: string};
-export type DotRow = {key: string; label: string; values: Record<string, number | null>};
+export type DotRow = {key: string; label: string; lab?: Lab; values: Record<string, number | null>};
 
 const ticks = [0, 25, 50, 75, 100];
 const clamp = (value: number) => Math.min(100, Math.max(0, value));
@@ -42,7 +44,7 @@ export function DotRows({rows, series, connect = false, caption, unit = ''}: {ro
 							onMouseLeave={() => setActive(null)}
 							className={`relative grid grid-cols-1 items-center gap-x-4 py-1.5 sm:grid-cols-[10rem_1fr] ${active !== null && !on ? 'opacity-45' : ''} transition-opacity duration-150`}
 						>
-							<span className="truncate text-sm font-semibold text-ink">{row.label}</span>
+							<span className="flex min-w-0 items-center gap-2 text-sm font-semibold text-ink">{row.lab && <LabLogo lab={row.lab} className="shrink-0" />}<span className="truncate">{row.label}</span></span>
 							<span className="relative block h-7">
 								{ticks.map(tick => <span key={tick} className="absolute inset-y-0 w-px bg-rule" style={{left: `${tick}%`}} />)}
 								<span className="absolute inset-x-0 top-1/2 h-px bg-rule-strong" />
@@ -104,7 +106,7 @@ export function DotRows({rows, series, connect = false, caption, unit = ''}: {ro
 							{rows.map(row => (
 								<tr key={row.key} className="border-b border-rule">
 									<th scope="row" className="py-2 pr-4 text-left font-normal">
-										{row.label}
+										<span className="inline-flex items-center gap-2">{row.lab && <LabLogo lab={row.lab} className="shrink-0" />}{row.label}</span>
 									</th>
 									{series.map(item => <td key={item.key} className="num py-2 pl-4 text-right">{value(row.values[item.key] ?? null)}</td>)}
 								</tr>

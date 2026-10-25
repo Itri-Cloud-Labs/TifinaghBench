@@ -1,6 +1,7 @@
 import {createFileRoute, Link, notFound} from '@tanstack/react-router';
 import {Bars, GradeBars, Heatmap, RampLegend} from '../../../components/Charts';
 import {ArrowLeftIcon, ArrowRightIcon, ExternalIcon} from '../../../components/Icons';
+import {LabLogo} from '../../../components/LabLogo';
 import {SetupBadge} from '../../../components/Leaderboard';
 import {ScoreBar} from '../../../components/ScoreBar';
 import {judgeName} from '../../../data/models';
@@ -104,7 +105,10 @@ function ModelPage() {
 
 			<header className="grid gap-x-16 gap-y-8 pt-6 pb-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
 				<div>
-					<h1 className="text-3xl sm:text-4xl">{run.name}</h1>
+					<h1 className="flex items-center gap-4 text-3xl sm:text-4xl">
+						<span className="flex size-12 shrink-0 items-center justify-center rounded-sm bg-slip-3 text-ink sm:size-14"><LabLogo lab={run.lab} size={28} /></span>
+						{run.name}
+					</h1>
 					<p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-2">
 						<span>{run.lab}</span>
 						<span aria-hidden="true">·</span>
@@ -251,7 +255,7 @@ function ModelPage() {
 					{previous && (
 						<Link to="/$lang/models/$slug" params={{lang, slug: previous.slug}} className="group inline-flex flex-col no-underline">
 							<span className="inline-flex items-center gap-1 text-xs text-ink-3"><ArrowLeftIcon width={14} height={14} />{t.model.previous}</span>
-							<span className="font-semibold text-ink group-hover:underline">{previous.name}</span>
+							<span className="inline-flex items-center gap-2 font-semibold text-ink group-hover:underline"><LabLogo lab={previous.lab} />{previous.name}</span>
 						</Link>
 					)}
 				</div>
@@ -259,7 +263,7 @@ function ModelPage() {
 					{next && (
 						<Link to="/$lang/models/$slug" params={{lang, slug: next.slug}} className="group inline-flex flex-col items-end no-underline">
 							<span className="inline-flex items-center gap-1 text-xs text-ink-3">{t.model.next}<ArrowRightIcon width={14} height={14} /></span>
-							<span className="font-semibold text-ink group-hover:underline">{next.name}</span>
+							<span className="inline-flex items-center gap-2 font-semibold text-ink group-hover:underline"><LabLogo lab={next.lab} />{next.name}</span>
 						</Link>
 					)}
 				</div>

@@ -34,7 +34,7 @@ function Findings() {
 	const {t, f} = useI18n();
 	const runs = findingRuns();
 	const total = runs.length;
-	const row = (run: (typeof runs)[number], values: DotRow['values']): DotRow => ({key: run.slug, label: run.name, values});
+	const row = (run: (typeof runs)[number], values: DotRow['values']): DotRow => ({key: run.slug, label: run.name, lab: run.lab, values});
 
 	const readWrite = runs.map(run => ({run, ...directions(run)}));
 	const readsBetter = readWrite.filter(item => item.read !== null && item.write !== null && item.read > item.write).length;
