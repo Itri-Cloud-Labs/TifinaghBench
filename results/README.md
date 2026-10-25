@@ -16,8 +16,9 @@ All runs use the same setup: 1,000 words per dialect, seed 1, batch size 100, al
 | 6 | [Claude Sonnet 5.5](2026-10-20-claude-code-claude-sonnet-5-5-high/report.md) | Claude Code | high | **12.9** | 89.4 | 12.3 |
 | 7 | [GLM 5.3 Flash](2026-10-20-opencode-go-glm-5.3-flash-high/report.md) | OpenCode | high | **12.0** | 80.6 | 11.7 |
 | 8 | [Claude Haiku 5.5](2026-10-20-claude-code-claude-haiku-5-5-high/report.md) | Claude Code | high | **8.0** | 81.3 | 7.9 |
+| 9 | [MiniMax M3.1 Flash](2026-10-24-openrouter-minimax-m3.1-flash-high/report.md) | OpenCode (OpenRouter) | high | **1.4** | 56.5 | 1.4 |
 
-At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%), so GPT-6.1-Sol and GPT-6-Astra are tied. Claude Opus 5.5 is 2–2.6 points behind them, at the edge of that margin, and far ahead of the rest. GPT-6-Luna and DeepSeek v4.1 Flash are tied. Claude Sonnet 5.5 and GLM 5.3 Flash are also tied, clearly behind that pair. Claude Haiku 5.5 is also the judge, so it graded its own Tifinagh → English answers; it still scored lowest on that task.
+At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%), so GPT-6.1-Sol and GPT-6-Astra are tied. Claude Opus 5.5 is 2–2.6 points behind them, at the edge of that margin, and far ahead of the rest. GPT-6-Luna and DeepSeek v4.1 Flash are tied. Claude Sonnet 5.5 and GLM 5.3 Flash are also tied, clearly behind that pair. Claude Haiku 5.5 is also the judge, so it graded its own Tifinagh → English answers; it still scored lowest of these eight on that task. MiniMax M3.1 Flash is last by a wide margin: it transliterates about half the words correctly but almost never knows what they mean.
 
 ## Scores by dialect and task
 
@@ -33,6 +34,7 @@ Tifinagh → English / English → Tifinagh / Tifinagh ↔ Latin, in %.
 | Claude Sonnet 5.5 (high) | 9.3 / 0.9 / 97.4 | 14.1 / 2.2 / 78.0 | 38.6 / 12.0 / 92.8 |
 | GLM 5.3 Flash (high) | 9.3 / 2.6 / 90.7 | 12.0 / 1.9 / 60.6 | 35.2 / 10.9 / 90.5 |
 | Claude Haiku 5.5 (high) | 3.9 / 0.8 / 89.0 | 8.5 / 0.9 / 61.9 | 25.4 / 8.4 / 93.0 |
+| MiniMax M3.1 Flash (high) | 1.6 / 0.2 / 71.0 | 2.6 / 0.1 / 41.7 | 3.2 / 0.9 / 56.9 |
 
 ## Runs
 
@@ -46,5 +48,6 @@ Each folder has `report.md` (score tables), `summary.json` (all scores and count
 - [`2026-10-20-opencode-go-glm-5.3-flash-high`](2026-10-20-opencode-go-glm-5.3-flash-high/): 212,948 input / 226,739 output tokens (1,213,801 reasoning); model cost $0.75, judge cost $0.23.
 - [`2026-10-20-claude-code-claude-sonnet-5-5-high`](2026-10-20-claude-code-claude-sonnet-5-5-high/): 736,459 input / 477,488 output tokens (238,873 reasoning); model cost $5.98 as reported by Claude Code (API-equivalent, run on a subscription), judge cost $0.22.
 - [`2026-10-20-claude-code-claude-haiku-5-5-high`](2026-10-20-claude-code-claude-haiku-5-5-high/): 784,886 input / 1,170,057 output tokens (923,891 reasoning); model cost $0.69, judge cost $0.22.
+- [`2026-10-24-openrouter-minimax-m3.1-flash-high`](2026-10-24-openrouter-minimax-m3.1-flash-high/): 223,193 input / 144,977 output tokens (2,268,884 reasoning); model cost $1.48 (OpenRouter, through OpenCode), judge cost $0.20.
 
 GPT-6-Astra and Claude Sonnet 5.5 stopped at a usage limit (Codex and Claude Code respectively) and were resumed with the same settings; token totals cover both invocations. Claude Opus 5.5 stopped at the Claude Code usage limit twice and was finished on a second Claude account, with the same settings throughout; token totals cover all three invocations. GLM 5.3 Flash timed out or broke off in 9 of its 102 answer batches; every affected question was answered on retry, so no question counts as unanswered.

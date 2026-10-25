@@ -1,0 +1,25 @@
+{
+	"harness": "opencode",
+	"model": "openrouter/minimax/minimax-m3.1-flash",
+	"dialects": [
+		"ircam",
+		"tarifit",
+		"kabyle"
+	],
+	"reasoning": "high",
+	"tasks": [
+		"tif-to-en",
+		"en-to-tif",
+		"transliterate"
+	],
+	"sampleSize": "1000",
+	"concurrency": 4,
+	"judge": {
+		"harness": "claude-code",
+		"model": "claude-haiku-5-5"
+	},
+	"seed": 1,
+	"timeout": 600,
+	"batchSize": 100,
+	"retries": 2
+}

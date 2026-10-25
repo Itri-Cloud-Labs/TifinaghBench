@@ -1,0 +1,228 @@
+{
+	"status": "completed",
+	"message": null,
+	"started_at": "2026-10-24T22:48:13.559Z",
+	"finished_at": "2026-10-25T00:14:14.885Z",
+	"duration_s": 5161.408,
+	"cli_version": "0.1.0",
+	"harness": {
+		"name": "opencode",
+		"version": "opencode v2.0.32",
+		"sdk": {
+			"package": "@opencode-ai/client",
+			"version": "0.0.0-beta-19271"
+		},
+		"settings": {
+			"testedWith": "opencode v2.0.32",
+			"config": {
+				"model": "openrouter/minimax/minimax-m3.1-flash",
+				"default_agent": "benchmark",
+				"permissions": [
+					{
+						"action": "*",
+						"resource": "*",
+						"effect": "deny"
+					}
+				],
+				"plugins": [
+					"-*",
+					"opencode.models.dev",
+					"opencode.provider.*",
+					"opencode.config.agent",
+					"opencode.config.compaction",
+					"opencode.config.snapshot"
+				],
+				"mcp": {},
+				"skills": [],
+				"instructions": [],
+				"policies": [
+					{
+						"action": "tool.use",
+						"resource": "*",
+						"effect": "deny"
+					},
+					{
+						"action": "integration.use",
+						"resource": "*",
+						"effect": "deny"
+					}
+				],
+				"share": "disabled",
+				"snapshots": false,
+				"update": "disable",
+				"warming": false,
+				"formatter": false,
+				"lsp": false,
+				"compaction": {
+					"auto": false
+				},
+				"agents": {
+					"benchmark": {
+						"mode": "primary",
+						"system": "Answer the user directly using only your existing knowledge.",
+						"permissions": [
+							{
+								"action": "*",
+								"resource": "*",
+								"effect": "deny"
+							}
+						]
+					},
+					"title": {
+						"disabled": true
+					},
+					"summary": {
+						"disabled": true
+					}
+				}
+			},
+			"binary": "~/.opencode/bin/opencode",
+			"model": {
+				"providerID": "openrouter",
+				"id": "minimax/minimax-m3.1-flash",
+				"variant": "high"
+			},
+			"directory": "<tmp>",
+			"server": {
+				"url": "http://127.0.0.1:43553",
+				"startupTimeoutMs": 30000,
+				"authentication": "HTTP Basic; printed server password"
+			},
+			"reasoningMapping": "low/medium/high select the same named model variant, validated against /api/model; default leaves variant unset.",
+			"structuredOutput": "JSON schema in prompt; shared parseObject (V2 session API has no native output schema).",
+			"systemPrompt": "Prepended to user prompt; custom benchmark agent replaces the built-in agent prompt.",
+			"isolatedHome": true,
+			"isolatedConfig": true,
+			"isolatedData": true,
+			"credentials": "Only credential rows copied read-only from user SQLite into private temporary data; provider environment variables retained.",
+			"sessionPersistence": "Fresh session per ask; deleted in finally; isolated database removed on close.",
+			"plugins": "All optional plugins disabled; built-in provider/catalog/config components retained; Console/policy are guarded by OpenCode.",
+			"instructionIsolation": "Project discovery disabled; instruction/skill/MCP/tool plugins disabled; isolated HOME and all XDG roots. OpenCode still supplies built-in date/environment context."
+		}
+	},
+	"dataset": {
+		"ircam": {
+			"file": "ircam_dictionnaire_general_amazighe_en.json",
+			"sha256": "633505d9ccd2244f9a53b64f56bd153c428cc3dbd7229066845404bf3d7c5060",
+			"entries": 13673,
+			"sampled": 1000,
+			"skipped": 0,
+			"skipped_by_task": {
+				"tif-to-en": 0,
+				"en-to-tif": 0,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 1,
+				"en-to-tif": 1,
+				"transliterate": 0
+			}
+		},
+		"tarifit": {
+			"file": "abarrou_dictionnaire_rifain_en.json",
+			"sha256": "d144a5619aa31cc06ffcc4eb26c361c65ca2c71451dfdfbea7fa134206481c4f",
+			"entries": 12151,
+			"sampled": 1000,
+			"skipped": 14,
+			"skipped_by_task": {
+				"tif-to-en": 7,
+				"en-to-tif": 7,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 78,
+				"en-to-tif": 78,
+				"transliterate": 0
+			}
+		},
+		"kabyle": {
+			"file": "kabyle_english_lexicon_amazigh24.json",
+			"sha256": "ed3a9882ac0f4ef10630917a302fd7d9ff6ac706654bb317b94c715f6b4cf9ea",
+			"entries": 1137,
+			"sampled": 1000,
+			"skipped": 6,
+			"skipped_by_task": {
+				"tif-to-en": 3,
+				"en-to-tif": 3,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 3,
+				"en-to-tif": 3,
+				"transliterate": 0
+			}
+		}
+	},
+	"items": {
+		"total": 8980,
+		"done": 8980,
+		"scored": 8980,
+		"errors": 0,
+		"pending": 0,
+		"skipped": 20
+	},
+	"sessions": {
+		"done": 126,
+		"total": 126,
+		"answers": 96,
+		"judge": 30
+	},
+	"answered": 8980,
+	"judge_skipped_by_exact_sense": 18,
+	"tokens": {
+		"input": 223193,
+		"output": 144977,
+		"reasoning": 2268884,
+		"cachedInput": 19444
+	},
+	"cost_usd": 1.4791706099999997,
+	"judge": {
+		"info": {
+			"name": "claude-code",
+			"version": "2.1.302 (Claude Code)",
+			"sdk": {
+				"package": "@anthropic-ai/claude-agent-sdk",
+				"version": "0.3.303"
+			},
+			"settings": {
+				"model": "claude-haiku-5-5",
+				"cwd": "<tmp>",
+				"tools": [],
+				"allowedTools": [],
+				"mcpServers": {},
+				"strictMcpConfig": true,
+				"settingSources": [],
+				"plugins": [],
+				"skills": [],
+				"persistSession": false,
+				"settings": {
+					"disableAllHooks": true,
+					"autoMemoryEnabled": false,
+					"disableBundledSkills": true,
+					"syncClaudeAiSkills": false,
+					"syncClaudeAiPlugins": false,
+					"enabledPlugins": {
+						"cc-plugin-agents-md@builtin": false,
+						"cc-plugin-telemetry@builtin": false,
+						"cc-plugin-plugin-authoring@builtin": false
+					}
+				},
+				"permissionMode": "dontAsk",
+				"extraArgs": {
+					"safe-mode": null,
+					"disable-slash-commands": null,
+					"no-chrome": null
+				},
+				"systemPrompt": "custom string replacing preset"
+			}
+		},
+		"items_judged": 2972,
+		"tokens": {
+			"input": 599194,
+			"output": 236638,
+			"reasoning": 100332,
+			"cachedInput": 26906
+		},
+		"cost_usd": 0.20380776000000003
+	}
+}
