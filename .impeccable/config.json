@@ -47,6 +47,22 @@
         ],
         "createdAt": "2026-10-23T17:11:55.648Z",
         "reason": "agent: HyperFrames video scene at 1920x1080; type scaled for video per hyperframes look.md, web type ramp does not apply"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "video/**"
+        ],
+        "createdAt": "2026-10-25T00:43:21.280Z"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "video-story/**"
+        ],
+        "createdAt": "2026-10-25T00:43:21.469Z"
       }
     ]
   }
