@@ -26,3 +26,4 @@ __pycache__/
 
 # Launch video project (HyperFrames), kept out of the repo for now
 /video/
+/video-story/
