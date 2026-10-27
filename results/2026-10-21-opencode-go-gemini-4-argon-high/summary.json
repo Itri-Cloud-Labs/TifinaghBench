@@ -1,0 +1,174 @@
+{
+	"tifinaghbench": 0.3781592259995832,
+	"script_score": 0.969,
+	"tifinaghbench_strict": 0.3675904230819346,
+	"script_score_strict": 0.758,
+	"overall": {
+		"score": 0.5755567928730512,
+		"correct": 5004,
+		"partial": 329,
+		"wrong": 3647,
+		"errors": 0,
+		"n": 8980,
+		"scored": 8980,
+		"mean_cer": 0.3281802248782122
+	},
+	"by_task": {
+		"tif-to-en": {
+			"score": 0.5436454849498328,
+			"correct": 1461,
+			"partial": 329,
+			"wrong": 1200,
+			"errors": 0,
+			"n": 2990,
+			"scored": 2990
+		},
+		"en-to-tif": {
+			"score": 0.21270903010033446,
+			"correct": 636,
+			"partial": 0,
+			"wrong": 2354,
+			"errors": 0,
+			"n": 2990,
+			"scored": 2990,
+			"mean_cer": 0.5860840418130621
+		},
+		"transliterate": {
+			"score": 0.969,
+			"correct": 2907,
+			"partial": 0,
+			"wrong": 93,
+			"errors": 0,
+			"n": 3000,
+			"scored": 3000,
+			"mean_cer": 0.07113608733314601
+		}
+	},
+	"by_dialect": {
+		"ircam": {
+			"score": 0.5455,
+			"correct": 1579,
+			"partial": 115,
+			"wrong": 1306,
+			"errors": 0,
+			"n": 3000,
+			"scored": 3000,
+			"mean_cer": 0.2824922619047621
+		},
+		"tarifit": {
+			"score": 0.5267916945746819,
+			"correct": 1524,
+			"partial": 98,
+			"wrong": 1364,
+			"errors": 0,
+			"n": 2986,
+			"scored": 2986,
+			"mean_cer": 0.4634030921411774
+		},
+		"kabyle": {
+			"score": 0.654308617234469,
+			"correct": 1901,
+			"partial": 116,
+			"wrong": 977,
+			"errors": 0,
+			"n": 2994,
+			"scored": 2994,
+			"mean_cer": 0.23898480749805015
+		}
+	},
+	"by_dialect_and_task": {
+		"ircam": {
+			"tif-to-en": {
+				"score": 0.4295,
+				"correct": 372,
+				"partial": 115,
+				"wrong": 513,
+				"errors": 0,
+				"n": 1000,
+				"scored": 1000
+			},
+			"en-to-tif": {
+				"score": 0.211,
+				"correct": 211,
+				"partial": 0,
+				"wrong": 789,
+				"errors": 0,
+				"n": 1000,
+				"scored": 1000,
+				"mean_cer": 0.5643400793650799
+			},
+			"transliterate": {
+				"score": 0.996,
+				"correct": 996,
+				"partial": 0,
+				"wrong": 4,
+				"errors": 0,
+				"n": 1000,
+				"scored": 1000,
+				"mean_cer": 0.0006444444444444443
+			}
+		},
+		"tarifit": {
+			"tif-to-en": {
+				"score": 0.5337361530715005,
+				"correct": 481,
+				"partial": 98,
+				"wrong": 414,
+				"errors": 0,
+				"n": 993,
+				"scored": 993
+			},
+			"en-to-tif": {
+				"score": 0.10876132930513595,
+				"correct": 108,
+				"partial": 0,
+				"wrong": 885,
+				"errors": 0,
+				"n": 993,
+				"scored": 993,
+				"mean_cer": 0.7227091611532703
+			},
+			"transliterate": {
+				"score": 0.935,
+				"correct": 935,
+				"partial": 0,
+				"wrong": 65,
+				"errors": 0,
+				"n": 1000,
+				"scored": 1000,
+				"mean_cer": 0.2059121656121652
+			}
+		},
+		"kabyle": {
+			"tif-to-en": {
+				"score": 0.6680040120361084,
+				"correct": 608,
+				"partial": 116,
+				"wrong": 273,
+				"errors": 0,
+				"n": 997,
+				"scored": 997
+			},
+			"en-to-tif": {
+				"score": 0.31795386158475425,
+				"correct": 317,
+				"partial": 0,
+				"wrong": 680,
+				"errors": 0,
+				"n": 997,
+				"scored": 997,
+				"mean_cer": 0.471816458004792
+			},
+			"transliterate": {
+				"score": 0.976,
+				"correct": 976,
+				"partial": 0,
+				"wrong": 24,
+				"errors": 0,
+				"n": 1000,
+				"scored": 1000,
+				"mean_cer": 0.006851651942828413
+			}
+		}
+	}
+}

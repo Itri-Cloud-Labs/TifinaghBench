@@ -12,7 +12,7 @@ export const models: Record<string, ModelInfo> = {
 	'claude-haiku-5-5': {name: 'Claude Haiku 5.5', lab: 'Anthropic'},
 	'opencode-go/deepseek-v4.1-flash': {name: 'DeepSeek v4.1 Flash', lab: 'DeepSeek'},
 	'opencode-go/glm-5.3-flash': {name: 'GLM 5.3 Flash', lab: 'Zhipu AI'},
-	'opencode-go/gemini-4-argon-contributor': {name: 'Gemini 4 Argon', lab: 'Google'},
+	'opencode-go/gemini-4-argon': {name: 'Gemini 4 Argon', lab: 'Google'},
 	'openrouter/minimax/minimax-m3.1-flash': {name: 'MiniMax M3.1 Flash', lab: 'MiniMax'},
 };
 
