@@ -10,7 +10,7 @@ import {rankedRuns, runBySlug, runFolderUrl, runs} from '../../../data/runs';
 import {dialects, meaningTasks, tasks} from '../../../data/schema';
 import {cellAverage, cellMoments} from '../../../data/stats';
 import type {Lang} from '../../../i18n';
-import {messagesFor} from '../../../i18n';
+import {formatters, messagesFor} from '../../../i18n';
 import {pageHead} from '../../../lib/head';
 import {useI18n} from '../../../lib/lang';
 
@@ -25,7 +25,8 @@ export const Route = createFileRoute('/$lang/models/$slug')({
 		const run = runBySlug(params.slug);
 		const lang = params.lang as Lang;
 		const t = messagesFor(lang);
-		return pageHead(lang, `/models/${params.slug}`, run ? `${run.name} (${t.reasoning[run.reasoning] ?? run.reasoning})` : null);
+		const card = run?.score ? {slug: run.slug, alt: t.card.alt(run.name, formatters(lang).score(run.score.value))} : undefined;
+		return pageHead(lang, `/models/${params.slug}`, run ? `${run.name} (${t.reasoning[run.reasoning] ?? run.reasoning})` : null, undefined, card);
 	},
 	component: ModelPage,
 });

@@ -306,6 +306,16 @@ export const fr: Messages = {
 		dialects: (v: string) => `Dialectes : ${v}`,
 		tasks: (v: string) => `Tâches : ${v}`,
 	},
+	card: {
+		alt: (name: string, score: string) => `${name} obtient ${score} sur 100 au TifinaghBench`,
+		siteAlt: 'Les meilleurs modèles du classement TifinaghBench',
+		unranked: 'Non classé : autre protocole',
+		top: (name: string, score: string) => `n° 1 ${name} : ${score}`,
+		meaning: 'Dit ce qu’un mot veut dire',
+		writing: 'Écrit un mot en tifinagh',
+		script: 'Lit les lettres',
+		footer: '3 dialectes · sans outils ni web · le même test pour chaque modèle',
+	},
 	common: {
 		of100: 'sur 100',
 		none: '—',
