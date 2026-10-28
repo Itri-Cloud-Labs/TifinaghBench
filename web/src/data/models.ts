@@ -5,6 +5,7 @@ export type ModelInfo = {name: string; lab: Lab};
 
 export const models: Record<string, ModelInfo> = {
 	'gpt-6.1-sol': {name: 'GPT-6.1-Sol', lab: 'OpenAI'},
+	'gpt-6.1-terra': {name: 'GPT-6.1-Terra', lab: 'OpenAI'},
 	'gpt-6-astra': {name: 'GPT-6-Astra', lab: 'OpenAI'},
 	'gpt-6-luna': {name: 'GPT-6-Luna', lab: 'OpenAI'},
 	'claude-opus-5-5': {name: 'Claude Opus 5.5', lab: 'Anthropic'},
