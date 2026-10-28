@@ -301,6 +301,16 @@ export const en = {
 		dialects: (v: string) => `Dialects: ${v}`,
 		tasks: (v: string) => `Tasks: ${v}`,
 	},
+	card: {
+		alt: (name: string, score: string) => `${name} scores ${score} out of 100 on TifinaghBench`,
+		siteAlt: 'The top models on the TifinaghBench leaderboard',
+		unranked: 'Not ranked: different setup',
+		top: (name: string, score: string) => `#1 ${name}: ${score}`,
+		meaning: 'Says what a word means',
+		writing: 'Writes a word in Tifinagh',
+		script: 'Reads the letters',
+		footer: '3 dialects · no tools, no web · same test for every model',
+	},
 	common: {
 		of100: 'out of 100',
 		none: '—',

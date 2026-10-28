@@ -1,9 +1,11 @@
 import type {Lang} from '../i18n';
 import {languages, messagesFor} from '../i18n';
-import {lab} from '../data/runs';
+import {lab, siteUrl} from '../data/runs';
+import {cardPath, cardSize} from '../og/paths';
 
 // Per-page <title>, description, Open Graph and hreflang alternates. `path` is the route after /<lang>.
-export function pageHead(lang: Lang, path: string, title: string | null, description?: string) {
+// `card` points the link preview at a model's share image; other pages use the leaderboard card.
+export function pageHead(lang: Lang, path: string, title: string | null, description?: string, card?: {slug: string; alt: string}) {
 	const t = messagesFor(lang);
 	const full = title ? `${title} · ${t.meta.siteName}` : `${t.meta.siteName}: ${t.home.title}`;
 	const text = description ?? t.meta.description;
@@ -17,6 +19,12 @@ export function pageHead(lang: Lang, path: string, title: string | null, descrip
 			{property: 'og:type', content: 'website'},
 			{property: 'og:site_name', content: t.meta.siteName},
 			{property: 'og:locale', content: lang === 'fr' ? 'fr_FR' : 'en_GB'},
+			{property: 'og:url', content: `${siteUrl}/${lang}${path}`},
+			{property: 'og:image', content: siteUrl + cardPath(lang, card?.slug)},
+			{property: 'og:image:width', content: String(cardSize.width)},
+			{property: 'og:image:height', content: String(cardSize.height)},
+			{property: 'og:image:alt', content: card?.alt ?? t.card.siteAlt},
+			{name: 'twitter:card', content: 'summary_large_image'},
 		],
 		links: [
 			...languages.map(other => ({rel: 'alternate', hrefLang: other, href: `/${other}${path}`})),
