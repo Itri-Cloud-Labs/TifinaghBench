@@ -1,0 +1,203 @@
+{
+	"status": "completed",
+	"message": null,
+	"started_at": "2026-10-27T23:43:06.455Z",
+	"finished_at": "2026-10-27T23:55:52.742Z",
+	"duration_s": 766.384,
+	"cli_version": "0.1.0",
+	"harness": {
+		"name": "codex",
+		"version": "codex-cli 0.163.0",
+		"sdk": {
+			"package": "@openai/codex-sdk",
+			"version": "0.163.0"
+		},
+		"settings": {
+			"model": "gpt-6.1-terra",
+			"workingDirectory": "<tmp>",
+			"sandboxMode": "read-only",
+			"networkAccessEnabled": false,
+			"webSearchMode": "disabled",
+			"approvalPolicy": "never",
+			"skipGitRepoCheck": true,
+			"modelReasoningEffort": "high",
+			"config": {
+				"suppress_unstable_features_warning": true,
+				"project_doc_max_bytes": 0,
+				"project_doc_fallback_filenames": [],
+				"developer_instructions": "",
+				"mcp_servers": {},
+				"plugins": {
+					"_default": {
+						"enabled": false
+					}
+				},
+				"skills": {
+					"bundled": {
+						"enabled": false
+					},
+					"include_instructions": false
+				},
+				"history": {
+					"persistence": "none"
+				},
+				"tools": {
+					"update_plan": {
+						"enabled": false
+					}
+				},
+				"features": {
+					"shell_tool": false,
+					"unified_exec": false,
+					"apply_patch_freeform": false,
+					"view_image": false,
+					"apps": false,
+					"plugins": false,
+					"skill_search": false,
+					"skip_host_skill_discovery": true,
+					"multi_agent": false,
+					"multi_agent_v2": false,
+					"js_repl": false,
+					"code_mode": false,
+					"browser_use": false,
+					"image_generation": false,
+					"memories": false,
+					"tool_search": false,
+					"tool_suggest": false,
+					"request_permissions_tool": false,
+					"sleep_tool": false
+				}
+			},
+			"ephemeral": true,
+			"ignoreUserConfig": true,
+			"ignoreRules": true,
+			"isolatedHome": true,
+			"systemPrompt": "prepended to user prompt"
+		}
+	},
+	"dataset": {
+		"ircam": {
+			"file": "ircam_dictionnaire_general_amazighe_en.json",
+			"sha256": "633505d9ccd2244f9a53b64f56bd153c428cc3dbd7229066845404bf3d7c5060",
+			"entries": 13673,
+			"sampled": 1000,
+			"skipped": 0,
+			"skipped_by_task": {
+				"tif-to-en": 0,
+				"en-to-tif": 0,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 1,
+				"en-to-tif": 1,
+				"transliterate": 0
+			}
+		},
+		"tarifit": {
+			"file": "abarrou_dictionnaire_rifain_en.json",
+			"sha256": "d144a5619aa31cc06ffcc4eb26c361c65ca2c71451dfdfbea7fa134206481c4f",
+			"entries": 12151,
+			"sampled": 1000,
+			"skipped": 14,
+			"skipped_by_task": {
+				"tif-to-en": 7,
+				"en-to-tif": 7,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 78,
+				"en-to-tif": 78,
+				"transliterate": 0
+			}
+		},
+		"kabyle": {
+			"file": "kabyle_english_lexicon_amazigh24.json",
+			"sha256": "ed3a9882ac0f4ef10630917a302fd7d9ff6ac706654bb317b94c715f6b4cf9ea",
+			"entries": 1137,
+			"sampled": 1000,
+			"skipped": 6,
+			"skipped_by_task": {
+				"tif-to-en": 3,
+				"en-to-tif": 3,
+				"transliterate": 0
+			},
+			"unsupported_by_task": {
+				"tif-to-en": 3,
+				"en-to-tif": 3,
+				"transliterate": 0
+			}
+		}
+	},
+	"items": {
+		"total": 8980,
+		"done": 8980,
+		"scored": 8980,
+		"errors": 0,
+		"pending": 0,
+		"skipped": 20
+	},
+	"sessions": {
+		"done": 123,
+		"total": 123,
+		"answers": 93,
+		"judge": 30
+	},
+	"answered": 8980,
+	"judge_skipped_by_exact_sense": 421,
+	"tokens": {
+		"input": 1055611,
+		"output": 162059,
+		"reasoning": 6923,
+		"cachedInput": 630784
+	},
+	"cost_usd": null,
+	"judge": {
+		"info": {
+			"name": "claude-code",
+			"version": "2.1.302 (Claude Code)",
+			"sdk": {
+				"package": "@anthropic-ai/claude-agent-sdk",
+				"version": "0.3.303"
+			},
+			"settings": {
+				"model": "claude-haiku-5-5",
+				"cwd": "<tmp>",
+				"tools": [],
+				"allowedTools": [],
+				"mcpServers": {},
+				"strictMcpConfig": true,
+				"settingSources": [],
+				"plugins": [],
+				"skills": [],
+				"persistSession": false,
+				"settings": {
+					"disableAllHooks": true,
+					"autoMemoryEnabled": false,
+					"disableBundledSkills": true,
+					"syncClaudeAiSkills": false,
+					"syncClaudeAiPlugins": false,
+					"enabledPlugins": {
+						"cc-plugin-agents-md@builtin": false,
+						"cc-plugin-telemetry@builtin": false,
+						"cc-plugin-plugin-authoring@builtin": false
+					}
+				},
+				"permissionMode": "dontAsk",
+				"extraArgs": {
+					"safe-mode": null,
+					"disable-slash-commands": null,
+					"no-chrome": null
+				},
+				"systemPrompt": "custom string replacing preset"
+			}
+		},
+		"items_judged": 2569,
+		"tokens": {
+			"input": 535935,
+			"output": 215298,
+			"reasoning": 97679,
+			"cachedInput": 26495
+		},
+		"cost_usd": 0.18369455
+	}
+}
