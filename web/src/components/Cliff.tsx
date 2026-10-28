@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {Link} from '@tanstack/react-router';
 import type {Run} from '../data/runs';
+import {LabLogo} from './LabLogo';
 import {useI18n} from '../lib/lang';
 
 type Scored = Run & {score: NonNullable<Run['score']>; script: NonNullable<Run['script']>};
@@ -38,7 +39,7 @@ export function Cliff({runs}: {runs: Run[]}) {
 	const height = narrow ? 440 : 500;
 	const labelSize = narrow ? 12 : 13;
 	const left = 34;
-	const right = width - Math.min(narrow ? 178 : 230, width * 0.5);
+	const right = width - Math.min(narrow ? 196 : 250, width * 0.52);
 	const top = 52;
 	const bottom = height - 16;
 	const y = (value: number) => bottom - (Math.min(100, Math.max(0, value)) / 100) * (bottom - top);
@@ -126,7 +127,8 @@ export function Cliff({runs}: {runs: Run[]}) {
 									<circle cx={right} cy={y2} r={on ? 6.5 : 5} fill={on ? 'var(--series-1)' : 'var(--mark)'} stroke="var(--slip)" strokeWidth="2" />
 									{on && <text x={left + 12} y={y1 - 10} stroke="var(--slip)" strokeWidth="4" paintOrder="stroke" className="num fill-link text-[13px] font-semibold">{f.score(run.script.value)}</text>}
 									{Math.abs(labelY - y2) > 1 && <path d={`M${right + 7} ${y2} L${right + 12} ${labelY}`} fill="none" stroke="var(--rule-strong)" />}
-									<text x={right + 16} y={labelY} dy="0.33em" className={on ? 'fill-ink font-semibold' : 'fill-ink-2'} style={{fontSize: labelSize}}>
+									<LabLogo lab={run.lab} size={labelSize} x={right + 16} y={labelY - labelSize / 2} className={on ? 'text-ink' : 'text-ink-2'} />
+									<text x={right + 22 + labelSize} y={labelY} dy="0.33em" className={on ? 'fill-ink font-semibold' : 'fill-ink-2'} style={{fontSize: labelSize}}>
 										{run.name}
 										<tspan className="num fill-ink-3" dx="6">{f.score(run.score.value)}</tspan>
 									</text>

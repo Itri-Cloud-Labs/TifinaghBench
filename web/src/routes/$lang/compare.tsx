@@ -124,8 +124,8 @@ function Compare() {
 										const leader = difference >= 0 ? a : b;
 										return (
 											<tr key={`${a.slug}-${b.slug}`} className="border-b border-rule">
-												<td className="py-3 pr-4">{a.name} <span className="num text-ink-3">{f.score(a.score!.value)}</span></td>
-												<td className="py-3 pr-4">{b.name} <span className="num text-ink-3">{f.score(b.score!.value)}</span></td>
+												<td className="py-3 pr-4"><span className="flex items-center gap-2"><LabLogo lab={a.lab} className="shrink-0 text-ink-2" />{a.name}<span className="num text-ink-3">{f.score(a.score!.value)}</span></span></td>
+												<td className="py-3 pr-4"><span className="flex items-center gap-2"><LabLogo lab={b.lab} className="shrink-0 text-ink-2" />{b.name}<span className="num text-ink-3">{f.score(b.score!.value)}</span></span></td>
 												<td className="num py-3 pr-4 text-right">{difference >= 0 ? '+' : '−'}{f.score(Math.abs(difference))} <span className="text-ink-3">± {f.score(margin)}</span></td>
 												<td className={`py-3 ${isTie ? 'text-ink-2' : 'font-semibold'}`}>{isTie ? t.compare.tie : t.compare.ahead(leader.name)}</td>
 											</tr>

@@ -129,7 +129,7 @@ function ModelPage() {
 										{f.listParts(tied.map(other => other.name)).map((part, i) => {
 											const other = tied.find(item => item.name === part.value);
 											return part.type === 'element' && other
-												? <Link key={i} to="/$lang/models/$slug" params={{lang, slug: other.slug}}>{other.name}</Link>
+												? <Link key={i} to="/$lang/models/$slug" params={{lang, slug: other.slug}} className="inline-flex items-center gap-1.5 align-bottom"><LabLogo lab={other.lab} className="shrink-0 text-ink-2" />{other.name}</Link>
 												: <span key={i}>{part.value}</span>;
 										})}
 									</span>
