@@ -1,4 +1,5 @@
 import {createFileRoute, Link, notFound} from '@tanstack/react-router';
+import {BadgeEmbed} from '../../../components/BadgeEmbed';
 import {Bars, GradeBars, Heatmap, RampLegend} from '../../../components/Charts';
 import {ArrowLeftIcon, ArrowRightIcon, ExternalIcon} from '../../../components/Icons';
 import {LabLogo} from '../../../components/LabLogo';
@@ -250,6 +251,8 @@ function ModelPage() {
 					<a href={runFolderUrl(run.folder)} className="inline-flex items-center gap-1">{t.model.folder}<ExternalIcon /></a>
 				</p>
 			</section>
+
+			<BadgeEmbed run={run} />
 
 			<nav aria-label={`${t.model.previous} / ${t.model.next}`} className="mt-16 grid grid-cols-2 gap-6 border-t border-rule-strong pt-6">
 				<div>

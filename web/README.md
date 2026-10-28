@@ -20,7 +20,7 @@ TifinaghBench is a project by [Itri Cloud Labs](https://ic-labs.cloud).
 - `src/data/stats.ts` recomputes the scores from the per-cell counts and adds the 95% intervals, ties and tiers. The method is written up in `content/{en,fr}/ranking.md`, which the Methodology page shows.
 - A run counts as official when its setup matches `officialSetup` in `stats.ts`. Other runs stay on the leaderboard, marked with the setup differences.
 - `vite.config.ts` lists the pages to prerender, one model page per results folder in each language.
-- `scripts/cards.mjs` draws the link-preview images into `dist/client/og/` after the build: one per model and language, and one per language for the other pages. The layouts are in `src/og/cards.tsx`, rendered with [Satori](https://github.com/vercel/satori) and resvg, so a new run gets its card with no extra step.
+- `scripts/cards.mjs` draws the link-preview images into `dist/client/og/` after the build: one per model and language, and one per language for the other pages. The layouts are in `src/og/cards.tsx`, rendered with [Satori](https://github.com/vercel/satori) and resvg, so a new run gets its card with no extra step. The same script draws each model's score badge into `dist/client/badge/` (`src/og/badges.tsx`); model pages show it with Markdown and HTML snippets.
 
 ## Adding a run
 

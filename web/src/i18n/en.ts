@@ -112,6 +112,13 @@ export const en = {
 		checksums: 'Dataset checksums',
 		checksumsHint: 'SHA-256 of each dictionary file, so the run can be checked once the datasets are released.',
 		folder: 'Run folder on GitHub',
+		badge: {
+			title: 'Badge',
+			lede: 'Show this score in a README, a model card or a post. The badge links back here and follows the leaderboard, so the rank stays current.',
+			alt: (name: string, score: string) => `TifinaghBench score for ${name}: ${score} out of 100`,
+			copy: 'Copy',
+			copied: 'Copied',
+		},
 		previous: 'Previous',
 		next: 'Next',
 		compareWith: 'Compare with others',

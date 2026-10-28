@@ -114,6 +114,13 @@ export const fr: Messages = {
 		checksums: 'Empreintes des jeux de données',
 		checksumsHint: 'SHA-256 de chaque dictionnaire, pour vérifier l’essai une fois les jeux de données publiés.',
 		folder: 'Dossier de l’essai sur GitHub',
+		badge: {
+			title: 'Badge',
+			lede: 'Affichez ce score dans un README, une fiche de modèle ou un post. Le badge renvoie ici et suit le classement, donc le rang reste à jour.',
+			alt: (name: string, score: string) => `Score TifinaghBench de ${name} : ${score} sur 100`,
+			copy: 'Copier',
+			copied: 'Copié',
+		},
 		previous: 'Précédent',
 		next: 'Suivant',
 		compareWith: 'Comparer avec d’autres',
