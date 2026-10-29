@@ -13,6 +13,7 @@ import {cellAverage, cellMoments} from '../../../data/stats';
 import type {Lang} from '../../../i18n';
 import {formatters, messagesFor} from '../../../i18n';
 import {pageHead} from '../../../lib/head';
+import {cardPath} from '../../../og/paths';
 import {useI18n} from '../../../lib/lang';
 
 // Harnesses report versions as "2.1.302 (Claude Code)", "codex-cli 0.163.0" or "opencode v2.0.32".
@@ -26,7 +27,7 @@ export const Route = createFileRoute('/$lang/models/$slug')({
 		const run = runBySlug(params.slug);
 		const lang = params.lang as Lang;
 		const t = messagesFor(lang);
-		const card = run?.score ? {slug: run.slug, alt: t.card.alt(run.name, formatters(lang).score(run.score.value))} : undefined;
+		const card = run?.score ? {image: cardPath(lang, run.slug), alt: t.card.alt(run.name, formatters(lang).score(run.score.value))} : undefined;
 		return pageHead(lang, `/models/${params.slug}`, run ? `${run.name} (${t.reasoning[run.reasoning] ?? run.reasoning})` : null, undefined, card);
 	},
 	component: ModelPage,

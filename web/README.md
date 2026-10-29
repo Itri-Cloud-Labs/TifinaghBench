@@ -1,6 +1,6 @@
 # TifinaghBench website
 
-The public site for TifinaghBench, in English and French: the leaderboard, a page per run, Compare, Methodology, Dialects and Run it. It is a static [TanStack Start](https://tanstack.com/start) site, prerendered at build time from the exported runs in [`../results/`](../results).
+The public site for TifinaghBench, in English and French: the leaderboard, a page per run, Compare, Methodology, Dialects, the alphabet quiz and Run it. It is a static [TanStack Start](https://tanstack.com/start) site, prerendered at build time from the exported runs in [`../results/`](../results).
 
 ```sh
 npm install
@@ -21,6 +21,7 @@ TifinaghBench is a project by [Itri Cloud Labs](https://ic-labs.cloud).
 - A run counts as official when its setup matches `officialSetup` in `stats.ts`. Other runs stay on the leaderboard, marked with the setup differences.
 - `vite.config.ts` lists the pages to prerender, one model page per results folder in each language.
 - `scripts/cards.mjs` draws the link-preview images into `dist/client/og/` after the build: one per model and language, and one per language for the other pages. The layouts are in `src/og/cards.tsx`, rendered with [Satori](https://github.com/vercel/satori) and resvg, so a new run gets its card with no extra step. The same script draws each model's score badge into `dist/client/badge/` (`src/og/badges.tsx`); model pages show it with Markdown and HTML snippets.
+- `/quiz` asks ten letters of the public IRCAM alphabet (`src/data/alphabet.ts`, `src/lib/quiz.ts`), never benchmark items. `/quiz/0` to `/quiz/10` are the links players share: the same quiz, with their score in the page and its share card.
 
 ## Adding a run
 

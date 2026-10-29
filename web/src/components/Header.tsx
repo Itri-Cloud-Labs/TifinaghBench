@@ -67,6 +67,7 @@ export function Header() {
 		{to: '/$lang/findings', label: t.nav.findings},
 		{to: '/$lang/methodology', label: t.nav.methodology},
 		{to: '/$lang/dialects', label: t.nav.dialects},
+		{to: '/$lang/quiz', label: t.nav.quiz},
 		{to: '/$lang/run', label: t.nav.run},
 	] as const;
 	return (
