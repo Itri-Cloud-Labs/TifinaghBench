@@ -6,3 +6,4 @@ export const cardSize = {width: 1200, height: 630};
 export const cardPath = (lang: Lang, slug?: string) => (slug ? `/og/${lang}/models/${slug}.png` : `/og/${lang}.png`);
 export const badgeHeight = 24;
 export const badgePath = (slug: string) => `/badge/${slug}.svg`;
+export const quizCardPath = (lang: Lang, score?: number) => (score === undefined ? `/og/${lang}/quiz.png` : `/og/${lang}/quiz/${score}.png`);

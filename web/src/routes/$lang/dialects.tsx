@@ -1,6 +1,7 @@
 import {createFileRoute} from '@tanstack/react-router';
 import {Frieze} from '../../components/Frieze';
 import {NameInTifinagh} from '../../components/NameInTifinagh';
+import {alphabet} from '../../data/alphabet';
 import {runs} from '../../data/runs';
 import {dialects} from '../../data/schema';
 import type {Lang} from '../../i18n';
@@ -16,12 +17,6 @@ export const Route = createFileRoute('/$lang/dialects')({
 	component: Dialects,
 });
 
-// The 33 letters of the IRCAM standard alphabet (Unicode Tifinagh block, U+2D30–U+2D7F).
-const alphabet: [string, string][] = [
-	['ⴰ', 'a'], ['ⴱ', 'b'], ['ⴳ', 'g'], ['ⴳⵯ', 'gʷ'], ['ⴷ', 'd'], ['ⴹ', 'ḍ'], ['ⴻ', 'e'], ['ⴼ', 'f'], ['ⴽ', 'k'], ['ⴽⵯ', 'kʷ'], ['ⵀ', 'h'],
-	['ⵃ', 'ḥ'], ['ⵄ', 'ɛ'], ['ⵅ', 'x'], ['ⵇ', 'q'], ['ⵉ', 'i'], ['ⵊ', 'j'], ['ⵍ', 'l'], ['ⵎ', 'm'], ['ⵏ', 'n'], ['ⵓ', 'u'], ['ⵔ', 'r'],
-	['ⵕ', 'ṛ'], ['ⵖ', 'ɣ'], ['ⵙ', 's'], ['ⵚ', 'ṣ'], ['ⵛ', 'c'], ['ⵜ', 't'], ['ⵟ', 'ṭ'], ['ⵡ', 'w'], ['ⵢ', 'y'], ['ⵣ', 'z'], ['ⵥ', 'ẓ'],
-];
 const spirants: [string, string, string][] = [
 	['ⴸ', 'YADH', 'ⴷ'], ['ⵝ', 'YATH', 'ⵜ'], ['ⴲ', 'YABH', 'ⴱ'], ['ⴿ', 'YAKHH', 'ⴽ'], ['ⴵ', 'BERBER ACADEMY YAJ', 'ⴳ'],
 ];

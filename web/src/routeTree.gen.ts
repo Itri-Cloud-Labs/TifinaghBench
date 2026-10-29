@@ -20,6 +20,8 @@ import { Route as LangMethodologyRouteImport } from './routes/$lang/methodology'
 import { Route as LangRunRouteImport } from './routes/$lang/run'
 import { Route as LangSupportRouteImport } from './routes/$lang/support'
 import { Route as LangModelsSlugRouteImport } from './routes/$lang/models/$slug'
+import { Route as LangQuizIndexRouteImport } from './routes/$lang/quiz/index'
+import { Route as LangQuizScoreRouteImport } from './routes/$lang/quiz/$score'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +78,16 @@ const LangModelsSlugRoute = LangModelsSlugRouteImport.update({
   path: '/models/$slug',
   getParentRoute: () => LangRoute,
 } as any)
+const LangQuizIndexRoute = LangQuizIndexRouteImport.update({
+  id: '/quiz/',
+  path: '/quiz/',
+  getParentRoute: () => LangRoute,
+} as any)
+const LangQuizScoreRoute = LangQuizScoreRouteImport.update({
+  id: '/quiz/$score',
+  path: '/quiz/$score',
+  getParentRoute: () => LangRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +101,8 @@ export interface FileRoutesByFullPath {
   '/$lang/support': typeof LangSupportRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/models/$slug': typeof LangModelsSlugRoute
+  '/$lang/quiz/$score': typeof LangQuizScoreRoute
+  '/$lang/quiz/': typeof LangQuizIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -101,6 +115,8 @@ export interface FileRoutesByTo {
   '/$lang/support': typeof LangSupportRoute
   '/$lang': typeof LangIndexRoute
   '/$lang/models/$slug': typeof LangModelsSlugRoute
+  '/$lang/quiz/$score': typeof LangQuizScoreRoute
+  '/$lang/quiz': typeof LangQuizIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -115,6 +131,8 @@ export interface FileRoutesById {
   '/$lang/support': typeof LangSupportRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/models/$slug': typeof LangModelsSlugRoute
+  '/$lang/quiz/$score': typeof LangQuizScoreRoute
+  '/$lang/quiz/': typeof LangQuizIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -130,6 +148,8 @@ export interface FileRouteTypes {
     | '/$lang/support'
     | '/$lang/'
     | '/$lang/models/$slug'
+    | '/$lang/quiz/$score'
+    | '/$lang/quiz/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -142,6 +162,8 @@ export interface FileRouteTypes {
     | '/$lang/support'
     | '/$lang'
     | '/$lang/models/$slug'
+    | '/$lang/quiz/$score'
+    | '/$lang/quiz'
   id:
     | '__root__'
     | '/'
@@ -155,6 +177,8 @@ export interface FileRouteTypes {
     | '/$lang/support'
     | '/$lang/'
     | '/$lang/models/$slug'
+    | '/$lang/quiz/$score'
+    | '/$lang/quiz/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -242,6 +266,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangModelsSlugRouteImport
       parentRoute: typeof LangRoute
     }
+    '/$lang/quiz/': {
+      id: '/$lang/quiz/'
+      path: '/quiz'
+      fullPath: '/$lang/quiz/'
+      preLoaderRoute: typeof LangQuizIndexRouteImport
+      parentRoute: typeof LangRoute
+    }
+    '/$lang/quiz/$score': {
+      id: '/$lang/quiz/$score'
+      path: '/quiz/$score'
+      fullPath: '/$lang/quiz/$score'
+      preLoaderRoute: typeof LangQuizScoreRouteImport
+      parentRoute: typeof LangRoute
+    }
   }
 }
 
@@ -254,6 +292,8 @@ interface LangRouteChildren {
   LangSupportRoute: typeof LangSupportRoute
   LangIndexRoute: typeof LangIndexRoute
   LangModelsSlugRoute: typeof LangModelsSlugRoute
+  LangQuizScoreRoute: typeof LangQuizScoreRoute
+  LangQuizIndexRoute: typeof LangQuizIndexRoute
 }
 
 const LangRouteChildren: LangRouteChildren = {
@@ -265,6 +305,8 @@ const LangRouteChildren: LangRouteChildren = {
   LangSupportRoute: LangSupportRoute,
   LangIndexRoute: LangIndexRoute,
   LangModelsSlugRoute: LangModelsSlugRoute,
+  LangQuizScoreRoute: LangQuizScoreRoute,
+  LangQuizIndexRoute: LangQuizIndexRoute,
 }
 
 const LangRouteWithChildren = LangRoute._addFileChildren(LangRouteChildren)

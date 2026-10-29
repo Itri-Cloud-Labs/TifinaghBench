@@ -5,7 +5,8 @@ import type {Run} from '../data/runs';
 import {rankedRuns, runs, siteUrl} from '../data/runs';
 import type {Lang} from '../i18n';
 import {formatters, languages, messagesFor} from '../i18n';
-import {cardPath, cardSize} from './paths';
+import {quizScores} from '../lib/quiz';
+import {cardPath, cardSize, quizCardPath} from './paths';
 
 // Share images for link previews, drawn with Satori at build time (scripts/cards.mjs).
 // Satori lays out with flexbox only, so every element that holds more than text sets display: flex.
@@ -134,6 +135,35 @@ function SiteCard({lang}: {lang: Lang}) {
 	);
 }
 
+// The quiz card: four letter tiles, and the player's score when the link carries one.
+// The bottom-left corner stays empty, since X lays the page title over it.
+function QuizCard({lang, score}: {lang: Lang; score?: number}) {
+	const t = messagesFor(lang);
+	const tiles = ['ⵣ', 'ⴰ', 'ⵢ', 'ⵜ'];
+	return (
+		<Frame>
+			<div style={{display: 'flex', flex: 1, alignItems: 'center', gap: 56, paddingBottom: 40}}>
+				<div style={{display: 'flex', flexDirection: 'column', flex: 1}}>
+					<div style={{fontSize: score === undefined ? 60 : 44, fontWeight: 700, letterSpacing: '-0.025em', lineHeight: 1.08}}>{t.quiz.cardTitle}</div>
+					{score !== undefined && (
+						<div style={{display: 'flex', alignItems: 'baseline', gap: 14, marginTop: 18, marginLeft: -4}}>
+							<span style={{fontSize: 150, fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1, color: color.clay}}>{score}</span>
+							<span style={{fontSize: 56, fontWeight: 700, color: color.ink3}}>/ 10</span>
+						</div>
+					)}
+					{score !== undefined && <div style={{fontSize: 30, fontWeight: 600, marginTop: 8}}>{t.quiz.cardScore(score)}</div>}
+					<div style={{fontSize: 26, fontWeight: 500, color: color.ink2, marginTop: score === undefined ? 28 : 10}}>{t.quiz.cardCta}</div>
+				</div>
+				<div style={{display: 'flex', flexWrap: 'wrap', width: 332, gap: 12}}>
+					{tiles.map((letter, i) => (
+						<div key={letter} style={{...row, justifyContent: 'center', width: 160, height: 160, borderRadius: 4, background: i === 0 ? color.clay : color.tile, color: i === 0 ? color.cream : color.ink, fontFamily: 'Noto Sans Tifinagh', fontSize: 96}}>{letter}</div>
+					))}
+				</div>
+			</div>
+		</Frame>
+	);
+}
+
 export {cardSize};
 
 export function cards(): {path: string; node: ReactNode}[] {
@@ -142,5 +172,7 @@ export function cards(): {path: string; node: ReactNode}[] {
 		...runs
 			.filter((run): run is Run & {score: NonNullable<Run['score']>} => run.score !== null)
 			.map(run => ({path: cardPath(lang, run.slug), node: <ModelCard run={run} lang={lang} />})),
+		{path: quizCardPath(lang), node: <QuizCard lang={lang} />},
+		...quizScores.map(score => ({path: quizCardPath(lang, score), node: <QuizCard lang={lang} score={score} />})),
 	]);
 }

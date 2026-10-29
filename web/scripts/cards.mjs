@@ -14,7 +14,10 @@ const font = weight => ({
 	style: 'normal',
 	data: fs.readFileSync(new URL(`node_modules/@fontsource/archivo/files/archivo-latin-${weight}-normal.woff`, root)),
 });
-const fonts = [500, 600, 700, 800].map(font);
+const fonts = [
+	...[500, 600, 700, 800].map(font),
+	{name: 'Noto Sans Tifinagh', weight: 400, style: 'normal', data: fs.readFileSync(new URL('node_modules/@fontsource/noto-sans-tifinagh/files/noto-sans-tifinagh-tifinagh-400-normal.woff', root))},
+];
 
 // Vite resolves the import.meta.glob calls that load /results, as it does for the pages.
 const server = await createServer({
