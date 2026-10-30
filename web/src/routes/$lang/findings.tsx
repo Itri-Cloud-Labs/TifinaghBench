@@ -13,7 +13,7 @@ import {useI18n} from '../../lib/lang';
 export const Route = createFileRoute('/$lang/findings')({
 	head: ({params}) => {
 		const t = messagesFor(params.lang as Lang);
-		return pageHead(params.lang as Lang, '/findings', t.findings.title, t.findings.lede);
+		return pageHead(params.lang as Lang, '/findings', t.meta.titles.findings, t.findings.lede);
 	},
 	component: Findings,
 });

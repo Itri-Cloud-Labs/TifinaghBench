@@ -2,6 +2,16 @@ export const en = {
 	meta: {
 		siteName: 'TifinaghBench',
 		description: 'How well do AI models know Amazigh vocabulary written in Tifinagh? A closed-book benchmark across Standard Moroccan Amazigh, Tarifit and Kabyle.',
+		titles: {
+			compare: 'Compare AI models on Amazigh',
+			findings: 'How AI models handle Amazigh: findings',
+			methodology: 'How the Amazigh AI benchmark works',
+			dialects: 'Tifinagh alphabet and Amazigh dialects',
+			run: 'Run the Amazigh benchmark on your model',
+			support: 'Support the benchmark',
+		},
+		modelTitle: (name: string) => `${name}: Amazigh benchmark score`,
+		modelDescription: (name: string, score: string, rank: number | null, total: number) => `${name} scored ${score} out of 100 on TifinaghBench${rank !== null ? `, rank ${rank} of ${total}` : ''}. See how it handles Amazigh words in Tifinagh, by dialect and task.`,
 	},
 	nav: {
 		skip: 'Skip to content',

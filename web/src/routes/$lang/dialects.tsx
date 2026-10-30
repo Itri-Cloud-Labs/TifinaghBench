@@ -12,7 +12,7 @@ import {useI18n} from '../../lib/lang';
 export const Route = createFileRoute('/$lang/dialects')({
 	head: ({params}) => {
 		const t = messagesFor(params.lang as Lang);
-		return pageHead(params.lang as Lang, '/dialects', t.dialects.title, t.dialects.lede);
+		return pageHead(params.lang as Lang, '/dialects', t.meta.titles.dialects, t.dialects.lede);
 	},
 	component: Dialects,
 });

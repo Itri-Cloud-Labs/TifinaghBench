@@ -1,12 +1,27 @@
 import {createFileRoute, Link} from '@tanstack/react-router';
 import {Leaderboard} from '../../components/Leaderboard';
-import {rankedRuns, runs} from '../../data/runs';
+import {lab, rankedRuns, runs, siteUrl} from '../../data/runs';
 import type {Lang} from '../../i18n';
+import {messagesFor} from '../../i18n';
 import {pageHead} from '../../lib/head';
 import {useI18n} from '../../lib/lang';
 
 export const Route = createFileRoute('/$lang/')({
-	head: ({params}) => pageHead(params.lang as Lang, '', null),
+	head: ({params}) => {
+		const lang = params.lang as Lang;
+		const t = messagesFor(lang);
+		// Tells search engines the site's name and who runs it.
+		const site = {
+			'@context': 'https://schema.org',
+			'@type': 'WebSite',
+			name: t.meta.siteName,
+			url: `${siteUrl}/${lang}`,
+			inLanguage: lang,
+			description: t.meta.description,
+			publisher: {'@type': 'Organization', name: lab.name, url: lab.url},
+		};
+		return {...pageHead(lang, '', null), scripts: [{type: 'application/ld+json', children: JSON.stringify(site)}]};
+	},
 	component: Home,
 });
 

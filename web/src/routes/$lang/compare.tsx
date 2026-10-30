@@ -17,7 +17,10 @@ const max = 4;
 
 export const Route = createFileRoute('/$lang/compare')({
 	validateSearch: (search: Record<string, unknown>): Search => (typeof search.models === 'string' ? {models: search.models} : {}),
-	head: ({params}) => pageHead(params.lang as Lang, '/compare', messagesFor(params.lang as Lang).compare.title),
+	head: ({params}) => {
+		const t = messagesFor(params.lang as Lang);
+		return pageHead(params.lang as Lang, '/compare', t.meta.titles.compare, t.compare.lede);
+	},
 	component: Compare,
 });
 

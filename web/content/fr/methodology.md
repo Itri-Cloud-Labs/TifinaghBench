@@ -1,5 +1,3 @@
-# Méthodologie
-
 ## Tâches
 
 | Tâche | Le modèle voit | Le modèle écrit | Notation |

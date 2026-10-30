@@ -1,5 +1,3 @@
-# Methodology
-
 ## Tasks
 
 | Task | Model sees | Model writes | Scored by |

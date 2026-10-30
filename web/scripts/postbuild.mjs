@@ -37,3 +37,25 @@ if (words.length) {
 	process.exit(1);
 }
 console.log('No Tifinagh words in the build');
+
+// Search engines get every page that is its own canonical URL. Share links such as /quiz/7 point elsewhere, so they stay out.
+const canonicals = [];
+const collect = dir => {
+	for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+		const path = new URL(entry.name + (entry.isDirectory() ? '/' : ''), dir);
+		if (entry.isDirectory()) collect(path);
+		else if (entry.name === 'index.html') {
+			const page = path.pathname.split('/dist/client')[1].replace(/\/?index\.html$/, '');
+			const canonical = fs.readFileSync(path, 'utf8').match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+			if (canonical?.endsWith(page) && page) canonicals.push(canonical);
+		}
+	}
+};
+collect(new URL('../dist/client/', import.meta.url));
+const site = new URL(canonicals[0]).origin;
+fs.writeFileSync(
+	new URL('../dist/client/sitemap.xml', import.meta.url),
+	`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${canonicals.sort().map(url => `\t<url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`,
+);
+fs.writeFileSync(new URL('../dist/client/robots.txt', import.meta.url), `User-agent: *\nAllow: /\n\nSitemap: ${site}/sitemap.xml\n`);
+console.log(`Wrote sitemap.xml with ${canonicals.length} pages, and robots.txt`);

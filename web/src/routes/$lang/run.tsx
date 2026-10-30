@@ -8,7 +8,7 @@ import {useI18n} from '../../lib/lang';
 export const Route = createFileRoute('/$lang/run')({
 	head: ({params}) => {
 		const t = messagesFor(params.lang as Lang);
-		return pageHead(params.lang as Lang, '/run', t.run.title, t.run.lede);
+		return pageHead(params.lang as Lang, '/run', t.meta.titles.run, t.run.lede);
 	},
 	component: RunIt,
 });
