@@ -15,7 +15,7 @@ export const Route = createFileRoute('/$lang/quiz/$score')({
 		const lang = params.lang as Lang;
 		const t = messagesFor(lang);
 		const score = Number(params.score);
-		return pageHead(lang, `/quiz/${score}`, t.quiz.title, t.quiz.challenge(score), {image: quizCardPath(lang, score), alt: t.quiz.cardAlt(score)});
+		return pageHead(lang, `/quiz/${score}`, t.quiz.title, t.quiz.challenge(score), {image: quizCardPath(lang, score), alt: t.quiz.cardAlt(score)}, '/quiz');
 	},
 	component: Challenge,
 });

@@ -1,5 +1,6 @@
 import {useEffect} from 'react';
 import {createFileRoute} from '@tanstack/react-router';
+import {siteUrl} from '../data/runs';
 
 // Static hosts serve this page at /: a meta refresh sends everyone to /en/, and the script
 // sends French browsers to /fr/ first.
@@ -8,9 +9,8 @@ export const Route = createFileRoute('/')({
 		meta: [
 			{title: 'TifinaghBench'},
 			{httpEquiv: 'refresh', content: '1; url=/en'},
-			{name: 'robots', content: 'noindex'},
 		],
-		links: [{rel: 'canonical', href: '/en'}],
+		links: [{rel: 'canonical', href: `${siteUrl}/en`}],
 		scripts: [{children: `try{location.replace(/^fr\\b/i.test(navigator.language)?'/fr':'/en')}catch(e){}`}],
 	}),
 	component: LanguageChoice,

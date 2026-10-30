@@ -10,7 +10,7 @@ import {useI18n} from '../../lib/lang';
 export const Route = createFileRoute('/$lang/support')({
 	head: ({params}) => {
 		const t = messagesFor(params.lang as Lang);
-		return pageHead(params.lang as Lang, '/support', t.support.title, t.support.lede);
+		return pageHead(params.lang as Lang, '/support', t.meta.titles.support, t.support.lede);
 	},
 	component: Support,
 });

@@ -21,7 +21,7 @@ const docs = {en: {methodology: methodologyEn, ranking: rankingEn}, fr: {methodo
 export const Route = createFileRoute('/$lang/methodology')({
 	head: ({params}) => {
 		const t = messagesFor(params.lang as Lang);
-		const head = pageHead(params.lang as Lang, '/methodology', t.methodology.title, t.methodology.lede);
+		const head = pageHead(params.lang as Lang, '/methodology', t.meta.titles.methodology, t.methodology.lede);
 		return {...head, links: [...head.links, {rel: 'stylesheet', href: katexCss}]};
 	},
 	component: Methodology,

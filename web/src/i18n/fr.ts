@@ -4,6 +4,16 @@ export const fr: Messages = {
 	meta: {
 		siteName: 'TifinaghBench',
 		description: 'Les modèles d’IA connaissent-ils le vocabulaire amazigh écrit en tifinagh ? Un benchmark à livre fermé en amazighe standard marocain, en tarifit et en kabyle.',
+		titles: {
+			compare: 'Comparer les modèles d’IA sur l’amazighe',
+			findings: 'Les modèles d’IA face à l’amazighe : résultats',
+			methodology: 'Comment fonctionne le benchmark d’amazighe',
+			dialects: 'Alphabet tifinagh et dialectes amazighes',
+			run: 'Lancer le benchmark d’amazighe sur votre modèle',
+			support: 'Soutenir le benchmark',
+		},
+		modelTitle: (name: string) => `${name} : score au benchmark d’amazighe`,
+		modelDescription: (name: string, score: string, rank: number | null, total: number) => `${name} obtient ${score} sur 100 sur TifinaghBench${rank !== null ? `, rang ${rank} sur ${total}` : ''}. Voyez comment il traite les mots amazighs en tifinagh, par dialecte et par tâche.`,
 	},
 	nav: {
 		skip: 'Aller au contenu',

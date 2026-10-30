@@ -218,9 +218,6 @@
 		max-width: 70ch;
 		color: var(--ink);
 	}
-	.prose-doc h1 {
-		display: none;
-	}
 	.prose-doc h2 {
 		font-size: var(--text-2xl);
 		margin: 3rem 0 0.75rem;

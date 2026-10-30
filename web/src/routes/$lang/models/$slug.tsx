@@ -28,7 +28,9 @@ export const Route = createFileRoute('/$lang/models/$slug')({
 		const lang = params.lang as Lang;
 		const t = messagesFor(lang);
 		const card = run?.score ? {image: cardPath(lang, run.slug), alt: t.card.alt(run.name, formatters(lang).score(run.score.value))} : undefined;
-		return pageHead(lang, `/models/${params.slug}`, run ? `${run.name} (${t.reasoning[run.reasoning] ?? run.reasoning})` : null, undefined, card);
+		const name = run && `${run.name} (${t.reasoning[run.reasoning] ?? run.reasoning})`;
+		const description = name && run.score ? t.meta.modelDescription(name, formatters(lang).score(run.score.value), run.rank, rankedRuns().length) : undefined;
+		return pageHead(lang, `/models/${params.slug}`, name ? t.meta.modelTitle(name) : null, description, card);
 	},
 	component: ModelPage,
 });
