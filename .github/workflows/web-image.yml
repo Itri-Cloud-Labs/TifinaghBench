@@ -72,3 +72,17 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Redeploy on Coolify
+        if: github.event_name != 'pull_request'
+        env:
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          curl --fail-with-body --silent --show-error --retry 3 \
+            --request POST \
+            --header "Authorization: Bearer $COOLIFY_TOKEN" \
+            --header "Content-Type: application/json" \
+            --header "Accept: application/json" \
+            --data '{"uuid":"ntoqi04kh89kj547q2c4cw4r","force":false}' \
+            --write-out '\nHTTP %{http_code}\n' \
+            "https://coolify.itri.cloud/api/v1/deploy"
