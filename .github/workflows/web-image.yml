@@ -83,6 +83,6 @@ jobs:
             --header "Authorization: Bearer $COOLIFY_TOKEN" \
             --header "Content-Type: application/json" \
             --header "Accept: application/json" \
-            --data '{"uuid":"ntoqi04kh89kj547q2c4cw4r","force":false}' \
+            --data '{"uuid":"fgust4vyiwggyokspahpjj1u","force":false}' \
             --write-out '\nHTTP %{http_code}\n' \
             "https://coolify.itri.cloud/api/v1/deploy"
