@@ -1,5 +1,5 @@
 // Display metadata the result exports don't carry. Add an entry when a new model's results land.
-export type Lab = 'OpenAI' | 'Anthropic' | 'Google' | 'DeepSeek' | 'Zhipu AI' | 'MiniMax' | 'Unknown';
+export type Lab = 'OpenAI' | 'Anthropic' | 'Google' | 'DeepSeek' | 'Zhipu AI' | 'MiniMax' | 'Moonshot AI' | 'Unknown';
 
 export type ModelInfo = {name: string; lab: Lab};
 
@@ -15,6 +15,7 @@ export const models: Record<string, ModelInfo> = {
 	'opencode-go/glm-5.3-flash': {name: 'GLM 5.3 Flash', lab: 'Zhipu AI'},
 	'opencode-go/gemini-4-argon': {name: 'Gemini 4 Argon', lab: 'Google'},
 	'openrouter/minimax/minimax-m3.1-flash': {name: 'MiniMax M3.1 Flash', lab: 'MiniMax'},
+	'openrouter/moonshotai/kimi-k3.1-pro': {name: 'Kimi K3.1 Pro', lab: 'Moonshot AI'},
 };
 
 export function modelInfo(id: string): ModelInfo {
