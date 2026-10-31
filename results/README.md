@@ -15,12 +15,13 @@ All runs use the same setup: 1,000 words per dialect, seed 1, batch size 100, al
 | 5 | [GPT-6.1-Terra](2026-10-28-codex-gpt-6.1-terra-high/report.md) | Codex | high | **20.9** | 94.5 | 20.4 |
 | 6 | [GPT-6-Luna](2026-10-19-codex-gpt-6-luna-high/report.md) | Codex | high | **18.2** | 88.3 | 17.7 |
 | 7 | [DeepSeek v4.1 Flash](2026-10-20-opencode-go-deepseek-v4.1-flash-high/report.md) | OpenCode | high | **16.8** | 93.1 | 16.3 |
-| 8 | [Claude Sonnet 5.5](2026-10-20-claude-code-claude-sonnet-5-5-high/report.md) | Claude Code | high | **12.9** | 89.4 | 12.3 |
-| 9 | [GLM 5.3 Flash](2026-10-20-opencode-go-glm-5.3-flash-high/report.md) | OpenCode | high | **12.0** | 80.6 | 11.7 |
-| 10 | [Claude Haiku 5.5](2026-10-20-claude-code-claude-haiku-5-5-high/report.md) | Claude Code | high | **8.0** | 81.3 | 7.9 |
-| 11 | [MiniMax M3.1 Flash](2026-10-24-openrouter-minimax-m3.1-flash-high/report.md) | OpenCode (OpenRouter) | high | **1.4** | 56.5 | 1.4 |
+| 8 | [Kimi K3.1 Pro](2026-10-31-opencode-kimi-k3.1-pro-high/report.md) | OpenCode | high | **13.8** | 92.0 | 13.2 |
+| 9 | [Claude Sonnet 5.5](2026-10-20-claude-code-claude-sonnet-5-5-high/report.md) | Claude Code | high | **12.9** | 89.4 | 12.3 |
+| 10 | [GLM 5.3 Flash](2026-10-20-opencode-go-glm-5.3-flash-high/report.md) | OpenCode | high | **12.0** | 80.6 | 11.7 |
+| 11 | [Claude Haiku 5.5](2026-10-20-claude-code-claude-haiku-5-5-high/report.md) | Claude Code | high | **8.0** | 81.3 | 7.9 |
+| 12 | [MiniMax M3.1 Flash](2026-10-24-openrouter-minimax-m3.1-flash-high/report.md) | OpenCode (OpenRouter) | high | **1.4** | 56.5 | 1.4 |
 
-At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%). Gemini 4 Argon leads by 8 points, far outside that margin, mostly on Tifinagh → English. GPT-6.1-Sol and GPT-6-Astra are tied. Claude Opus 5.5 is 2–2.6 points behind them, at the edge of that margin, and well ahead of GPT-6.1-Terra, which is in turn clearly ahead of GPT-6-Luna. GPT-6-Luna and DeepSeek v4.1 Flash are tied. Claude Sonnet 5.5 and GLM 5.3 Flash are also tied, clearly behind that pair. Claude Haiku 5.5 is also the judge, so it graded its own Tifinagh → English answers; it still scored lower on that task than every model except MiniMax M3.1 Flash. MiniMax M3.1 Flash is last by a wide margin: it transliterates about half the words correctly but almost never knows what they mean.
+At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%). Gemini 4 Argon leads by 8 points, far outside that margin, mostly on Tifinagh → English. GPT-6.1-Sol and GPT-6-Astra are tied. Claude Opus 5.5 is 2–2.6 points behind them, at the edge of that margin, and well ahead of GPT-6.1-Terra, which is in turn clearly ahead of GPT-6-Luna. GPT-6-Luna and DeepSeek v4.1 Flash are tied. Kimi K3.1 Pro, Claude Sonnet 5.5 and GLM 5.3 Flash sit clearly behind that pair: Kimi K3.1 Pro is tied with Claude Sonnet 5.5, which is tied with GLM 5.3 Flash, but Kimi K3.1 Pro is clearly ahead of GLM 5.3 Flash. Claude Haiku 5.5 is also the judge, so it graded its own Tifinagh → English answers; it still scored lower on that task than every model except MiniMax M3.1 Flash. MiniMax M3.1 Flash is last by a wide margin: it transliterates about half the words correctly but almost never knows what they mean.
 
 ## Scores by dialect and task
 
@@ -35,6 +36,7 @@ Tifinagh → English / English → Tifinagh / Tifinagh ↔ Latin, in %.
 | GPT-6.1-Terra (high) | 20.0 / 6.2 / 97.2 | 27.6 / 3.8 / 90.6 | 52.2 / 15.7 / 95.8 |
 | GPT-6-Luna (high) | 16.1 / 3.5 / 94.9 | 19.1 / 2.7 / 75.6 | 49.5 / 18.2 / 94.4 |
 | DeepSeek v4.1 Flash (high) | 13.3 / 5.4 / 99.2 | 17.0 / 3.5 / 82.6 | 44.0 / 17.4 / 97.4 |
+| Kimi K3.1 Pro (high) | 10.3 / 4.1 / 99.4 | 14.8 / 2.3 / 79.5 | 36.6 / 14.6 / 97.0 |
 | Claude Sonnet 5.5 (high) | 9.3 / 0.9 / 97.4 | 14.1 / 2.2 / 78.0 | 38.6 / 12.0 / 92.8 |
 | GLM 5.3 Flash (high) | 9.3 / 2.6 / 90.7 | 12.0 / 1.9 / 60.6 | 35.2 / 10.9 / 90.5 |
 | Claude Haiku 5.5 (high) | 3.9 / 0.8 / 89.0 | 8.5 / 0.9 / 61.9 | 25.4 / 8.4 / 93.0 |
@@ -52,8 +54,9 @@ Each folder has `report.md` (score tables), `summary.json` (all scores and count
 - [`2026-10-19-codex-gpt-6-luna-high`](2026-10-19-codex-gpt-6-luna-high/): 1,003,026 input / 282,988 output tokens (126,226 reasoning); model cost not reported, judge cost $0.20.
 - [`2026-10-20-opencode-go-deepseek-v4.1-flash-high`](2026-10-20-opencode-go-deepseek-v4.1-flash-high/): 212,104 input / 164,952 output tokens (2,826,343 reasoning); model cost $1.83, judge cost $0.22.
 - [`2026-10-20-opencode-go-glm-5.3-flash-high`](2026-10-20-opencode-go-glm-5.3-flash-high/): 212,948 input / 226,739 output tokens (1,213,801 reasoning); model cost $0.75, judge cost $0.23.
+- [`2026-10-31-opencode-kimi-k3.1-pro-high`](2026-10-31-opencode-kimi-k3.1-pro-high/): 230,337 input / 165,589 output tokens (934,303 reasoning); model cost $11.43 as reported by OpenCode, judge cost $0.20.
 - [`2026-10-20-claude-code-claude-sonnet-5-5-high`](2026-10-20-claude-code-claude-sonnet-5-5-high/): 736,459 input / 477,488 output tokens (238,873 reasoning); model cost $5.98 as reported by Claude Code (API-equivalent, run on a subscription), judge cost $0.22.
 - [`2026-10-20-claude-code-claude-haiku-5-5-high`](2026-10-20-claude-code-claude-haiku-5-5-high/): 784,886 input / 1,170,057 output tokens (923,891 reasoning); model cost $0.69, judge cost $0.22.
 - [`2026-10-24-openrouter-minimax-m3.1-flash-high`](2026-10-24-openrouter-minimax-m3.1-flash-high/): 223,193 input / 144,977 output tokens (2,268,884 reasoning); model cost $1.48 (OpenRouter, through OpenCode), judge cost $0.20.
 
-GPT-6-Astra and Claude Sonnet 5.5 stopped at a usage limit (Codex and Claude Code respectively) and were resumed with the same settings; token totals cover both invocations. Claude Opus 5.5 stopped at the Claude Code usage limit twice and was finished on a second Claude account, with the same settings throughout; token totals cover all three invocations. Gemini 4 Argon stopped at OpenCode Go usage limits (5-hour and weekly) several times and was resumed with the same settings. Its Tarifit batches took longer than the default 600 s session timeout, so the last part ran with a 1,800 s timeout; the timeout has no effect on scoring. GLM 5.3 Flash timed out or broke off in 9 of its 102 answer batches; every affected question was answered on retry, so no question counts as unanswered.
+GPT-6-Astra and Claude Sonnet 5.5 stopped at a usage limit (Codex and Claude Code respectively) and were resumed with the same settings; token totals cover both invocations. Claude Opus 5.5 stopped at the Claude Code usage limit twice and was finished on a second Claude account, with the same settings throughout; token totals cover all three invocations. Gemini 4 Argon stopped at OpenCode Go usage limits (5-hour and weekly) several times and was resumed with the same settings. Its Tarifit batches took longer than the default 600 s session timeout, so the last part ran with a 1,800 s timeout; the timeout has no effect on scoring. Kimi K3.1 Pro stopped at OpenCode Go usage limits (5-hour and weekly) at 6,394 of 8,980 questions and was finished on OpenRouter, with the same model and settings; `config.json` shows the OpenRouter ID, and token totals cover every invocation. Batches that timed out or were interrupted were retried, so no question counts as unanswered. GLM 5.3 Flash timed out or broke off in 9 of its 102 answer batches; every affected question was answered on retry, so no question counts as unanswered.
