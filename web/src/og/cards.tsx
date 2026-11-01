@@ -15,6 +15,11 @@ const host = new URL(siteUrl).host;
 
 const row: CSSProperties = {display: 'flex', alignItems: 'center'};
 
+// Right-aligned because X lays the page title over the bottom-left corner.
+function Footer({text}: {text: string}) {
+	return <div style={{alignSelf: 'flex-end', fontSize: 21, fontWeight: 500, color: color.ink3}}>{text}</div>;
+}
+
 function Mark({size}: {size: number}) {
 	return (
 		<svg width={size} height={size} viewBox="0 0 32 32">
@@ -104,7 +109,7 @@ function ModelCard({run, lang}: {run: Run & {score: NonNullable<Run['score']>}; 
 					{run.script && <Fact label={t.card.script} value={f.score(run.script.value)} last />}
 				</div>
 			</div>
-			<div style={{fontSize: 21, fontWeight: 500, color: color.ink3}}>{t.card.footer}</div>
+			<Footer text={t.card.footer} />
 		</Frame>
 	);
 }
@@ -130,7 +135,7 @@ function SiteCard({lang}: {lang: Lang}) {
 					</div>
 				))}
 			</div>
-			<div style={{fontSize: 21, fontWeight: 500, color: color.ink3}}>{t.card.footer}</div>
+			<Footer text={t.card.footer} />
 		</Frame>
 	);
 }
