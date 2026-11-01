@@ -1,7 +1,7 @@
 name: Website image
 
 # Builds the website's Docker image on Blacksmith and pushes it to GHCR.
-# Pull requests build the image without pushing it.
+# Pull requests build the image without pushing it. Types and tests must pass first, so a failure never deploys.
 on:
   push:
     branches: [main]
@@ -30,7 +30,26 @@ permissions:
   packages: write
 
 jobs:
+  check:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+
   build:
+    needs: check
     runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v7
