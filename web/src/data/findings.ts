@@ -24,6 +24,17 @@ export const median = (values: number[]) => {
 // Ranked runs only, in leaderboard order, so every chart lists the models the same way.
 export const findingRuns = (): Scored[] => rankedRuns().filter((run): run is Scored => run.score !== null && run.script !== null);
 
+// What the model's answers cost, without judging. Codex reports no real cost, as on the model pages.
+export const runCost = (run: Run) => {
+	const cost = run.info.cost_usd;
+	return run.harness !== 'codex' && typeof cost === 'number' && cost > 0 ? cost : null;
+};
+export type PricedRun = Scored & {cost: number};
+export const pricedRuns = (): PricedRun[] => findingRuns().flatMap(run => {
+	const cost = runCost(run);
+	return cost === null ? [] : [{...run, cost}];
+});
+
 // Tifinagh → English and English → Tifinagh, each averaged over the three dialects.
 export const directions = (run: Run) => ({
 	read: mean(dialects.map(dialect => cellMean(run, dialect, 'tif-to-en'))),

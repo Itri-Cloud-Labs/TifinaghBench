@@ -19,11 +19,13 @@ export function formatters(lang: Lang) {
 	const usd = new Intl.NumberFormat(lang === 'en' ? 'en-US' : locale, {style: 'currency', currency: 'USD', minimumFractionDigits: 2});
 	const date = new Intl.DateTimeFormat(locale, {dateStyle: 'medium', timeZone: 'UTC'});
 	const dateTime = new Intl.DateTimeFormat(locale, {dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC'});
+	const integerOrDecimal = (value: number) => new Intl.NumberFormat(locale, {maximumFractionDigits: 1}).format(value);
 	return {
 		score: (value: number | null | undefined) => value === null || value === undefined ? '—' : fixed.format(value),
 		integer: (value: number) => integer.format(value),
 		percent: (value: number) => percent.format(value),
 		usd: (value: number) => usd.format(value),
+		usdShort: (value: number) => (lang === 'en' ? `$${integerOrDecimal(value)}` : `${integerOrDecimal(value)} $`),
 		date: (iso: string) => date.format(new Date(iso)),
 		dateTime: (iso: string) => `${dateTime.format(new Date(iso))} UTC`,
 		list: (items: string[]) => new Intl.ListFormat(locale, {style: 'long', type: 'conjunction'}).format(items),

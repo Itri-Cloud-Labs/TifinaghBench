@@ -22,6 +22,7 @@ export function Footer() {
 					<li><Link to="/$lang/methodology" params={{lang}} className="text-clay-ink">{t.nav.methodology}</Link></li>
 					<li><Link to="/$lang/run" params={{lang}} className="text-clay-ink">{t.nav.run}</Link></li>
 					<li><Link to="/$lang/support" params={{lang}} className="text-clay-ink">{t.nav.support}</Link></li>
+					<li><a href="/leaderboard.json" className="text-clay-ink">{t.footer.data}</a></li>
 					<li><a href={githubUrl} className="text-clay-ink">{t.footer.source}</a></li>
 				</ul>
 			</div>
