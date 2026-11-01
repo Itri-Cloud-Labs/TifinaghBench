@@ -48,6 +48,11 @@ try {
 		fs.writeFileSync(out, await satori(node, {height: badgeHeight, fonts}));
 	}
 	console.log(`Wrote ${badges().length} badges to dist/client/badge/`);
+
+	const {leaderboard, llmsTxt} = await server.ssrLoadModule('/src/data/openData.ts');
+	fs.writeFileSync(new URL('dist/client/leaderboard.json', root), `${JSON.stringify(leaderboard(), null, '\t')}\n`);
+	fs.writeFileSync(new URL('dist/client/llms.txt', root), llmsTxt());
+	console.log('Wrote leaderboard.json and llms.txt');
 } finally {
 	await server.close();
 }

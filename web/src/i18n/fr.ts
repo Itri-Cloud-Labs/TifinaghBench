@@ -196,6 +196,15 @@ export const fr: Messages = {
 			text: 'Score de sens dans chaque dialecte, les deux tâches de sens réunies. Lisez l’écart avec prudence : le lexique kabyle est le plus petit des trois et ses graphies tifinagh ont été générées à partir de l’écriture latine ; ce n’est donc pas tout à fait le même test.',
 			caption: 'Score de sens sur 100 par dialecte.',
 		},
+		value: {
+			title: (ratio: string) => `Parmi les coûts connus, le modèle au meilleur score a coûté environ ${ratio} fois plus cher que le moins cher`,
+			text: (best: string, bestScore: string, bestCost: string, cheap: string, cheapScore: string, cheapCost: string) => `${best} obtient ${bestScore} sur 100 pour ${bestCost}. ${cheap} obtient ${cheapScore} pour ${cheapCost}. Chaque coût couvre un essai complet, soit environ 9 000 questions.`,
+			hint: 'Survolez un point pour voir son coût et son score.',
+			axis: 'Coût d’un essai en dollars américains (échelle logarithmique)',
+			cost: 'Coût',
+			score: 'TifinaghBench',
+			caption: (missing: string | null) => `Score TifinaghBench sur 100 selon le coût des réponses du modèle, hors évaluation. Les coûts sont ceux indiqués par chaque outil : les prix peuvent varier selon le fournisseur, et ceux de Claude Code sont des équivalents API.${missing ? ` Codex n’indique aucun coût : ${missing} ne figurent donc pas ici.` : ''}`,
+		},
 		conventions: {
 			title: (script: string, meaning: string) => `Les conventions d’écriture font varier le score d’écriture jusqu’à ${script} points, et le score TifinaghBench d’au plus ${meaning}`,
 			text: 'Les dictionnaires écrivent les mêmes sons de façons différentes, et le dictionnaire tarifit omet le schwa de façon irrégulière. La notation stricte n’accepte que la graphie du dictionnaire ; les scores officiels acceptent aussi les conventions standard. Cela sauve beaucoup de translittérations, mais presque aucun sens : un modèle qui ne connaît pas un mot ne gagne rien aux règles d’orthographe.',
@@ -314,6 +323,7 @@ export const fr: Messages = {
 		datasets: 'Les jeux de données seront publiés avec l’accord des ayants droit.',
 		updated: (date: string) => `Résultats mis à jour le ${date}.`,
 		source: 'Code source sur GitHub',
+		data: 'Données (JSON)',
 	},
 	notFound: {title: 'Page introuvable', text: 'Cette page n’existe pas, ou elle a été déplacée.', home: 'Retour au classement'},
 	difference: {

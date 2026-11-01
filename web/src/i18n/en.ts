@@ -191,6 +191,15 @@ export const en = {
 			text: 'Meaning score in each dialect, both meaning tasks together. Read the gap with care: the Kabyle lexicon is the smallest of the three and its Tifinagh spellings were generated from the Latin script, so it is not quite the same test.',
 			caption: 'Meaning score out of 100 per dialect.',
 		},
+		value: {
+			title: (ratio: string) => `The highest-scoring model with a known cost was about ${ratio} times as expensive as the cheapest`,
+			text: (best: string, bestScore: string, bestCost: string, cheap: string, cheapScore: string, cheapCost: string) => `${best} scored ${bestScore} out of 100 for ${bestCost}. ${cheap} scored ${cheapScore} for ${cheapCost}. Each cost covers one full benchmark run, about 9,000 questions.`,
+			hint: 'Hover a dot for its cost and score.',
+			axis: 'Cost of one benchmark run in US dollars (log scale)',
+			cost: 'Cost',
+			score: 'TifinaghBench',
+			caption: (missing: string | null) => `TifinaghBench score out of 100 against the cost of the model’s answers, without judging. Costs are what each harness reported: prices can differ by provider, and Claude Code’s are API equivalents.${missing ? ` Codex reports no cost, so ${missing} are not shown.` : ''}`,
+		},
 		conventions: {
 			title: (script: string, meaning: string) => `Spelling conventions move script scores by up to ${script} points, and TifinaghBench by at most ${meaning}`,
 			text: 'Dictionaries write the same sounds differently, and the Tarifit dictionary drops the schwa irregularly. Strict scoring accepts only the dictionary’s own spelling; the official scores also accept the standard conventions. That rescues many transliterations but hardly any meanings: a model that does not know a word gains nothing from spelling rules.',
@@ -309,6 +318,7 @@ export const en = {
 		datasets: 'Datasets will be released once the rights holders agree.',
 		updated: (date: string) => `Results updated ${date}.`,
 		source: 'Source on GitHub',
+		data: 'Data (JSON)',
 	},
 	notFound: {title: 'Page not found', text: 'This page does not exist, or it moved.', home: 'Back to the leaderboard'},
 	difference: {

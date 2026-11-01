@@ -2,8 +2,9 @@ import {createFileRoute} from '@tanstack/react-router';
 import type {DotRow} from '../../components/DotRows';
 import {DotRows} from '../../components/DotRows';
 import {Cliff} from '../../components/Cliff';
+import {CostChart} from '../../components/CostChart';
 import {rankedRuns} from '../../data/runs';
-import {conventions, dialectScores, directions, easiestDialect, findingRuns, median, writingCer} from '../../data/findings';
+import {conventions, dialectScores, directions, easiestDialect, findingRuns, median, pricedRuns, writingCer} from '../../data/findings';
 import {dialects} from '../../data/schema';
 import type {Lang} from '../../i18n';
 import {messagesFor} from '../../i18n';
@@ -48,6 +49,11 @@ function Findings() {
 
 	const cers = runs.map(writingCer).filter((value): value is number => value !== null);
 	const medianCer = cers.length ? median(cers) : null;
+
+	const priced = pricedRuns();
+	const best = priced[0];
+	const cheapest = priced.reduce<(typeof priced)[number] | undefined>((low, run) => (!low || run.cost < low.cost ? run : low), undefined);
+	const unpriced = runs.filter(run => !priced.some(item => item.slug === run.slug)).map(run => run.name);
 
 	return (
 		<div className="mx-auto max-w-[84rem] px-5 sm:px-8">
@@ -107,6 +113,16 @@ function Findings() {
 					))}
 				</div>
 			</Finding>
+
+			{best && cheapest && best !== cheapest && (
+				<Finding
+					id="value"
+					title={t.findings.value.title(f.integer(Math.round(best.cost / cheapest.cost)))}
+					text={t.findings.value.text(best.name, f.score(best.score.value), f.usd(best.cost), cheapest.name, f.score(cheapest.score.value), f.usd(cheapest.cost))}
+				>
+					<CostChart runs={priced} caption={t.findings.value.caption(unpriced.length ? f.list(unpriced) : null)} />
+				</Finding>
+			)}
 
 			{medianCer !== null && (
 				<Finding id="near-misses" title={t.findings.cer.title(medianCer < 50)} text={t.findings.cer.text(f.integer(Math.round(medianCer)))}>
