@@ -21,7 +21,7 @@ Chaque session du harnais répond à au plus `--batch-size` questions (100 par d
 
 - **Ce qui partage un lot :** un lot contient un seul dialecte et une seule tâche (et un seul sens de translittération) ; les questions tifinagh → anglais et anglais → tifinagh d'un même mot ne figurent donc jamais dans la même session.
 - **Ordre :** les questions sont ordonnées par un rang tiré de la graine, indépendant de la concurrence.
-- **Identifiants et nouvelles tentatives :** les questions reçoivent des identifiants courts (`"1"`…`"100"`). Les réponses valides sont conservées même si d'autres lignes de la réponse sont cassées. Les identifiants manquants, dupliqués ou illisibles sont reposés dans des lots ultérieurs, jusqu'à `--retries` fois.
+- **Identifiants et nouvelles tentatives :** les questions reçoivent des identifiants courts (`"1"`…`"100"`). Les réponses valides sont conservées même si d'autres lignes de la réponse sont cassées, à condition que la réponse forme un JSON valide dans son ensemble. Sinon, toutes les questions du lot sont reposées. Les identifiants manquants, dupliqués ou illisibles sont reposés dans des lots ultérieurs, jusqu'à `--retries` fois.
 - **Meilleure estimation :** la consigne demande une réponse pour chaque identifiant. Une formulation précédente (« laisser vide en cas de doute ») poussait un modèle à laisser vide chaque réponse difficile, ce qui masque les quasi-réussites et récompense l'abstention de façon inégale selon les modèles.
 - **Comparabilité :** de longues listes peuvent changer le comportement des modèles ; **les scores ne sont comparables qu'entre essais ayant la même taille de lot**. Une reprise avec une taille de lot différente est refusée.
 
@@ -87,7 +87,7 @@ Chaque question enregistre aussi `strict` : si la réponse correspondait exactem
 
 Pour les tâches à correspondance exacte, `cer` est la plus petite distance d'édition (en points de code) à une réponse acceptée, divisée par la longueur de cette réponse. Il peut dépasser 1. Il révèle les quasi-réussites, comme une lettre doublée manquante, qu'un score de 0 masque.
 
-Les erreurs (questions échouées après toutes les tentatives) sont exclues des scores et du CER, et comptées à part.
+Les erreurs (questions échouées après toutes les tentatives) sont comptées à part. Elles valent 0 dans TifinaghBench et le score d'écriture (voir plus bas), et sont exclues du CER et de la précision globale.
 
 ## Score TifinaghBench
 

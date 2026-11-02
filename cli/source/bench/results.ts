@@ -69,6 +69,7 @@ export function summarize(items: Item[], config: BenchConfig, planned: Array<Pic
 
 export const percent = (score: number | null | undefined): string => score == null ? '—' : `${(score * 100).toFixed(1)}%`;
 export const benchScore = (score: number | null | undefined): string => score == null ? '—' : (score * 100).toFixed(1);
+const errorNote = 'Questions that failed after all retries count as 0 in TifinaghBench and the script score, and are left out of pooled accuracy and CER.';
 const cell = (value: unknown) => String(value ?? '').replaceAll('|', '\\|').replaceAll(/[\r\n]+/g, ' ');
 
 export function summaryTable(config: BenchConfig, summary: Summary): string {
@@ -100,13 +101,13 @@ export function report(config: BenchConfig, run: RunInfo, summary: Summary, item
 		'## Character error rate', '', '| Task | Mean CER |', '| --- | ---: |',
 		...config.tasks.filter(task => task !== 'tif-to-en').map(task => `| ${task} | ${summary.by_task[task]?.mean_cer?.toFixed(4) ?? '—'} |`), '',
 		...(publicReport ? [
-			'## Errors', '', `${overall.errors} errors are excluded from scores.`, '',
+			'## Errors', '', `${overall.errors} errors. ${errorNote}`, '',
 			'Per-question results and transcripts are withheld until the datasets are released.', '',
 		] : [
 			'## Example mistakes', '', '| Dialect | Task | Input | Expected | Model answer |', '| --- | --- | --- | --- | --- |',
 			...mistakes.map(item => `| ${item.dialect} | ${item.task} | ${cell(item.input)} | ${cell(item.expected.join(' / '))} | ${cell(item.answer)} |`),
 			...(mistakes.length ? [] : ['No scored wrong or partial answers.']), '',
-			'## Errors', '', `${overall.errors} errors are excluded from scores. Item results are in items.jsonl and session attempts in transcripts/; resume retries pending/error items.`, '',
+			'## Errors', '', `${overall.errors} errors. ${errorNote} Item results are in items.jsonl and session attempts in transcripts/; resume retries pending/error items.`, '',
 			...items.filter(item => item.error).slice(0, 10).map(item => `- ${item.id}: ${cell(item.error!.message)}`), '',
 		]),
 	].join('\n');

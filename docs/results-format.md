@@ -36,7 +36,7 @@ One JSON object per question:
 | `tokens`, `cost_usd` | This item's even share of its sessions' usage |
 | `latency_ms` | Latency of the item's answer **batch**, not of this one answer |
 | `attempts` | Number of sessions that included the item |
-| `error` | Why it failed after all retries (failed items are excluded from scores) |
+| `error` | Why it failed after all retries (failed items count as 0 in TifinaghBench and the script score, and are left out of pooled accuracy and CER) |
 
 Items are appended as they change: an answer arrives, then the judge grades it. Use the last line for each `id`.
 

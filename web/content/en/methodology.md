@@ -21,7 +21,7 @@ Each harness session answers up to `--batch-size` items (default 100). A new ses
 
 - **What shares a batch:** a batch holds one dialect and one task (and one transliteration direction), so a word's Tifinagh → English and English → Tifinagh questions never appear in the same session.
 - **Ordering:** items are ordered by a seeded rank, independent of concurrency.
-- **Ids and retries:** items get short ids (`"1"`…`"100"`). Valid answers are kept even if other rows in the reply are broken. Missing, duplicated or unparseable ids are retried in later batches, up to `--retries`.
+- **Ids and retries:** items get short ids (`"1"`…`"100"`). Valid answers are kept even if other rows in the reply are broken, as long as the reply as a whole is valid JSON. If it is not, every id in the batch is retried. Missing, duplicated or unparseable ids are retried in later batches, up to `--retries`.
 - **Best guesses:** the prompt asks for a best guess for every id. An earlier wording ("give an empty string when unsure") made a model leave every hard answer blank, which hides near misses and rewards abstention differently across models.
 - **Comparability:** long lists can change how models behave, so **scores are comparable only between runs with the same batch size**. Resuming with a different batch size is refused.
 
@@ -87,7 +87,7 @@ Each item also records `strict`: whether the answer matched the dictionary's own
 
 For exact-match tasks, `cer` is the smallest code-point edit distance to any accepted answer, divided by that answer's length. It can exceed 1. It shows near misses, such as a missing doubled letter, that a 0 score hides.
 
-Errors (questions that failed after all retries) are excluded from scores and CER, and counted separately.
+Errors (questions that failed after all retries) are counted separately. They count as 0 in TifinaghBench and the script score (see below), and are left out of CER and pooled accuracy.
 
 ## TifinaghBench score
 
