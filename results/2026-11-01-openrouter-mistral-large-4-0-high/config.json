@@ -20,6 +20,6 @@
 	},
 	"seed": 1,
 	"timeout": 600,
-	"batchSize": 20,
+	"batchSize": 100,
 	"retries": 2
 }

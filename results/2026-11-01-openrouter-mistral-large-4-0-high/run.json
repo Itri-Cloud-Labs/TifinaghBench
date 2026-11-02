@@ -1,9 +1,9 @@
 {
 	"status": "completed",
 	"message": null,
-	"started_at": "2026-11-02T02:03:51.556Z",
-	"finished_at": "2026-11-02T02:08:03.664Z",
-	"duration_s": 252.228,
+	"started_at": "2026-11-02T12:58:35.365Z",
+	"finished_at": "2026-11-02T13:12:22.837Z",
+	"duration_s": 827.601,
 	"cli_version": "0.1.0",
 	"harness": {
 		"name": "opencode",
@@ -84,7 +84,7 @@
 			},
 			"directory": "<tmp>",
 			"server": {
-				"url": "http://127.0.0.1:39257",
+				"url": "http://127.0.0.1:36395",
 				"startupTimeoutMs": 30000,
 				"authentication": "HTTP Basic; printed server password"
 			},
@@ -162,20 +162,20 @@
 		"skipped": 20
 	},
 	"sessions": {
-		"done": 196,
-		"total": 196,
-		"answers": 166,
+		"done": 188,
+		"total": 188,
+		"answers": 158,
 		"judge": 30
 	},
 	"answered": 8980,
 	"judge_skipped_by_exact_sense": 184,
 	"tokens": {
-		"input": 917057,
-		"output": 179752,
-		"reasoning": 3895760,
-		"cachedInput": 367360
+		"input": 801416,
+		"output": 179109,
+		"reasoning": 3721712,
+		"cachedInput": 289024
 	},
-	"cost_usd": 8.969078300000003,
+	"cost_usd": 8.570630180000004,
 	"judge": {
 		"info": {
 			"name": "claude-code",

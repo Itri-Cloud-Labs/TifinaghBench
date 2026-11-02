@@ -1,17 +1,17 @@
 {
 	"tifinaghbench": 0.1172096471522658,
-	"script_score": 0.4706666666666666,
+	"script_score": 0.4656666666666667,
 	"tifinaghbench_strict": 0.11536743033733628,
-	"script_score_strict": 0.41500000000000004,
+	"script_score_strict": 0.4136666666666667,
 	"overall": {
-		"score": 0.23530066815144765,
-		"correct": 1990,
+		"score": 0.23363028953229398,
+		"correct": 1975,
 		"partial": 246,
-		"wrong": 6744,
+		"wrong": 6759,
 		"errors": 0,
 		"n": 8980,
 		"scored": 8980,
-		"mean_cer": 0.7156624596229141
+		"mean_cer": 0.7187338484455552
 	},
 	"by_task": {
 		"tif-to-en": {
@@ -34,14 +34,14 @@
 			"mean_cer": 1.1009218928846027
 		},
 		"transliterate": {
-			"score": 0.4706666666666667,
-			"correct": 1412,
+			"score": 0.4656666666666667,
+			"correct": 1397,
 			"partial": 0,
-			"wrong": 1588,
+			"wrong": 1603,
 			"errors": 0,
 			"n": 3000,
 			"scored": 3000,
-			"mean_cer": 0.33168722447209437
+			"mean_cer": 0.33781976415463383
 		}
 	},
 	"by_dialect": {
@@ -56,14 +56,14 @@
 			"mean_cer": 0.9039904761904741
 		},
 		"tarifit": {
-			"score": 0.12592096450100468,
-			"correct": 341,
+			"score": 0.12089752176825184,
+			"correct": 326,
 			"partial": 70,
-			"wrong": 2575,
+			"wrong": 2590,
 			"errors": 0,
 			"n": 2986,
 			"scored": 2986,
-			"mean_cer": 0.723404344164505
+			"mean_cer": 0.7326354626028491
 		},
 		"kabyle": {
 			"score": 0.3585504342017368,
@@ -129,14 +129,14 @@
 				"mean_cer": 0.9600410988250864
 			},
 			"transliterate": {
-				"score": 0.248,
-				"correct": 248,
+				"score": 0.233,
+				"correct": 233,
 				"partial": 0,
-				"wrong": 752,
+				"wrong": 767,
 				"errors": 0,
 				"n": 1000,
 				"scored": 1000,
-				"mean_cer": 0.4884240467865467
+				"mean_cer": 0.5068216658341659
 			}
 		},
 		"kabyle": {
