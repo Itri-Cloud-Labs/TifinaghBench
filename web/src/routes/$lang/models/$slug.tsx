@@ -5,6 +5,7 @@ import {ArrowLeftIcon, ArrowRightIcon, ExternalIcon} from '../../../components/I
 import {LabLogo} from '../../../components/LabLogo';
 import {SetupBadge} from '../../../components/Leaderboard';
 import {ScoreBar} from '../../../components/ScoreBar';
+import {estimatedCost} from '../../../data/findings';
 import {judgeName} from '../../../data/models';
 import type {Run} from '../../../data/runs';
 import {rankedRuns, runBySlug, runFolderUrl, runs} from '../../../data/runs';
@@ -96,8 +97,9 @@ function ModelPage() {
 	const tied = run.tiedWith.map(other => runBySlug(other)!).filter(Boolean);
 	const grid = run.summary.by_dialect_and_task;
 	const cost = run.info.cost_usd;
-	const costText = cost === null || run.harness === 'codex'
-		? t.model.costNone
+	const estimate = estimatedCost(run);
+	const costText = estimate !== null ? t.model.costEstimate(f.usd(estimate))
+		: cost === null || run.harness === 'codex' ? t.model.costNone
 		: run.harness === 'claude-code' ? t.model.costApi(f.usd(cost)) : f.usd(cost);
 	const compareWith = [run.slug, ...tied.map(other => other.slug)].slice(0, 4);
 	if (compareWith.length < 2 && runs[0] && runs[0] !== run) compareWith.push(runs[0].slug);

@@ -1,4 +1,4 @@
-import {dialectScores, directions, runCost} from './findings';
+import {dialectScores, directions, estimatedCost, runCost} from './findings';
 import {lab, lastUpdated, runs, siteUrl} from './runs';
 
 // The public scores as data, written to /leaderboard.json and /llms.txt at build time (scripts/cards.mjs).
@@ -33,6 +33,7 @@ export function leaderboard() {
 				writing: round(write),
 				by_dialect: {ircam: round(dialects.ircam), tarifit: round(dialects.tarifit), kabyle: round(dialects.kabyle)},
 				cost_usd: runCost(run) === null ? null : Math.round(runCost(run)! * 100) / 100,
+				cost_estimated: estimatedCost(run) !== null,
 				url: `${siteUrl}/en/models/${run.slug}`,
 			};
 		}),
@@ -52,7 +53,7 @@ The word lists are not published, and this data holds no questions or answers.
 
 ## Data
 
-- [Leaderboard as JSON](${siteUrl}/leaderboard.json): every score, its 95% interval, and the cost where one is known
+- [Leaderboard as JSON](${siteUrl}/leaderboard.json): every score, its 95% interval, and the cost (Codex runs are estimated from their tokens at OpenAI's API prices)
 
 ## Pages
 

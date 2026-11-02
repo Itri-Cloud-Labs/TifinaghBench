@@ -16,8 +16,12 @@ const axisText = 'text-[22px] sm:text-xs';
 type Box = {x: number; y: number; width: number; height: number};
 const overlaps = (a: Box, b: Box) => a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
 
-// Tries each side of each dot in turn, and takes the first spot clear of the dots, the labels so far and the plot's edges.
-function placeLabels(points: {key: string; label: string; x: number; y: number}[]) {
+// Tries each side of each dot in turn, and takes the first spot clear of the dots, the gold line, the labels so far and the plot's edges.
+function placeLabels(points: {key: string; label: string; x: number; y: number}[], line: number[][]) {
+	const segments = line.slice(1).map((end, index) => {
+		const start = line[index]!;
+		return {x: Math.min(start[0]!, end[0]!), y: Math.min(start[1]!, end[1]!), width: Math.abs(end[0]! - start[0]!), height: Math.abs(end[1]! - start[1]!)};
+	});
 	const dots = points.map(point => ({x: point.x - radius, y: point.y - radius, width: radius * 2, height: radius * 2}));
 	const placed: Box[] = [];
 	return new Map(points.map(point => {
@@ -37,7 +41,7 @@ function placeLabels(points: {key: string; label: string; x: number; y: number}[
 		const fits = (item: Box) => item.x >= size.left && item.x + item.width <= size.width - size.right && item.y >= 0 && item.y + item.height <= size.top + plot.height;
 		const side = sides.find(option => {
 			const item = box(option);
-			return fits(item) && !dots.some(dot => overlaps(item, dot)) && !placed.some(other => overlaps(item, other));
+			return fits(item) && !dots.some(dot => overlaps(item, dot)) && !segments.some(segment => overlaps(item, segment)) && !placed.some(other => overlaps(item, other));
 		}) ?? sides[0];
 		placed.push(box(side));
 		return [point.key, side];
@@ -45,7 +49,7 @@ function placeLabels(points: {key: string; label: string; x: number; y: number}[
 }
 
 // Cost against score for every run with a known cost. Cost spans two orders of magnitude, so its axis is logarithmic.
-export function CostChart({runs, caption}: {runs: PricedRun[]; caption: string}) {
+export function CostChart({runs, edge, caption}: {runs: PricedRun[]; edge: PricedRun[]; caption: string}) {
 	const {lang, t, f} = useI18n();
 	const copy = t.findings.value;
 	const [active, setActive] = useState<string | null>(null);
@@ -61,14 +65,32 @@ export function CostChart({runs, caption}: {runs: PricedRun[]; caption: string})
 	const yTicks = Array.from({length: top / 10 + 1}, (_, index) => index * 10);
 
 	const points = runs.map(run => ({key: run.slug, label: run.name, x: scaleX(run.cost), y: scaleY(run.score.value)}));
-	const labels = placeLabels(points);
 	const current = runs.find(run => run.slug === active);
+
+	// The best-value edge as steps, and the empty zone above and left of it.
+	const plotLeft = size.left;
+	const plotRight = size.width - size.right;
+	const plotBottom = size.top + plot.height;
+	const stepPoints = edge.flatMap((run, index) => {
+		const x = scaleX(run.cost);
+		const y = scaleY(run.score.value);
+		return [[x, index === 0 ? plotBottom : scaleY(edge[index - 1]!.score.value)], [x, y]];
+	});
+	const zone = [[plotLeft, size.top], [plotLeft, plotBottom], ...stepPoints, [plotRight, scaleY(edge.at(-1)!.score.value)], [plotRight, size.top]];
+	const labels = placeLabels(points, stepPoints);
+	const toPoints = (list: number[][]) => list.map(point => point.join(',')).join(' ');
+	const isBest = (run: PricedRun) => edge.includes(run);
 
 	return (
 		<figure>
 			<p className="mb-2 hidden min-h-5 text-sm text-ink-2 sm:block" aria-hidden="true">
-				{current ? <><span className="font-semibold text-ink">{current.name}</span> · <span className="num">{f.usd(current.cost)}</span> · <span className="num">{f.score(current.score.value)}</span></> : copy.hint}
+				{current ? <><span className="font-semibold text-ink">{current.name}</span> · <span className="num">{current.estimated && '≈ '}{f.usd(current.cost)}</span> · <span className="num">{f.score(current.score.value)}</span></> : copy.hint}
 			</p>
+			<ul className="mb-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-ink-2" aria-label={t.findings.legend}>
+				<li className="flex items-center gap-2"><span className="size-3 rounded-full" style={{background: 'var(--pair-a)'}} aria-hidden="true" />{copy.best}</li>
+				<li className="flex items-center gap-2"><span className="size-3 rounded-full bg-ink-3" aria-hidden="true" />{copy.beaten}</li>
+				<li className="flex items-center gap-2"><span className="size-3 rounded-full border-2 border-ink-3" aria-hidden="true" />{copy.estimated}</li>
+			</ul>
 			<svg viewBox={`0 0 ${size.width} ${size.height}`} className="block w-full" aria-hidden="true">
 				{yTicks.map(tick => (
 					<g key={tick}>
@@ -83,13 +105,18 @@ export function CostChart({runs, caption}: {runs: PricedRun[]; caption: string})
 					</g>
 				))}
 				<text x={size.left + plot.width / 2} y={size.height - 4} textAnchor="middle" className={`fill-ink-2 ${axisText}`}>{copy.axis}</text>
+				<polygon points={toPoints(zone)} fill="var(--pair-a)" opacity={0.14} />
+				<polyline points={toPoints(stepPoints)} fill="none" stroke="var(--pair-a)" strokeWidth={2} />
+				<text x={plotLeft + 10} y={size.top + 22} className={`fill-ink-2 ${axisText}`}>{copy.zone}</text>
 				{runs.map((run, index) => {
 					const point = points[index]!;
 					const side = labels.get(run.slug)!;
 					return (
 						<g key={run.slug} opacity={active !== null && active !== run.slug ? 0.45 : 1} className="transition-opacity duration-150" onMouseEnter={() => setActive(run.slug)} onMouseLeave={() => setActive(null)}>
 							<circle cx={point.x} cy={point.y} r={16} fill="transparent" />
-							<circle cx={point.x} cy={point.y} r={radius} fill="var(--pair-b)" stroke="var(--slip)" strokeWidth={2} />
+							{run.estimated
+								? <circle cx={point.x} cy={point.y} r={radius - 1} fill="var(--slip)" stroke={isBest(run) ? 'var(--pair-a)' : 'var(--ink-3)'} strokeWidth={3} />
+								: <circle cx={point.x} cy={point.y} r={radius} fill={isBest(run) ? 'var(--pair-a)' : 'var(--ink-3)'} stroke="var(--slip)" strokeWidth={2} />}
 							<text x={side.x} y={side.y} dy="0.32em" textAnchor={side.anchor} className="fill-ink hidden text-[13px] font-semibold sm:block">{run.name}</text>
 						</g>
 					);
@@ -115,8 +142,9 @@ export function CostChart({runs, caption}: {runs: PricedRun[]; caption: string})
 							<tr key={run.slug} className="border-b border-rule">
 								<th scope="row" className="py-2 pr-4 text-left font-normal">
 									<Link to="/$lang/models/$slug" params={{lang, slug: run.slug}} className="inline-flex items-center gap-2"><LabLogo lab={run.lab} className="shrink-0" />{run.name}</Link>
+									{isBest(run) && <span className="ml-2 inline-block size-2.5 rounded-full" style={{background: 'var(--pair-a)'}} title={copy.best}><span className="sr-only">{copy.best}</span></span>}
 								</th>
-								<td className="num py-2 pl-4 text-right">{f.usd(run.cost)}</td>
+								<td className="num py-2 pl-4 text-right whitespace-nowrap">{run.estimated && <span title={copy.estimateShort}>≈ </span>}{f.usd(run.cost)}</td>
 								<td className="num py-2 pl-4 text-right">{f.score(run.score.value)}</td>
 							</tr>
 						))}
