@@ -10,19 +10,19 @@ All runs use the same setup: 1,000 words per dialect, seed 1, batch size 100, al
 | ---: | --- | --- | --- | ---: | ---: | ---: |
 | 1 | [Gemini 4 Argon](2026-10-21-opencode-go-gemini-4-argon-high/report.md) | OpenCode | high | **37.8** | 96.9 | 36.8 |
 | 2 | [GPT-6.1-Sol](2026-10-20-codex-gpt-6.1-sol-high/report.md) | Codex | high | **29.9** | 96.5 | 29.0 |
-| 3 | [GPT-6-Astra](2026-10-20-codex-gpt-6-astra-low/report.md) | Codex | low | **29.4** | 96.4 | 28.5 |
+| 2 | [GPT-6-Astra](2026-10-20-codex-gpt-6-astra-low/report.md) | Codex | low | **29.4** | 96.4 | 28.5 |
 | 4 | [Claude Opus 5.5](2026-10-20-claude-code-claude-opus-5-5-high/report.md) | Claude Code | high | **27.3** | 96.0 | 26.3 |
 | 5 | [GPT-6.1-Terra](2026-10-28-codex-gpt-6.1-terra-high/report.md) | Codex | high | **20.9** | 94.5 | 20.4 |
 | 6 | [GPT-6-Luna](2026-10-19-codex-gpt-6-luna-high/report.md) | Codex | high | **18.2** | 88.3 | 17.7 |
 | 7 | [DeepSeek v4.1 Flash](2026-10-20-opencode-go-deepseek-v4.1-flash-high/report.md) | OpenCode | high | **16.8** | 93.1 | 16.3 |
 | 8 | [Kimi K3.1 Pro](2026-10-31-opencode-kimi-k3.1-pro-high/report.md) | OpenCode | high | **13.8** | 92.0 | 13.2 |
-| 9 | [Claude Sonnet 5.5](2026-10-20-claude-code-claude-sonnet-5-5-high/report.md) | Claude Code | high | **12.9** | 89.4 | 12.3 |
+| 8 | [Claude Sonnet 5.5](2026-10-20-claude-code-claude-sonnet-5-5-high/report.md) | Claude Code | high | **12.9** | 89.4 | 12.3 |
 | 10 | [GLM 5.3 Flash](2026-10-20-opencode-go-glm-5.3-flash-high/report.md) | OpenCode | high | **12.0** | 80.6 | 11.7 |
-| 11 | [Mistral Large 4](2026-11-01-openrouter-mistral-large-4-0-high/report.md) | OpenCode (OpenRouter) | high | **11.7** | 46.6 | 11.5 |
+| 10 | [Mistral Large 4](2026-11-01-openrouter-mistral-large-4-0-high/report.md) | OpenCode (OpenRouter) | high | **11.7** | 46.6 | 11.5 |
 | 12 | [Claude Haiku 5.5](2026-10-20-claude-code-claude-haiku-5-5-high/report.md) | Claude Code | high | **8.0** | 81.3 | 7.9 |
 | 13 | [MiniMax M3.1 Flash](2026-10-24-openrouter-minimax-m3.1-flash-high/report.md) | OpenCode (OpenRouter) | high | **1.4** | 56.5 | 1.4 |
 
-At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%). Gemini 4 Argon leads by 8 points, far outside that margin, mostly on Tifinagh → English. GPT-6.1-Sol and GPT-6-Astra are tied. Claude Opus 5.5 is 2–2.6 points behind them, at the edge of that margin, and well ahead of GPT-6.1-Terra, which is in turn clearly ahead of GPT-6-Luna. GPT-6-Luna and DeepSeek v4.1 Flash are tied. Kimi K3.1 Pro, Claude Sonnet 5.5 and GLM 5.3 Flash sit clearly behind that pair: Kimi K3.1 Pro is tied with Claude Sonnet 5.5, which is tied with GLM 5.3 Flash, but Kimi K3.1 Pro is clearly ahead of GLM 5.3 Flash. Mistral Large 4 is tied with GLM 5.3 Flash and clearly behind Claude Sonnet 5.5. Claude Haiku 5.5 is also the judge, so it graded its own Tifinagh → English answers; it still scored lower on that task than every model except MiniMax M3.1 Flash. MiniMax M3.1 Flash is last by a wide margin: it transliterates about half the words correctly but almost never knows what they mean.
+Models that are statistically tied with the leader of their group share a rank, as on the website. At 1,000 words per dialect the margin of error on TifinaghBench is about ±1–2 points (95%). Gemini 4 Argon leads by 8 points, far outside that margin, mostly on Tifinagh → English. GPT-6.1-Sol and GPT-6-Astra are tied. Claude Opus 5.5 is 2–2.6 points behind them, at the edge of that margin, and well ahead of GPT-6.1-Terra, which is in turn clearly ahead of GPT-6-Luna. GPT-6-Luna is 1.4 points ahead of DeepSeek v4.1 Flash, just outside that margin. Kimi K3.1 Pro, Claude Sonnet 5.5 and GLM 5.3 Flash sit clearly behind both: Kimi K3.1 Pro is tied with Claude Sonnet 5.5, which is tied with GLM 5.3 Flash, but Kimi K3.1 Pro is clearly ahead of GLM 5.3 Flash. Mistral Large 4 is tied with GLM 5.3 Flash and clearly behind Claude Sonnet 5.5. Claude Haiku 5.5 is also the judge, so it graded its own Tifinagh → English answers; it still scored lower on that task than every model except MiniMax M3.1 Flash. MiniMax M3.1 Flash is last by a wide margin: it transliterates about half the words correctly but almost never knows what they mean.
 
 ## Scores by dialect and task
 
