@@ -4,7 +4,7 @@ import {DotRows} from '../../components/DotRows';
 import {Cliff} from '../../components/Cliff';
 import {CostChart} from '../../components/CostChart';
 import {rankedRuns} from '../../data/runs';
-import {conventions, dialectScores, directions, easiestDialect, findingRuns, median, pricedRuns, writingCer} from '../../data/findings';
+import {bestValue, conventions, dialectScores, directions, easiestDialect, findingRuns, median, pricedRuns, writingCer} from '../../data/findings';
 import {dialects} from '../../data/schema';
 import type {Lang} from '../../i18n';
 import {messagesFor} from '../../i18n';
@@ -51,9 +51,9 @@ function Findings() {
 	const medianCer = cers.length ? median(cers) : null;
 
 	const priced = pricedRuns();
-	const best = priced[0];
-	const cheapest = priced.reduce<(typeof priced)[number] | undefined>((low, run) => (!low || run.cost < low.cost ? run : low), undefined);
-	const unpriced = runs.filter(run => !priced.some(item => item.slug === run.slug)).map(run => run.name);
+	const edge = bestValue(priced);
+	const cheapest = edge[0];
+	const best = edge.at(-1);
 
 	return (
 		<div className="mx-auto max-w-[84rem] px-5 sm:px-8">
@@ -117,10 +117,10 @@ function Findings() {
 			{best && cheapest && best !== cheapest && (
 				<Finding
 					id="value"
-					title={t.findings.value.title(f.integer(Math.round(best.cost / cheapest.cost)))}
+					title={t.findings.value.title(edge.length, priced.length)}
 					text={t.findings.value.text(best.name, f.score(best.score.value), f.usd(best.cost), cheapest.name, f.score(cheapest.score.value), f.usd(cheapest.cost))}
 				>
-					<CostChart runs={priced} caption={t.findings.value.caption(unpriced.length ? f.list(unpriced) : null)} />
+					<CostChart runs={priced} edge={edge} caption={t.findings.value.caption} />
 				</Finding>
 			)}
 
