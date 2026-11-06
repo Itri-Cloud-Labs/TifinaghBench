@@ -27,3 +27,7 @@ __pycache__/
 # Launch video project (HyperFrames), kept out of the repo for now
 /video/
 /video-story/
+
+# Third-party agent skills, installed locally from skills-lock.json
+/.agents/
+/.claude/skills/
