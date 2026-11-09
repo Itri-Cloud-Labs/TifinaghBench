@@ -8,6 +8,7 @@ export const models: Record<string, ModelInfo> = {
 	'gpt-6.1-terra': {name: 'GPT-6.1-Terra', lab: 'OpenAI'},
 	'gpt-6-astra': {name: 'GPT-6-Astra', lab: 'OpenAI'},
 	'gpt-6-luna': {name: 'GPT-6-Luna', lab: 'OpenAI'},
+	'claude-fable-5-2': {name: 'Claude Fable 5.2', lab: 'Anthropic'},
 	'claude-opus-5-5': {name: 'Claude Opus 5.5', lab: 'Anthropic'},
 	'claude-sonnet-5-5': {name: 'Claude Sonnet 5.5', lab: 'Anthropic'},
 	'claude-haiku-5-5': {name: 'Claude Haiku 5.5', lab: 'Anthropic'},
