@@ -20,7 +20,7 @@ npm run dev`;
 
 const official = `npm run build
 node dist/cli.js \\
-  --harness=<codex|claude-code|opencode> \\
+  --harness=<codex|claude-code|opencode|pi> \\
   --model=<model id> \\
   --reasoning=<level> \\
   --dialects=ircam,tarifit,kabyle \\

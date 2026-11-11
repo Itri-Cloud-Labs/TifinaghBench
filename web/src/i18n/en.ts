@@ -59,7 +59,7 @@ export const en = {
 		explain: {
 			score: {title: 'What is the TifinaghBench score?', text: 'How well a model knows Amazigh words, from 0 to 100. It averages two tasks in three dialects: saying what a Tifinagh word means, and writing an English word in Tifinagh. 30 means roughly 3 right answers in 10.'},
 			interval: {title: 'What does ± mean?', text: 'The margin of error. Each model answered 1,000 words per dialect, so the score could move by about this much with a different sample. Two models closer than their combined margins are tied.'},
-			harness: {title: 'What is a harness?', text: 'The app the model ran in: Codex, Claude Code or OpenCode. These are the coding assistants people use every day. Tools and web search were turned off.'},
+			harness: {title: 'What is a harness?', text: 'The app the model ran in: Codex, Claude Code, OpenCode or Pi. These are the coding assistants people use every day. Tools and web search were turned off.'},
 			reasoning: {title: 'What is reasoning?', text: 'How long the model was allowed to think before answering. Higher settings think longer and cost more.'},
 			tied: {title: 'What does tied mean?', text: 'The gap between these models is smaller than the margin of error, so we can’t say which one is better. They share the rank.'},
 		},
@@ -297,11 +297,11 @@ export const en = {
 	},
 	run: {
 		title: 'Run it on your model',
-		lede: 'The benchmark is a command-line tool. It drives Codex, Claude Code or OpenCode through their official SDKs, closed-book, and writes one results folder per run.',
+		lede: 'The benchmark is a command-line tool. It drives Codex, Claude Code, OpenCode or Pi through their official SDKs, closed-book, and writes one results folder per run.',
 		requirements: 'Requirements',
 		requirementsList: [
-			'Node.js 22.13 or newer',
-			'At least one harness installed and signed in: Codex, Claude Code or OpenCode',
+			'Node.js 22.19 or newer',
+			'At least one harness installed and signed in: Codex, Claude Code or OpenCode, or Pi credentials',
 			'Claude Code for the official judge, Claude Haiku 5.5',
 			'The datasets (see below)',
 		],

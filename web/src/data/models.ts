@@ -27,6 +27,6 @@ export function modelInfo(id: string): ModelInfo {
 	return {name: id.replace(/^[\w-]+\//, ''), lab: 'Unknown'};
 }
 
-export const harnessNames = {codex: 'Codex', 'claude-code': 'Claude Code', opencode: 'OpenCode'} as const;
+export const harnessNames = {codex: 'Codex', 'claude-code': 'Claude Code', opencode: 'OpenCode', pi: 'Pi'} as const;
 
 export const judgeName = (model: string) => models[model]?.name ?? model;

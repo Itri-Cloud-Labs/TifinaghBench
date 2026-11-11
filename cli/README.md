@@ -1,6 +1,6 @@
 # tifinagh-bench CLI
 
-Runs the benchmark through Codex, Claude Code or OpenCode. Requires Node.js 22.13+ and at least one harness installed and signed in.
+Runs the benchmark through Codex, Claude Code, OpenCode or Pi. Requires Node.js 22.19+ and at least one harness installed and signed in (for Pi, saved Pi credentials or a provider API key environment variable).
 
 ```bash
 npm install
@@ -28,8 +28,8 @@ npm run dev -- --harness=codex --model=gpt-6-luna --reasoning=low \
 
 | Flag | Values / default |
 | --- | --- |
-| `--harness` | `codex`, `claude-code`, `opencode` |
-| `--model` | Model id as the harness expects it; OpenCode uses `provider/model` |
+| `--harness` | `codex`, `claude-code`, `opencode`, `pi` |
+| `--model` | Model id as the harness expects it; OpenCode and Pi use `provider/model` |
 | `--reasoning` | `default`, `minimal`, `low`, `medium`, `high`, `xhigh`, `max` (depends on harness) |
 | `--dialects` | Comma-separated: `ircam`, `tarifit`, `kabyle` |
 | `--tasks` | Comma-separated: `tif-to-en`, `en-to-tif`, `transliterate` |
@@ -84,7 +84,7 @@ npm start -- --help
 | `source/cli.tsx` | Flags and entry point |
 | `source/app.tsx`, `source/components/` | Question flow and progress screen |
 | `source/bench/` | Sampling, prompts, scoring, judging, results and the run loop |
-| `source/harnesses/` | Codex, Claude Code and OpenCode adapters |
+| `source/harnesses/` | Codex, Claude Code, OpenCode and Pi adapters |
 
 `runBenchmark()` in `source/bench/run.ts` accepts injected harness sessions, so the engine can be tested with a fake harness.
 
