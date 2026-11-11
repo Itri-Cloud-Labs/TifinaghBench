@@ -4,7 +4,7 @@ export type Choice<T extends string> = {
 	hint?: string;
 };
 
-export type Harness = 'codex' | 'claude-code' | 'opencode';
+export type Harness = 'codex' | 'claude-code' | 'opencode' | 'pi';
 export type Dialect = 'ircam' | 'tarifit' | 'kabyle';
 export type Task = 'tif-to-en' | 'en-to-tif' | 'transliterate';
 export type Reasoning =
@@ -21,12 +21,14 @@ export const harnesses: Array<Choice<Harness>> = [
 	{value: 'codex', label: 'Codex', hint: 'OpenAI Codex CLI'},
 	{value: 'claude-code', label: 'Claude Code', hint: 'Anthropic Claude Code CLI'},
 	{value: 'opencode', label: 'OpenCode', hint: 'any provider through OpenCode'},
+	{value: 'pi', label: 'Pi', hint: 'any provider through the Pi SDK'},
 ];
 
 export const modelPlaceholders: Record<Harness, string> = {
 	codex: 'model id passed to codex --model',
 	'claude-code': 'e.g. claude-opus-5-5',
 	opencode: 'provider/model, e.g. anthropic/claude-sonnet-5-5',
+	pi: 'provider/model, e.g. openrouter/google/gemini-4-carbon',
 };
 
 export const dialects: Array<Choice<Dialect> & {file: string}> = [
@@ -70,6 +72,7 @@ const reasoningByHarness: Record<Harness, Reasoning[]> = {
 	codex: ['default', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'],
 	'claude-code': ['default', 'low', 'medium', 'high', 'xhigh', 'max'],
 	opencode: ['default', 'low', 'medium', 'high'],
+	pi: ['default', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'],
 };
 
 export function reasoningChoices(harness: Harness): Array<Choice<Reasoning>> {
@@ -112,6 +115,9 @@ export function validateModel(harness: Harness, model: string): string | undefin
 	if (/\s/.test(model.trim())) return 'Model ids cannot contain spaces.';
 	if (harness === 'opencode' && !model.includes('/')) {
 		return 'OpenCode model ids look like provider/model.';
+	}
+	if (harness === 'pi' && !model.includes('/')) {
+		return 'Pi model ids look like provider/model.';
 	}
 
 	return undefined;

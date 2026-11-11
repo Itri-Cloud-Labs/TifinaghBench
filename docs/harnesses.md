@@ -1,12 +1,13 @@
 # Harnesses
 
-The benchmark drives three coding-agent harnesses through their official SDKs. Each request is an independent conversation, isolated from the user's own setup so the model can't use tools or read instructions.
+The benchmark drives four coding-agent harnesses through their official SDKs. Each request is an independent conversation, isolated from the user's own setup so the model can't use tools or read instructions.
 
 | Harness | SDK | Reasoning levels | Structured output |
 | --- | --- | --- | --- |
 | Codex | `@openai/codex-sdk` | `minimal`, `low`, `medium`, `high`, `xhigh`, `max` | Native (`outputSchema`) |
 | Claude Code | `@anthropic-ai/claude-agent-sdk` | `low`, `medium`, `high`, `xhigh`, `max` | Native (`outputFormat`) |
 | OpenCode 2.x | `@opencode-ai/client` (pinned prerelease) | `low`, `medium`, `high` (model variants) | Schema in prompt, JSON parsed from the reply |
+| Pi | `@earendil-works/pi-coding-agent` (in-process) | whichever of `minimal`, `low`, `medium`, `high`, `xhigh`, `max` the model offers | Schema in prompt, JSON parsed from the reply |
 
 `default` leaves reasoning unset, so the harness or model decides.
 
@@ -21,6 +22,15 @@ The benchmark drives three coding-agent harnesses through their official SDKs. E
   - **Credentials:** only provider credential rows are read from `~/.local/share/opencode/opencode.db` and copied into the temporary database. Your database is opened read-only and never written. This uses Node's built-in SQLite, hence Node.js ≥ 22.13.
   - **Disabled:** user and project config, AGENTS.md discovery, tools (`{"*": false}` plus deny-all permissions), MCP, skills and optional plugins.
   - **Sessions:** each request creates and then deletes its own session, and nothing is added to your OpenCode history.
+- **Pi.**
+  - **SDK:** Pi runs in-process through its SDK, so no Pi CLI is needed. It requires Node.js ≥ 22.19.
+  - **Credentials:** `~/.pi/agent/auth.json` (or `$PI_CODING_AGENT_DIR/auth.json`) is copied into a private temporary agent directory, so token refreshes never touch your file. Provider API key environment variables such as `OPENROUTER_API_KEY` also work.
+  - **Models:** `provider/model`, for example `openrouter/google/gemini-4-carbon`. At startup the provider's current catalog is fetched, so models newer than Pi's bundled catalog resolve. For OpenRouter this is the list your key may use, with its limits and prices.
+  - **Reasoning:** Pi's thinking level of the same name. Pi normally lowers a level the model doesn't offer to one it does. The benchmark refuses instead, so a run is never recorded at a level it didn't use.
+  - **Disabled:** tools (`noTools: "all"`, `tools: []`), MCP, extensions, skills, prompt templates, themes, AGENTS.md, SYSTEM.md and APPEND_SYSTEM.md, Pi's own retries and compaction. Settings live in memory.
+  - **System prompt:** the benchmark's, replacing Pi's. Pi still appends a `<cwd>` block naming the run's empty scratch folder.
+  - **Sessions:** each request uses a fresh in-memory session, and nothing is written to your Pi sessions.
+  - **Cost:** the sum of Pi's `usage.cost.total`, which is the billed cost when the provider reports it (OpenRouter does) and Pi's catalog estimate otherwise.
 
 ## OpenCode notes
 
@@ -42,5 +52,6 @@ Limit detection is based on each SDK's error types and on strings found in the i
 - **Codex:** `usage_limit_reached`, `quota_exceeded` and `rate_limit_exceeded`, with `resets_at`.
 - **Claude Code:** rejected `rate_limit_event`s, `rate_limit` assistant errors and `api_error_status: 429`.
 - **OpenCode:** provider 429s, `insufficient_quota` and `QuotaExhaustedError`.
+- **Pi:** provider errors as Pi reports them, matched the same way (429s, quota and auth errors).
 
 None of these have been triggered against a real subscription. They're tested with simulated errors.

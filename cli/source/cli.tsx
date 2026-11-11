@@ -25,7 +25,7 @@ const cli = meow(
 	Asks for missing settings, then runs a closed-book vocabulary benchmark.
 
 	Options
-	  --harness      codex | claude-code | opencode
+	  --harness      codex | claude-code | opencode | pi
 	  --model        Model id, e.g. claude-opus-5-5 or anthropic/claude-sonnet-5-5
 	  --dialects     Comma-separated: ircam, tarifit, kabyle
 	  --reasoning    default | minimal | low | medium | high | xhigh | max (depends on harness)

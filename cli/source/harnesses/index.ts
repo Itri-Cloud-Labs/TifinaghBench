@@ -4,6 +4,7 @@ import {HarnessError} from '../bench/types.js';
 import {createClaudeCode} from './claude-code.js';
 import {createCodex} from './codex.js';
 import {createOpencode} from './opencode.js';
+import {createPi} from './pi.js';
 import {harnessError} from './shared.js';
 
 export async function createHarness(
@@ -15,6 +16,7 @@ export async function createHarness(
 			case 'codex': return await createCodex(options);
 			case 'claude-code': return await createClaudeCode(options);
 			case 'opencode': return await createOpencode(options);
+			case 'pi': return await createPi(options);
 			default: throw new HarnessError('harness', `Unknown harness: ${String(harness)}`, false);
 		}
 	} catch (error) {

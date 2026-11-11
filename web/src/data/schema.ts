@@ -33,7 +33,7 @@ export const summarySchema = z.object({
 export type Summary = z.infer<typeof summarySchema>;
 
 export const configSchema = z.object({
-	harness: z.enum(['codex', 'claude-code', 'opencode']),
+	harness: z.enum(['codex', 'claude-code', 'opencode', 'pi']),
 	model: z.string().min(1),
 	dialects: z.array(z.enum(dialects)),
 	reasoning: z.string(),

@@ -2,7 +2,7 @@
 
 How well do LLMs know Amazigh (Berber) vocabulary written in Tifinagh (ⵜⵉⴼⵉⵏⴰⵖ)?
 
-tifinagh-bench asks models closed-book vocabulary questions in three Amazigh dialects, using about 27,000 dictionary entries. It runs them through the coding-agent harnesses people actually use: Codex, Claude Code and OpenCode.
+tifinagh-bench asks models closed-book vocabulary questions in three Amazigh dialects, using about 27,000 dictionary entries. It runs them through the coding-agent harnesses people actually use: Codex, Claude Code, OpenCode and Pi.
 
 | Task | Example |
 | --- | --- |
@@ -16,7 +16,7 @@ The three dialects are Standard Moroccan Amazigh (IRCAM), Tarifit (Riffian) and 
 
 ## Quick start
 
-Requires Node.js 22.13+, at least one harness installed and signed in, and the datasets.
+Requires Node.js 22.19+, at least one harness installed and signed in, and the datasets.
 
 ```bash
 cd cli

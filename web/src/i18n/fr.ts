@@ -61,7 +61,7 @@ export const fr: Messages = {
 		explain: {
 			score: {title: 'Qu’est-ce que le score TifinaghBench ?', text: 'À quel point un modèle connaît les mots amazighs, de 0 à 100. Il fait la moyenne de deux tâches dans trois dialectes : dire ce que veut dire un mot en tifinagh, et écrire un mot anglais en tifinagh. 30, c’est environ 3 bonnes réponses sur 10.'},
 			interval: {title: 'Que veut dire ± ?', text: 'La marge d’erreur. Chaque modèle a répondu sur 1 000 mots par dialecte : avec un autre échantillon, le score pourrait bouger d’environ autant. Deux modèles plus proches que leurs marges combinées sont à égalité.'},
-			harness: {title: 'Qu’est-ce qu’un harnais ?', text: 'L’application dans laquelle le modèle a tourné : Codex, Claude Code ou OpenCode, les assistants de code que l’on utilise au quotidien. Outils et recherche web étaient désactivés.'},
+			harness: {title: 'Qu’est-ce qu’un harnais ?', text: 'L’application dans laquelle le modèle a tourné : Codex, Claude Code, OpenCode ou Pi, les assistants de code que l’on utilise au quotidien. Outils et recherche web étaient désactivés.'},
 			reasoning: {title: 'Qu’est-ce que le raisonnement ?', text: 'Le temps de réflexion accordé au modèle avant de répondre. Un réglage plus élevé réfléchit plus longtemps et coûte plus cher.'},
 			tied: {title: 'Que veut dire ex æquo ?', text: 'L’écart entre ces modèles est plus petit que la marge d’erreur : on ne peut pas dire lequel est meilleur. Ils partagent le rang.'},
 		},
@@ -302,11 +302,11 @@ export const fr: Messages = {
 	},
 	run: {
 		title: 'Lancez-le sur votre modèle',
-		lede: 'Le benchmark est un outil en ligne de commande. Il pilote Codex, Claude Code ou OpenCode par leurs SDK officiels, à livre fermé, et écrit un dossier de résultats par essai.',
+		lede: 'Le benchmark est un outil en ligne de commande. Il pilote Codex, Claude Code, OpenCode ou Pi par leurs SDK officiels, à livre fermé, et écrit un dossier de résultats par essai.',
 		requirements: 'Prérequis',
 		requirementsList: [
-			'Node.js 22.13 ou plus récent',
-			'Au moins un harnais installé et connecté : Codex, Claude Code ou OpenCode',
+			'Node.js 22.19 ou plus récent',
+			'Au moins un harnais installé et connecté : Codex, Claude Code ou OpenCode, ou des identifiants Pi',
 			'Claude Code pour le juge officiel, Claude Haiku 5.5',
 			'Les jeux de données (voir ci-dessous)',
 		],
