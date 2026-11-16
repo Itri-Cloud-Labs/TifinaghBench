@@ -1,5 +1,5 @@
 // Display metadata the result exports don't carry. Add an entry when a new model's results land.
-export type Lab = 'OpenAI' | 'Anthropic' | 'Google' | 'DeepSeek' | 'Zhipu AI' | 'MiniMax' | 'Moonshot AI' | 'Mistral AI' | 'Unknown';
+export type Lab = 'OpenAI' | 'Anthropic' | 'Google' | 'DeepSeek' | 'Zhipu AI' | 'MiniMax' | 'Moonshot AI' | 'Mistral AI' | 'Tencent' | 'Unknown';
 
 export type ModelInfo = {name: string; lab: Lab};
 
@@ -18,6 +18,7 @@ export const models: Record<string, ModelInfo> = {
 	'openrouter/minimax/minimax-m3.1-flash': {name: 'MiniMax M3.1 Flash', lab: 'MiniMax'},
 	'openrouter/moonshotai/kimi-k3.1-pro': {name: 'Kimi K3.1 Pro', lab: 'Moonshot AI'},
 	'openrouter/mistralai/mistral-large-4-0': {name: 'Mistral Large 4', lab: 'Mistral AI'},
+	'openrouter/tencent/hy4-flash': {name: 'Hy4 Flash', lab: 'Tencent'},
 };
 
 export function modelInfo(id: string): ModelInfo {
