@@ -4,6 +4,7 @@ export type Lab = 'OpenAI' | 'Anthropic' | 'Google' | 'DeepSeek' | 'Zhipu AI' | 
 export type ModelInfo = {name: string; lab: Lab};
 
 export const models: Record<string, ModelInfo> = {
+	'openai/gpt-6.2-astra': {name: 'GPT-6.2-Astra', lab: 'OpenAI'},
 	'openai/gpt-6.2-sol': {name: 'GPT-6.2-Sol', lab: 'OpenAI'},
 	'gpt-6.1-sol': {name: 'GPT-6.1-Sol', lab: 'OpenAI'},
 	'gpt-6.1-terra': {name: 'GPT-6.1-Terra', lab: 'OpenAI'},
