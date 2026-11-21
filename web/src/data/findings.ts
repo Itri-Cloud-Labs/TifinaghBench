@@ -2,7 +2,7 @@ import type {Run} from './runs';
 import {rankedRuns} from './runs';
 import type {Dialect, Task} from './schema';
 import {dialects, meaningTasks} from './schema';
-import {cellMoments} from './stats';
+import {cellMoments, tiers} from './stats';
 
 // Numbers behind the Findings page. Every headline there is computed from these, so it stays true as runs are added.
 type Scored = Run & {score: NonNullable<Run['score']>; script: NonNullable<Run['script']>};
@@ -98,3 +98,25 @@ export function easiestDialect(rows: Run[]) {
 	const [dialect, count] = [...counts].sort((a, b) => b[1] - a[1])[0] ?? [null, 0];
 	return {dialect, count};
 }
+
+// The board as it stood after each ranked run finished, oldest first. Ranks and ties are recomputed among the runs present then.
+export type RaceStep = {slug: string; finishedAt: string; order: string[]; rank: Record<string, number>; tied: Record<string, boolean>};
+export function raceSteps(runs: Scored[] = findingRuns()): RaceStep[] {
+	const arrived = runs.filter(run => run.info.finished_at).sort((a, b) => a.info.finished_at!.localeCompare(b.info.finished_at!));
+	return arrived.map((run, index) => {
+		const step: RaceStep = {slug: run.slug, finishedAt: run.info.finished_at!, order: [], rank: {}, tied: {}};
+		let position = 1;
+		for (const group of tiers(arrived.slice(0, index + 1), entry => entry.score)) {
+			for (const entry of group) {
+				step.order.push(entry.slug);
+				step.rank[entry.slug] = position;
+				step.tied[entry.slug] = group.length > 1;
+			}
+			position += group.length;
+		}
+		return step;
+	});
+}
+
+// How many times a new run took sole or shared first place from the runs ahead of it.
+export const leadChanges = (steps: RaceStep[]) => steps.slice(1).filter(step => step.rank[step.slug] === 1).length;

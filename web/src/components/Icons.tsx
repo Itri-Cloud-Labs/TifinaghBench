@@ -30,3 +30,12 @@ export const ExternalIcon = (props: SVGProps<SVGSVGElement>) => (
 export const MenuIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg {...base} {...props}><path d="M3.5 6h13M3.5 10h13M3.5 14h13" /></svg>
 );
+export const PlayIcon = (props: SVGProps<SVGSVGElement>) => (
+	<svg {...base} {...props}><path d="M6.5 4.5v11l9-5.5Z" /></svg>
+);
+export const PauseIcon = (props: SVGProps<SVGSVGElement>) => (
+	<svg {...base} {...props}><path d="M7 4.5v11M13 4.5v11" /></svg>
+);
+export const ReplayIcon = (props: SVGProps<SVGSVGElement>) => (
+	<svg {...base} {...props}><path d="M4 10a6 6 0 1 0 1.8-4.3M4 3.5v3.2h3.2" /></svg>
+);

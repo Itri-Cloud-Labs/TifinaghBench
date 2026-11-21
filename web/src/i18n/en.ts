@@ -180,6 +180,18 @@ export const en = {
 		legend: 'Legend',
 		table: 'Show the numbers',
 		hideTable: 'Hide the numbers',
+		race: {
+			title: (leader: string, date: string) => `${leader} has held first place since ${date}`,
+			shared: (leaders: string) => `${leaders} share first place`,
+			text: (changes: number) => `The leaderboard replayed in the order the runs finished. Each model enters at the rank it earned against the models already there, and ties are recomputed at every step. A newcomer has reached first place ${changes === 1 ? 'once' : `${changes} times`}, alone or tied.`,
+			play: 'Play',
+			pause: 'Pause',
+			replay: 'Replay',
+			scrub: 'Step through the runs',
+			count: (count: number) => (count === 1 ? '1 model' : `${count} models`),
+			joined: (name: string, rank: number, tied: boolean) => `${name} joins at #${rank}${tied ? ', tied' : ''}.`,
+			caption: 'TifinaghBench score out of 100. Dates are when each run finished (UTC).',
+		},
 		readWrite: {
 			title: (count: number, total: number) => (count === total ? 'Every model reads Tifinagh better than it writes it' : `${count} of ${total} models read Tifinagh better than they write it`),
 			text: (ratio: string) => `Tifinagh → English asks what a word means; English → Tifinagh asks the model to spell the word itself. Averaged over the three dialects, the median model scores ${ratio} times higher reading than writing.`,

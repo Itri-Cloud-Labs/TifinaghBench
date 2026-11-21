@@ -182,6 +182,18 @@ export const fr: Messages = {
 		legend: 'Légende',
 		table: 'Afficher les chiffres',
 		hideTable: 'Masquer les chiffres',
+		race: {
+			title: (leader: string, date: string) => `${leader} occupe la première place depuis le ${date}`,
+			shared: (leaders: string) => `${leaders} se partagent la première place`,
+			text: (changes: number) => `Le classement rejoué dans l’ordre où les essais se sont terminés. Chaque modèle entre au rang obtenu face aux modèles déjà présents, et les ex æquo sont recalculés à chaque étape. Un nouveau venu a atteint la première place ${changes === 1 ? 'une fois' : `${changes} fois`}, seul ou ex æquo.`,
+			play: 'Lecture',
+			pause: 'Pause',
+			replay: 'Rejouer',
+			scrub: 'Parcourir les essais',
+			count: (count: number) => (count === 1 ? '1 modèle' : `${count} modèles`),
+			joined: (name: string, rank: number, tied: boolean) => `${name} entre à la ${rank === 1 ? '1re' : `${rank}e`} place${tied ? ', ex æquo' : ''}.`,
+			caption: 'Score TifinaghBench sur 100. Les dates sont celles de la fin de chaque essai (UTC).',
+		},
 		readWrite: {
 			title: (count: number, total: number) => (count === total ? 'Tous les modèles lisent le tifinagh mieux qu’ils ne l’écrivent' : `${count} modèles sur ${total} lisent le tifinagh mieux qu’ils ne l’écrivent`),
 			text: (ratio: string) => `Tifinagh → anglais demande le sens d’un mot ; anglais → tifinagh demande au modèle d’écrire le mot lui-même. En moyenne sur les trois dialectes, le modèle médian obtient un score ${ratio} fois plus élevé en lecture qu’en écriture.`,
