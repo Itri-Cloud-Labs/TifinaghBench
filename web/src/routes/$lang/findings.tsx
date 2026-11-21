@@ -2,9 +2,10 @@ import {createFileRoute} from '@tanstack/react-router';
 import type {DotRow} from '../../components/DotRows';
 import {DotRows} from '../../components/DotRows';
 import {Cliff} from '../../components/Cliff';
+import {Race} from '../../components/Race';
 import {CostChart} from '../../components/CostChart';
 import {rankedRuns} from '../../data/runs';
-import {bestValue, conventions, dialectScores, directions, easiestDialect, findingRuns, median, pricedRuns, writingCer} from '../../data/findings';
+import {bestValue, conventions, dialectScores, directions, easiestDialect, findingRuns, leadChanges, median, pricedRuns, raceSteps, writingCer} from '../../data/findings';
 import {dialects} from '../../data/schema';
 import type {Lang} from '../../i18n';
 import {messagesFor} from '../../i18n';
@@ -55,12 +56,29 @@ function Findings() {
 	const cheapest = edge[0];
 	const best = edge.at(-1);
 
+	// The current leader, and the step since which it has been first in every replayed board.
+	const steps = raceSteps(runs);
+	const final = steps.at(-1);
+	const leaders = final ? final.order.filter(slug => final.rank[slug] === 1) : [];
+	const name = (slug: string) => runs.find(run => run.slug === slug)?.name ?? slug;
+	const since = leaders.length === 1 ? steps.findIndex((_, index) => steps.slice(index).every(step => step.rank[leaders[0]!] === 1)) : -1;
+
 	return (
 		<div className="mx-auto max-w-[84rem] px-5 sm:px-8">
 			<header className="pt-12 pb-10">
 				<h1 className="text-3xl sm:text-4xl">{t.findings.title}</h1>
 				<p className="mt-3 max-w-[60ch] text-lg text-ink-2">{t.findings.lede}</p>
 			</header>
+
+			{final && (
+				<Finding
+					id="race"
+					title={since !== -1 ? t.findings.race.title(name(leaders[0]!), f.date(steps[since]!.finishedAt)) : t.findings.race.shared(f.list(leaders.map(name)))}
+					text={t.findings.race.text(leadChanges(steps))}
+				>
+					<Race runs={runs} steps={steps} />
+				</Finding>
+			)}
 
 			<Finding id="script-words" title={t.home.cliffTitle} text={t.findings.cliffText}>
 				<Cliff runs={rankedRuns()} />

@@ -1,8 +1,8 @@
 import {describe, expect, it} from 'vitest';
 import {leaderboard, llmsTxt} from '../src/data/openData';
-import {bestValue, estimatedCost, pricedRuns} from '../src/data/findings';
+import {bestValue, estimatedCost, findingRuns, pricedRuns, raceSteps} from '../src/data/findings';
 import type {Run} from '../src/data/runs';
-import {runs} from '../src/data/runs';
+import {rankedRuns, runs} from '../src/data/runs';
 
 describe('leaderboard', () => {
 	const {models} = leaderboard();
@@ -63,5 +63,26 @@ describe('bestValue', () => {
 	it('prefers the higher score at equal cost', () => {
 		const [low, high] = [run(1, 5), run(1, 9)];
 		expect(bestValue([low, high])).toEqual([high]);
+	});
+});
+
+describe('race', () => {
+	const steps = raceSteps();
+
+	it('adds one ranked run per step, oldest first', () => {
+		expect(steps).toHaveLength(findingRuns().length);
+		for (const [index, step] of steps.entries()) {
+			expect(step.order).toHaveLength(index + 1);
+			expect(step.order).toContain(step.slug);
+			if (index > 0) expect(step.finishedAt >= steps[index - 1]!.finishedAt).toBe(true);
+		}
+	});
+
+	it('ends on the leaderboard as published', () => {
+		const final = steps.at(-1)!;
+		for (const run of rankedRuns()) {
+			expect(final.rank[run.slug]).toBe(run.rank);
+			expect(final.tied[run.slug]).toBe(run.tiedWith.length > 0);
+		}
 	});
 });
