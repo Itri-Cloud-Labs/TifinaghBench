@@ -1,5 +1,4 @@
 import {useEffect, useRef, useState} from 'react';
-import {Link} from '@tanstack/react-router';
 import type {RaceStep} from '../data/findings';
 import type {Run} from '../data/runs';
 import {useI18n} from '../lib/lang';
@@ -13,16 +12,17 @@ const stepMs = 1200;
 // The leaderboard replayed in the order the runs finished: each step adds one model and the board re-sorts around it.
 // The page renders the finished board; the replay starts the first time it scrolls into view, unless the reader prefers less motion.
 export function Race({runs, steps}: {runs: Run[]; steps: RaceStep[]}) {
-	const {lang, t, f} = useI18n();
+	const {t, f} = useI18n();
 	const [index, setIndex] = useState(steps.length - 1);
 	const [playing, setPlaying] = useState(false);
 	const figure = useRef<HTMLElement>(null);
+	const autoplay = useRef(true);
 
 	useEffect(() => {
 		const element = figure.current;
 		if (!element || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 		const observer = new IntersectionObserver(([entry]) => {
-			if (!entry?.isIntersecting) return;
+			if (!entry?.isIntersecting || !autoplay.current) return;
 			observer.disconnect();
 			setIndex(0);
 			setPlaying(true);
@@ -47,6 +47,7 @@ export function Race({runs, steps}: {runs: Run[]; steps: RaceStep[]}) {
 	const arrival = bySlug.get(step.slug);
 	const atEnd = index === steps.length - 1;
 	const toggle = () => {
+		autoplay.current = false;
 		if (playing) setPlaying(false);
 		else {
 			if (atEnd) setIndex(0);
@@ -71,6 +72,7 @@ export function Race({runs, steps}: {runs: Run[]; steps: RaceStep[]}) {
 						max={steps.length - 1}
 						value={index}
 						onChange={event => {
+							autoplay.current = false;
 							setPlaying(false);
 							setIndex(Number(event.target.value));
 						}}
@@ -88,7 +90,13 @@ export function Race({runs, steps}: {runs: Run[]; steps: RaceStep[]}) {
 				{arrival && t.findings.race.joined(arrival.name, step.rank[step.slug]!, step.tied[step.slug]!)}
 			</p>
 
-			<ol className="relative border-t border-rule transition-[height] duration-700 ease-out" style={{height: step.order.length * rowHeight}}>
+			<ol className="sr-only">
+				{step.order.map(slug => (
+					<li key={slug}>{`${step.rank[slug]}${step.tied[slug] ? ` (${t.home.tied})` : ''}. ${bySlug.get(slug)?.name ?? slug}: ${f.score(bySlug.get(slug)?.score?.value)}`}</li>
+				))}
+			</ol>
+			{/* The visible rows stay in final order in the DOM so their moves animate; the list above carries the current order. */}
+			<ol aria-hidden="true" className="relative border-t border-rule transition-[height] duration-700 ease-out" style={{height: step.order.length * rowHeight}}>
 				{steps.at(-1)!.order.map(slug => {
 					const run = bySlug.get(slug);
 					const position = step.order.indexOf(slug);
@@ -98,7 +106,6 @@ export function Race({runs, steps}: {runs: Run[]; steps: RaceStep[]}) {
 					return (
 						<li
 							key={slug}
-							aria-hidden={!present}
 							className={`absolute inset-x-0 top-0 grid grid-cols-[4.5rem_minmax(0,1fr)_3.25rem] items-center gap-x-3 border-b border-rule transition-[transform,opacity,background-color] duration-700 ease-out sm:grid-cols-[5rem_minmax(0,16rem)_3.5rem_minmax(0,1fr)] sm:gap-x-5 ${isNew ? 'bg-slip-3' : ''}`}
 							style={{
 								height: rowHeight,
@@ -113,7 +120,7 @@ export function Race({runs, steps}: {runs: Run[]; steps: RaceStep[]}) {
 							</span>
 							<span className="flex min-w-0 items-center gap-2.5">
 								<span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-slip-3 text-ink"><LabLogo lab={run.lab} size={16} /></span>
-								<Link to="/$lang/models/$slug" params={{lang, slug}} tabIndex={present ? undefined : -1} className="truncate text-sm font-semibold text-ink no-underline hover:underline">{run.name}</Link>
+								<span className="truncate text-sm font-semibold">{run.name}</span>
 							</span>
 							<span className="num pr-2 text-right font-semibold sm:pr-0">{f.score(run.score?.value)}</span>
 							<span className="hidden pr-2 sm:block">
