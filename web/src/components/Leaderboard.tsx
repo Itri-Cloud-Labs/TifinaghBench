@@ -1,10 +1,11 @@
-import {Fragment} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 import {Link} from '@tanstack/react-router';
 import type {Run} from '../data/runs';
 import type {SetupDifference} from '../data/stats';
 import {useI18n} from '../lib/lang';
 import {Explain} from './Explain';
 import {LabLogo} from './LabLogo';
+import {LeaderboardChart} from './LeaderboardChart';
 import {ScoreBar} from './ScoreBar';
 
 export function SetupBadge({differences}: {differences: SetupDifference[]}) {
@@ -21,6 +22,19 @@ export function SetupBadge({differences}: {differences: SetupDifference[]}) {
 // The home leaderboard: rank, model, score. Script scores, strict spelling and run details live on each model's page.
 export function Leaderboard({runs}: {runs: Run[]}) {
 	const {lang, t, f} = useI18n();
+	// The list is the default and what the page prerenders; a reader who picks the chart gets it again next visit.
+	const [view, setView] = useState<'list' | 'chart'>('list');
+	useEffect(() => {
+		try {
+			if (localStorage.getItem('board-view') === 'chart') setView('chart');
+		} catch {}
+	}, []);
+	const pick = (next: 'list' | 'chart') => {
+		setView(next);
+		try {
+			localStorage.setItem('board-view', next);
+		} catch {}
+	};
 	const ranked = runs.filter(run => run.rank !== null).sort((a, b) => a.rank! - b.rank! || b.score!.value - a.score!.value);
 	const unranked = runs.filter(run => run.rank === null);
 	const tiers: Run[][] = [];
@@ -76,6 +90,13 @@ export function Leaderboard({runs}: {runs: Run[]}) {
 		<section aria-labelledby="board-title">
 			<div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-rule-strong pb-3">
 				<h2 id="board-title" className="text-xl">{t.home.boardTitle}</h2>
+				<div role="group" aria-label={t.home.view.label} className="mr-auto inline-flex rounded-sm border border-rule-strong p-0.5 text-sm">
+					{(['list', 'chart'] as const).map(option => (
+						<button key={option} type="button" aria-pressed={view === option} onClick={() => pick(option)} className={`rounded-[2px] px-3 py-1 font-medium ${view === option ? 'bg-ink text-slip' : 'text-ink-2 hover:text-ink'}`}>
+							{t.home.view[option]}
+						</button>
+					))}
+				</div>
 				<Explain label={t.home.readTable} text={t.home.readTable} wide>
 					<dl className="space-y-2.5">
 						{(['score', 'interval', 'tied', 'harness', 'reasoning'] as const).map(term => (
@@ -87,7 +108,7 @@ export function Leaderboard({runs}: {runs: Run[]}) {
 					</dl>
 				</Explain>
 			</div>
-			<ol>
+			{view === 'chart' ? <div className="pt-6"><LeaderboardChart runs={runs} /></div> : <ol>
 				{tiers.map((group, index) => (
 					<Fragment key={group[0]!.slug}>
 						{index > 0 && step(tiers[index - 1]!, group)}
@@ -96,8 +117,8 @@ export function Leaderboard({runs}: {runs: Run[]}) {
 				))}
 				{unranked.length > 0 && <li className="label pt-6 pb-2">{t.home.unranked}</li>}
 				{unranked.map(row)}
-			</ol>
-			<p className="mt-3 text-xs text-ink-3">{t.home.scoreHint}.</p>
+			</ol>}
+			{view === 'list' && <p className="mt-3 text-xs text-ink-3">{t.home.scoreHint}.</p>}
 		</section>
 	);
 }

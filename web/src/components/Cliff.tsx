@@ -1,8 +1,9 @@
-import {useEffect, useRef, useState} from 'react';
+import {useState} from 'react';
 import {Link} from '@tanstack/react-router';
 import type {Run} from '../data/runs';
 import {LabLogo} from './LabLogo';
 import {useI18n} from '../lib/lang';
+import {useWidth} from '../lib/useWidth';
 
 type Scored = Run & {score: NonNullable<Run['score']>; script: NonNullable<Run['script']>};
 
@@ -11,20 +12,6 @@ const median = (values: number[]) => {
 	const middle = Math.floor(sorted.length / 2);
 	return sorted.length % 2 ? sorted[middle]! : (sorted[middle - 1]! + sorted[middle]!) / 2;
 };
-
-// The SVG is drawn at the container's real width, so text keeps its size from phones to desktops.
-function useWidth(initial: number) {
-	const ref = useRef<HTMLDivElement>(null);
-	const [width, setWidth] = useState(initial);
-	useEffect(() => {
-		const element = ref.current;
-		if (!element) return;
-		const observer = new ResizeObserver(([entry]) => entry && setWidth(Math.round(entry.contentRect.width)));
-		observer.observe(element);
-		return () => observer.disconnect();
-	}, []);
-	return [ref, width] as const;
-}
 
 // The cliff: one line per run from its script score (left) down to its TifinaghBench score (right), both on 0–100.
 // Every line falls, which is the finding: models read the script but do not know the words.
