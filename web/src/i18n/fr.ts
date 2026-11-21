@@ -43,6 +43,11 @@ export const fr: Messages = {
 		greeting: 'Azul ! C’est « bonjour » en amazigh.',
 		lede: 'Nous testons à quel point les modèles d’IA connaissent les mots amazighs écrits en tifinagh, dans trois dialectes, sans dictionnaire ni recherche web pour les aider.',
 		answer: (inTen: string, names: string, score: string) => `Les meilleurs répondent juste à environ ${inTen} questions sur 10 : ${names}, avec ${score} sur 100.`,
+		view: {label: 'Affichage', list: 'Liste', chart: 'Graphique'},
+		chart: {
+			title: 'Score TifinaghBench par modèle',
+			caption: 'Score TifinaghBench avec intervalle à 95 %. Les modèles sur fond grisé sont ex æquo. L’axe s’arrête à la dizaine au-dessus de l’intervalle le plus haut.',
+		},
 		boardTitle: 'Classement',
 		reasoningLevel: (level: string) => `raisonnement ${level}`,
 		nextLabel: 'Pour aller plus loin',

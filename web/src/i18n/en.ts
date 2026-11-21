@@ -41,6 +41,11 @@ export const en = {
 		greeting: 'Azul! That’s hello in Amazigh.',
 		lede: 'We test how well AI models know Amazigh words written in Tifinagh, across three dialects, with no dictionary or web search to help.',
 		answer: (inTen: string, names: string, score: string) => `The best get about ${inTen} in 10 right: ${names}, with ${score} out of 100.`,
+		view: {label: 'View', list: 'List', chart: 'Chart'},
+		chart: {
+			title: 'TifinaghBench score by model',
+			caption: 'TifinaghBench score with 95% interval. Shaded models are tied. The axis stops at the next 10 above the highest interval.',
+		},
 		boardTitle: 'Leaderboard',
 		reasoningLevel: (level: string) => `${level} reasoning`,
 		nextLabel: 'Keep reading',
